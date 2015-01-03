@@ -22,6 +22,17 @@ require('./routes.js')(app);
 
 
 
+app.get('/get_position', function(req, res) {
+
+	var koveto = req.body.koveto
+
+});
+
+
+
+
+
+
 
 var mongooseConnect = function() {
 	mongoose.connect('mongodb://'+configDB.username+':'+configDB.pwd+'@'+configDB.host+':'+configDB.port+'/'+configDB.database, function(err){

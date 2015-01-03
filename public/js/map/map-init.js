@@ -7,7 +7,12 @@ function init() {
 		zoom: 12
 	};
 
+	// create map object and link it to DOM element
 	var map = new google.maps.Map(document.getElementById('map-panel'), options);
+
+	// create Places SearchBar on map
+	placesSearchInit(map);
+
 };
 
 // add event listener --> initialise map after body has loaded
