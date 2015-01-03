@@ -1,5 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+var configDB = require('./config/database.js');
 
 
 //create express app
@@ -20,10 +23,21 @@ require('./routes.js')(app);
 
 
 
+var mongooseConnect = function() {
+	mongoose.connect('mongodb://'+configDB.username+':'+configDB.pwd+'@'+configDB.host+':'+configDB.port+'/'+configDB.database, function(err){
+		if (err) throw err;
 
+		console.log('Connected to MongoDB on ' + configDB.host+':'+configDB.port+'/'+configDB.database);
+	});
+};
 
 
 app.listen(app.get('port'), function() {
 	console.log('Server listening on port ' + app.get('port'));
 
+	mongooseConnect();
+
+	mongoose.connection.on('disconnected', function() {
+		mongooseConnect();
+	});
 });
