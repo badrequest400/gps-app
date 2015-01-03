@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="GpsKovetoApp" ng-controller="MainCtrl" lang="en-US">
 
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta charset="utf-8">
 
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<!-- JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?region=hu&libraries=places&key=AIzaSyAZi6yRUkCPkuvdGgJlP2W4IUl5-4wcphk"></script>
+	
 	<script type="text/javascript" src="js/map/map-init.js"></script>
 	<script type="text/javascript" src="js/map/places-search-init.js"></script>
 
@@ -15,17 +21,25 @@
 
 <body>
 
+	<!--  NG-VIEW -->
+	<div ng-view></div>
+	<!-- /NG-VIEW -->
+
 	<input id="places-input" class="controls" type="text" placeholder="Search Places">
 	<div id="map-panel"></div>
 
 
-
+	<!-- Angular.js -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js"></script>
 
     <!-- Main client-side Angular App -->
-    <script src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Angular Controllers -->
+    <script type="text/javascript" src="controllers/main.js"></script>
 
 </body>
 
 </html>
+
