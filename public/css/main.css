@@ -1,6 +1,32 @@
-html, body, #map-panel { 
+html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
+.rch-navbar {
+	background-color: #00264a;
+	color: white;
+	border-top: 0.4em solid #0098cc;
+}
+
+.rch-header-user {
+	line-height: 100%;
+	color: #C2C2C2;
+	height: 50px;
+	display: block;
+}
+
+.navbar {
+	margin-bottom:0px;
+}
+
+#map-panel {
+	margin-top: 60px;
+	height: 600px;
+	/*width: 600px;*/
+}
+
+.main-content {
+	margin-top: 60px;
+}
