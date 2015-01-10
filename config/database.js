@@ -3,9 +3,9 @@
 
 module.exports = {
 	
-	host: 'localhost',
-	port: 27017,
-	database: 'gps',
-	username: '',
-	pwd: ''
+	host: 'ds029901.mongolab.com',
+	port: 29901,
+	database: 'heroku_app33155065',
+	username: 'gps',
+	pwd: 'gps01'
 };
