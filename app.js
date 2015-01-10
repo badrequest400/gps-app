@@ -22,12 +22,6 @@ require('./routes.js')(app);
 
 
 
-app.get('/get_position', function(req, res) {
-
-	var koveto = req.body.koveto
-
-});
-
 
 
 
