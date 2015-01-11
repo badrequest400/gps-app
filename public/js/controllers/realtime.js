@@ -19,6 +19,7 @@ angular.module('GpsKovetoApp')
 		"GID" : 1234,
 		"__v" : 0
 	}];
+	$scope.currentReport = {};
 
 	$scope.drawMarkers = function(id) {
 
@@ -31,9 +32,12 @@ angular.module('GpsKovetoApp')
 					map: $scope.map,
 					title: 'POS 1'
 				});
+
+				$scope.currentReport = report;
 			};
 		});
 	};
+
 }])
 
 .controller('DropDownController', ['$scope', function($scope) {

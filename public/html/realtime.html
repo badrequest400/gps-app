@@ -1,26 +1,50 @@
 <div ng-controller="RealTimeController">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+
+			<div ng-controller="DropDownController">
+				<div class="col-md-4">
+
+					<!-- Choose Tracker Dropdown -->
+					<div class="btn-group" dropdown is-open="status.isopen">
+						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+							Koveto Valasztas <span class="caret"></span>
+						</button>
+
+						<ul class="dropdown-menu" role="menu">
+							<li ng-repeat="item in items">
+								<a href ng-click="drawMarkers(item)">{{item}}</a>
+							</li>
+						</ul>
+					</div>
+
+
+					<div>
+						<div>Azonosito: {{currentReport.GID}}</div>
+						<div>Idopont: {{}}</div>
+						<div>Hosszusag: {{currentReport.lng}}</div>
+						<div>Szelesseg: {{currentReport.lat}}</div>
+						<div>GPS Jel: 1</div>
+						<div>Sebesseg: {{currentReport.speed}}</div>
+						<div>Irany: {{currentReport.orientation}}</div>
+						<div>Km Szamlalo: </div>
+						<div>Statusz: </div>
+						<div>Kimenet: </div>
+						<div>Bemenet: </div>
+						<div>Analog Bemenet: </div>
+						<div>Cim: </div>
+						<div>Kimenet: </div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-md-8">
 				<input id="places-input" class="controls" type="text" placeholder="Search Places">
 				<div map-div id="map-panel" class="col-md-8" ng-init=init()></div>
 			</div>
 
-			<div ng-controller="DropDownController">
 
-				<div class="btn-group" dropdown is-open="status.isopen">
-					<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-						Button dropdown <span class="caret"></span>
-					</button>
-
-					<ul class="dropdown-menu" role="menu">
-						<li ng-repeat="item in items">
-							<a href ng-click="drawMarkers(item)">{{item}}</a>
-						</li>
-					</ul>
-				</div>
-
-			</div>
 
 		</div>
 	</div>
