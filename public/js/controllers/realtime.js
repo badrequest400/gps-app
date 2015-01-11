@@ -1,6 +1,6 @@
 angular.module('GpsKovetoApp')
 
-.controller('RealTimeController', ['$scope', function($scope) {
+.controller('RealTimeController', ['$scope', 'reverse_geocode', function($scope, reverse_geocode) {
 
 	$scope.init = map_init($scope);
 
@@ -20,6 +20,7 @@ angular.module('GpsKovetoApp')
 		"__v" : 0
 	}];
 	$scope.currentReport = {};
+	$scope.currentReport.address = '';
 
 	$scope.drawMarkers = function(id) {
 
@@ -34,6 +35,11 @@ angular.module('GpsKovetoApp')
 				});
 
 				$scope.currentReport = report;
+				//async call to google geocoding for address lookup
+				reverse_geocode.geocode(report.lat, report.lng, function(address) {
+					$scope.currentReport.address = address;
+					$scope.$apply();
+				});
 			};
 		});
 	};
