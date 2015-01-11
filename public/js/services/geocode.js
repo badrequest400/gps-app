@@ -1,11 +1,11 @@
-angular.module('Helpers', [])
+angular.module('GpsKovetoApp')
 
 // address lookup function, async call
 //NEEDS callback, scope needs to be updated in view --> $scope.$apply()
 
-.service('reverse_geocode', function() {
+.service('geocode', function() {
 
-	this.geocode = function(lat, lng, callback) {
+	this.reverse_geocode = function(lat, lng, callback) {
 
 		var geocoder = new google.maps.Geocoder();
 		var latlng = new google.maps.LatLng(lat, lng);
