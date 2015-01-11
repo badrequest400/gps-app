@@ -1,8 +1,8 @@
 angular.module('GpsKovetoApp')
 
-.controller('RealTimeController', ['$scope', 'reverse_geocode', function($scope, reverse_geocode) {
+.controller('RealTimeController', ['$scope', 'geocode', 'map', function($scope, geocode, map) {
 
-	$scope.init = map_init($scope);
+	$scope.map_init = map.map_init($scope);
 
 	$scope.reports = [{
 		"_id" : "54346df8efd498c92cab01be",
@@ -35,8 +35,9 @@ angular.module('GpsKovetoApp')
 				});
 
 				$scope.currentReport = report;
-				//async call to google geocoding for address lookup
-				reverse_geocode.geocode(report.lat, report.lng, function(address) {
+
+				//async call to google geocoding for address lookup --> service:geocode
+				geocode.reverse_geocode(report.lat, report.lng, function(address) {
 					$scope.currentReport.address = address;
 					$scope.$apply();
 				});

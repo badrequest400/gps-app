@@ -1,7 +1,7 @@
 angular.module('GpsKovetoApp')
 
-.controller('MapController', ['$scope', function($scope) {
+.controller('MapController', ['$scope', 'map', function($scope, map) {
 
-	$scope.init = map_init($scope);
+	$scope.map_init = map.map_init($scope);
 
 }]);
