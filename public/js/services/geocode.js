@@ -20,4 +20,25 @@ angular.module('GpsKovetoApp')
 			};
 		});
 	};
+
+	this.planRoute = function(startPos, endPos, map) {
+
+		var directionsService = new google.maps.DirectionsService();
+		var directionsRenderer = new google.maps.DirectionsRenderer();
+		directionsRenderer.setMap(map);
+
+		var requestObject = {
+			origin: startPos,
+			destination: endPos,
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.METRIC
+			// MORE OPTIONS CAN BE ADDED --> CHECK DOCS TO IMPROVE
+		};
+
+		directionsService.route(requestObject, function(result, status) {
+			if(status == 'OK') {
+				directionsRenderer.setDirections(result);
+			}
+		});
+	};
 });

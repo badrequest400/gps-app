@@ -1,8 +1,10 @@
 angular.module('GpsKovetoApp')
 
-.controller('RealTimeController', ['$scope', 'geocode', 'map', function($scope, geocode, map) {
+.controller('RealTimeController', ['$scope', '$http', 'geocode', 'map', function($scope, $http, geocode, map) {
 
 	$scope.map_init = map.map_init($scope);
+
+	$scope.trackerSelected = false;
 
 	$scope.reports = [{
 		"_id" : "54346df8efd498c92cab01be",
@@ -22,10 +24,25 @@ angular.module('GpsKovetoApp')
 	$scope.currentReport = {};
 	$scope.currentReport.address = '';
 
+	// recursive refresh of latest position report once tracker is selected
+	if($scope.trackerSelected == true) {
+		$scope.getLatest();
+	};
+
+	$scope.getLatest = function(id) {
+		$http.get('/latest')
+		.success(function(data) {
+			setTimeout($scope.getLatest,15000);
+		}).error(function(data) {
+			//
+		});
+	};
+
 	$scope.drawMarkers = function(id) {
 
 		$scope.reports.forEach(function(report) {
 			if(report.GID == id) {
+				$scope.trackerSelected = true;
 				var pos = new google.maps.LatLng(report.lat, report.lng);
 
 				var marker = new google.maps.Marker({

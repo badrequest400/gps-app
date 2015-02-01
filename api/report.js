@@ -1,15 +1,21 @@
 var Reports = require('../models/report.js').Reports;
+var Latest  = require('../models/latest.js').Latest;
 
-// Placeholder, Date-time needs to be properly sorted in the logging server, so it can be sorted on
-// Later a better solution is needed, as this is not scalable, query time will grow as collection grows
-// Maybe have 2 writes? second collection for latest report?
-// or sort on _id which is timestamped?
-// needs to be benchmarked with lots of data
+
+module.exports.timeFilter = function(req, res) {
+
+	Reports.find({timestamp:{$gte: req.start, $lte: req.end}}, function(err, docs) {
+		if(err)	throw err;
+
+		res.status(200).end(docs);
+	});
+};
+
 module.exports.getLatest = function(req, res) {
 
-	Reports.find({}, {limit: 1, sort: {date: -1}}, function(err, doc) {
-		if (err)	throw err;
+	Latest.find(function(err, doc) {
+		if(err)	throw err;
 
-		res.end(doc);
+		res.sattsu(200).end(doc);
 	});
-}
+};
