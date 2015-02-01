@@ -25,7 +25,7 @@ angular.module('GpsKovetoApp')
 	$scope.currentReport.address = '';
 
 	// recursive refresh of latest position report once tracker is selected
-	if(trackerSelected == true) {
+	if($scope.trackerSelected == true) {
 		$scope.getLatest();
 	};
 

@@ -1,10 +1,46 @@
 <div ng-controller="MapController">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+
+			<div class="col-md-4">
+				<tabset>
+					<tab heading="Pozicio">
+						Lat: <input type="text" ng-model="locate.lat">
+						<br>
+						Lng: <input type="text" ng-model="locate.lng">
+						<br>
+						<br>
+						<button ng-click="locate.locate()">Kereses</button>
+						<br>
+						<div>Cim: {{locate.address}}</div>
+					</tab>
+
+					<tab heading="Utvonal Tervezes">
+						<h4>Indulasi pont</h4>
+						<br>
+						Lat: <input type="text" ng-model="plan.lat_start">
+						<br>
+						Lng: <input type="text" ng-model="plan.lng_start">
+						<br>
+						<h4>Erkezesi pont</h4>
+						<br>
+						Lat: <input type="text" ng-model="plan.lat_dest">
+						<br>
+						Lng: <input type="text" ng-model="plan.lng_dest">
+						<br>
+						<br>
+						<button ng-click="plan.plan()">Tervezes</button>
+					</tab>
+				</tabset>
+			</div>
+
+
+
+			<div class="col-md-8">
 				<input id="places-input" class="controls" type="text" placeholder="Search Places">
 				<div id="map-panel" class="col-md-8" ng-init="map_init()"></div>
 			</div>
+
 		</div>
 	</div>
 </div>
