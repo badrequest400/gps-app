@@ -1,12 +1,13 @@
 angular.module('GpsKovetoApp')
 
-.controller('RealTimeController', ['$scope', '$http', 'geocode', 'map', function($scope, $http, geocode, map) {
+.controller('RealTimeController', ['$scope', '$http', '$timeout', 'geocode', 'map', function($scope, $http, $timeout, geocode, map) {
 
 	$scope.map_init = map.map_init($scope);
 
 	$scope.trackerSelected = false;
+	$scope.marker = new google.maps.Marker();
 
-	$scope.reports = [{
+	$scope.report = {
 		"_id" : "54346df8efd498c92cab01be",
 		"mystery" : 6100,
 		"analogue" : "f9",
@@ -16,23 +17,21 @@ angular.module('GpsKovetoApp')
 		"orientation" : 129.7,
 		"speed" : 0,
 		"lat" : 47.491364,
-		"lng" : 19.055845,
+		"lon" : 19.055845,
 		"time" : 224925,
 		"GID" : 1234,
 		"__v" : 0
-	}];
-	$scope.currentReport = {};
-	$scope.currentReport.address = '';
-
-	// recursive refresh of latest position report once tracker is selected
-	if($scope.trackerSelected == true) {
-		$scope.getLatest();
 	};
+
+	//RECURSION --> position update
 
 	$scope.getLatest = function(id) {
 		$http.get('/latest')
 		.success(function(data) {
-			setTimeout($scope.getLatest,15000);
+			$scope.report.lat += 0.001;
+			$scope.report.lon += 0.001;
+			$scope.drawMarkers(1234);
+
 		}).error(function(data) {
 			console.log('Something went wrong');
 		});
@@ -40,26 +39,23 @@ angular.module('GpsKovetoApp')
 
 	$scope.drawMarkers = function(id) {
 
-		$scope.reports.forEach(function(report) {
-			if(report.GID == id) {
-				$scope.trackerSelected = true;
-				var pos = new google.maps.LatLng(report.lat, report.lng);
+		var pos = new google.maps.LatLng($scope.report.lat, $scope.report.lon);
 
-				var marker = new google.maps.Marker({
-					position: pos,
-					map: $scope.map,
-					title: 'POS 1'
-				});
+		$scope.marker.setMap($scope.map);
+		$scope.marker.setPosition(pos);
+		$scope.marker.setTitle('POS 1');
 
-				$scope.currentReport = report;
+		$timeout(function(){
+			$scope.getLatest(id);
+		},1000);
 
-				//async call to google geocoding for address lookup --> service:geocode
-				geocode.reverse_geocode(report.lat, report.lng, function(address) {
-					$scope.currentReport.address = address;
-					$scope.$apply();
-				});
-			};
-		});
+		//async call to google geocoding for address lookup --> service:geocode
+		// geocode.reverse_geocode(report.lat, report.lon, function(address) {
+		// 	$scope.currentReport.address = address;
+		// 	$scope.$apply();
+		// });
+
+
 	};
 
 }])
@@ -67,9 +63,9 @@ angular.module('GpsKovetoApp')
 .controller('DropDownController', ['$scope', function($scope) {
 
 	$scope.items = [];
-	$scope.reports.forEach(function(report) {
-		$scope.items.push(report.GID);
-	});
+
+	$scope.items.push($scope.report.GID);
+
 
 	$scope.status = {
 		isopen: false

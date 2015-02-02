@@ -13,9 +13,9 @@ module.exports.timeFilter = function(req, res) {
 
 module.exports.getLatest = function(req, res) {
 
-	Latest.find(function(err, doc) {
+	Latest.findOne(function(err, doc) {
 		if(err)	throw err;
 
-		res.sattsu(200).end(doc);
+		res.status(200).end(JSON.stringify(doc));
 	});
 };
