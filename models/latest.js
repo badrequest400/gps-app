@@ -13,6 +13,8 @@ var latestSchema = mongoose.Schema({
 	lng : Number,
 	time : Number,
 	GID : Number,
+}, {
+	collection: 'latest'
 });
 
 module.exports.Latest = mongoose.model('Latest', latestSchema);

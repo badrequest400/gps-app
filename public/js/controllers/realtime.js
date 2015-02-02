@@ -34,7 +34,7 @@ angular.module('GpsKovetoApp')
 		.success(function(data) {
 			setTimeout($scope.getLatest,15000);
 		}).error(function(data) {
-			//
+			console.log('Something went wrong');
 		});
 	};
 
