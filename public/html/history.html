@@ -41,8 +41,10 @@
 						<timepicker ng-model="toDate" minute-step="10" show-meridian="false"></timepicker>
 					</div>
 				</div>
-
-				<button type="button" class="btn btn-primary" ng-click="search()">Search</button>
+				<div class="row">
+					<button type="button" class="btn btn-primary" ng-click="search()">Search</button>
+					<button type="button" class="btn btn-primary" ng-click="startStopPlayback($event)">Start Playback</button>
+				</div>
 				<br>
 				<br>
 
