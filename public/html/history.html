@@ -1,0 +1,76 @@
+<div ng-controller="HistoryController">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-4">
+
+				<div class="row">
+					<div class="btn-group" dropdown is-open="status.isopen">
+						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+							Tracker <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row">
+					Date:
+					<div class="row">
+						<div class="col-md-8">
+							<p class="input-group">
+								<input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="fromDate" is-open="fromOpened" ng-required="true" close-text="Close" />
+								<span class="input-group-btn">
+									<button id="from" type="button" class="btn btn-default" ng-click="datePickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</div>
+						<timepicker ng-model="fromDate" minute-step="10" show-meridian="false"></timepicker>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8">
+							<p class="input-group">
+								<input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="toDate" is-open="toOpened" ng-required="true" close-text="Close" />
+								<span class="input-group-btn">
+									<button id="to" type="button" class="btn btn-default" ng-click="datePickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</div>
+						<timepicker ng-model="toDate" minute-step="10" show-meridian="false"></timepicker>
+					</div>
+				</div>
+
+				<button type="button" class="btn btn-primary" ng-click="search()">Search</button>
+				<br>
+				<br>
+
+				<div class="row">
+					<table class="history">
+						<tr>
+							<th>Time</th>
+							<th>Lat</th>
+							<th>Lng</th>
+							<th>Speed</th>
+						</tr>
+						<tr ng-repeat="report in reports" ng-class-odd="'odd'" ng-class-even="'even'">
+							<td>{{report.timestamp}}</td>
+							<td>{{report.lat}}</td>
+							<td>{{report.lng}}</td>
+							<td>{{report.speed}}</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+
+			<!-- MAP -->
+			<div class="col-md-8">
+				<input id="places-input" class="controls" type="text" placeholder="Search Places">
+				<div id="map-panel" class="col-md-8" ng-init="map_init()"></div>
+			</div>
+
+		</div>
+	</div>
+</div>

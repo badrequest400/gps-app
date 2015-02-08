@@ -28,3 +28,14 @@ html, body {
 .main-content {
 	margin-top: 100px;
 }
+
+.odd {
+	background-color: #cde7fc;
+}
+
+.history > th {
+	padding: 5px;
+}
+.history td {
+	padding: 5px;
+}

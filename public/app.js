@@ -22,6 +22,12 @@ var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap'])
 			controller: 'RealTimeController',
 			controllerAs: 'realtimevctrl'
 		})
+		.when('/history', {
+			title: 'RealTime',
+			templateUrl: 'html/history.html',
+			controller: 'HistoryController',
+			controllerAs: 'historyvctrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
