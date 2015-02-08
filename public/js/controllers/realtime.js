@@ -17,7 +17,7 @@ angular.module('GpsKovetoApp')
 		"orientation" : 129.7,
 		"speed" : 0,
 		"lat" : 47.491364,
-		"lon" : 19.055845,
+		"lng" : 19.055845,
 		"time" : 224925,
 		"GID" : 1234,
 		"__v" : 0
@@ -29,7 +29,7 @@ angular.module('GpsKovetoApp')
 		$http.get('/latest')
 		.success(function(data) {
 			$scope.report.lat += 0.001;
-			$scope.report.lon += 0.001;
+			$scope.report.lng += 0.001;
 			$scope.drawMarkers(1234);
 
 		}).error(function(data) {
@@ -39,7 +39,7 @@ angular.module('GpsKovetoApp')
 
 	$scope.drawMarkers = function(id) {
 
-		var pos = new google.maps.LatLng($scope.report.lat, $scope.report.lon);
+		var pos = new google.maps.LatLng($scope.report.lat, $scope.report.lng);
 
 		$scope.marker.setMap($scope.map);
 		$scope.marker.setPosition(pos);
@@ -49,9 +49,9 @@ angular.module('GpsKovetoApp')
 			$scope.getLatest(id);
 		},1000);
 
-		//async call to google geocoding for address lookup --> service:geocode
-		// geocode.reverse_geocode(report.lat, report.lon, function(address) {
-		// 	$scope.currentReport.address = address;
+		////async call to google geocoding for address lookup --> service:geocode
+		// geocode.reverse_geocode($scope.report.lat, $scope.report.lng, function(address) {
+		// 	$scope.report.address = address;
 		// 	$scope.$apply();
 		// });
 
