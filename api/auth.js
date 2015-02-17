@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
-var User = require('./models/user.js').User;
+var User = require('../models/user.js').User;
 var configJWT = require('../config/jwt.js');
 
 

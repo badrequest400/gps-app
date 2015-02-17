@@ -3,6 +3,12 @@ var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap'])
 	function($routeProvider, $locationProvider, $httpProvider) {
 
 		$routeProvider
+		.when('/login', {
+			title: 'Login',
+			templateUrl: 'html/login.html',
+			controller: 'LoginController',
+			controllerAs: 'loginvctrl'
+		})
 		.when('/admin', {
 			title: 'Admin',
 			templateUrl: 'html/admin.html',
@@ -29,7 +35,7 @@ var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap'])
 			controllerAs: 'historyvctrl'
 		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/login'
 		});
 
 		$locationProvider.html5Mode(true);
