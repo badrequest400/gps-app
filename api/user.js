@@ -26,27 +26,34 @@ module.exports.getUser = function(req, res) {
 
 module.exports.changePassword = function(req, res) {
 
-	User.findOne({_id: req.body}, function(err, user) {
+	User.findOne({username: req.params.username}, function(err, user) {
 		if(err) {
 			res.status(500).end('Could not find user');
 			return;
 		};
 
-		if(user.validPassword(req.body.old)) {
-			user.pwd = User.generateHash;
-			user.save(function(err) {
-				if(err) {
-					res.status(500).end('Could not change password');
+		user.validPassword(req.body.old, function(match) {
+			if(match) {
+
+				// User.update({username: req.params.username}, {$set:{pwd: User.}})
+
+				user.pwd = user.generateHash(req.body.new);
+				user.save(function(err) {
+					if(err) {
+						console.log(err);
+						res.status(500).end('Could not change password');
+						return;
+					};
+
+					res.status(200).end('Successfully changed password');
 					return;
-				};
+				});
 
-				res.status(200).end('Successfully changed password');
-			});
-
-		} else {
-			res.status(404).end('Old password does not match');
-			return;
-		}
+			} else {
+				res.status(404).end('Old password does not match');
+				return;
+			};
+		});
 	});
 };
 

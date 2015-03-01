@@ -9,6 +9,9 @@
 		</table>
 	</form>
 
+	<div class="alert alert-success" role="alert" ng-if="passwordMessage">{{passwordMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="passwordAlert">{{passwordAlert}}</div>
+
 	<form>
 		<table>
 			<tr><td>Full Name</td><td><input type="text" name"fullname" ng-model="userForm.fullname"></td></tr>
@@ -19,5 +22,8 @@
 			<tr><td><button ng-click="updateUser()">Save</button></td></tr>
 		</table>
 	</form>
+
+	<div class="alert alert-success" role="alert" ng-if="userMessage">{{userMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="userAlert">{{userAlert}}</div>
 
 </div>
