@@ -35,8 +35,6 @@ module.exports.changePassword = function(req, res) {
 		user.validPassword(req.body.old, function(match) {
 			if(match) {
 
-				// User.update({username: req.params.username}, {$set:{pwd: User.}})
-
 				user.pwd = user.generateHash(req.body.new);
 				user.save(function(err) {
 					if(err) {
@@ -68,3 +66,5 @@ module.exports.updateDetails = function(req, res) {
 		res.status(200).end('Successfully updated user detail');
 	});
 };
+
+{"pwd" : "something","trackers" : [{	"name" : "BGT-123",	"model" : "x5.02",	"id" : 1234567890}],"username" : "test","fullname" : "Balazs Cseh","phone_no" : 7773098482,"email" : "b@b.com"}
