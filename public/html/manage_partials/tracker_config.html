@@ -1,0 +1,50 @@
+<div ng-controller="TrackerConfigController">
+
+	<div class="table">
+		<div class="table-header" style="display: inline-block;">
+			<div class="table-cell">Name</div>
+			<div class="table-cell">Model</div>
+			<div class="table-cell">Tracker ID</div>
+			<div class="table-cell">Operations</div>
+		</div>
+
+		<div class="table-row" ng-repeat="user in users">
+			<div class="table-row">
+				<div class="table-cell" ng-click="isCollapsed = !isCollapsed">{{user.username}}</div>
+			</div>
+			<div class="table-row" collapse = "isCollapsed" ng-repeat="tracker in user.trackers">
+				<div class="table-cell">{{tracker.name}}</div>
+				<div class="table-cell">{{tracker.model}}</div>
+				<div class="table-cell">{{tracker.id}}</div>
+				<div class="table-cell" ng-click="openModal()">Modify</div>
+				<div class="table-cell">Delete</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-controller="TrackerConfigModalController">
+
+		<script type="text/ng-template" id="tracker_config_modal.html">
+			<div class="modal-header">
+				<h3 class="modal-title">Configure Tracker</h3>
+			</div>
+			<div class="modal-body">
+				<table>
+				<tr><td>Name:</td> <td></td></tr>
+				<tr><td>Tracker ID:</td> <td></td></tr>
+				<tr><td>Model:</td> <td></td></tr>
+				<tr><td>Add to User:</td> <td></td></tr>
+				<tr><td>Tracker Image:</td> <td></td></tr>
+				<tr><td>Add more fields here</td></tr>
+				<tr><td><button>Setup IO</button></td> <td><button>Modify</button></td></tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+
+	</div>
+
+</div>

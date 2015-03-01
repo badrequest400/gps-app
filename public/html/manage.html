@@ -1,26 +1,40 @@
-<div ng-controller="ManageController">
+<div ng-condivoller="ManageCondivoller">
 	<div class="container">
 		<div class="row">
 
-			<div class="manage-menu">
+			<div class="manage-menu col-md-2">
 				<div class="manage-menu-title">Manage</div>
-				<table>
-					<tr><td>Tracker Config</td></tr>
-					<tr><td>My Account</td></tr>
-					<tr><td>Task</td></tr>
-					<tr><td>Alarm Event</td></tr>
-					<tr><td>Admin Functions</td></tr>
-					<tr><td>User Management</td></tr>
-					<tr><td>I/O Port</td></tr>
-					<tr><td>User Roles</td></tr>
-					<tr><td>System Config</td></tr>
-					<tr><td>Fiedl Customize</td></tr>
-					<tr><td>Model Management</td></tr>
-					<tr><td>Login Log</td></tr>
-					<tr><td>Data Management</td></tr>
-					<tr><td>System Status</td></tr>
-				</table>
+				<div class="table">
+					<div class="table-row" ng-click="setSelected('tracker_config')"><div class="table-cell">Tracker Config</div></div>
+					<div class="table-row" ng-click="setSelected('my_account')"><div class="table-cell">My Account</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Task</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Alarm Event</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell"><b>Admin Functions</b></div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">User Management</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">I/O Port</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">User Roles</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">System Config</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Field Customize</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Model Management</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Login Log</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">Data Management</div></div>
+					<div class="table-row" ng-click="setSelected()"><div class="table-cell" ng-click=" ">System Status</div></div>
+				</div>
 			</div>
+
+			<div ng-if="selected == 'tracker_config'" ng-include="'html/manage_partials/tracker_config.html'"></div>
+			<div ng-if="selected == 'my_account'" ng-include="'html/manage_partials/my_account.html'"></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
+			<div ng-include=""></div>
 
 		</div>
 	</div>
