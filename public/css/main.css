@@ -56,3 +56,11 @@ html, body {
 	border: solid;
 	border-width: thin;
 }
+td {
+	border: solid black 1px;
+	padding: 10px;
+}
+th {
+	border: solid black 1px;
+	padding: 10px;
+}

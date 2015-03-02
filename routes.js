@@ -19,6 +19,10 @@ module.exports = function(app) {
 	app.post('/change_password/:username', user.changePassword);
 	app.post('/update_details/:username', user.updateDetails);
 
+	//ROLES
+	var role = require('./api/role.js');
+	app.get('/get_roles', role.getRoles);
+
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)
 	app.get('*', function(req, res) {
 		res.redirect('/');

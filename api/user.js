@@ -66,5 +66,3 @@ module.exports.updateDetails = function(req, res) {
 		res.status(200).end('Successfully updated user detail');
 	});
 };
-
-{"pwd" : "something","trackers" : [{	"name" : "BGT-123",	"model" : "x5.02",	"id" : 1234567890}],"username" : "test","fullname" : "Balazs Cseh","phone_no" : 7773098482,"email" : "b@b.com"}

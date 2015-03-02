@@ -1,0 +1,52 @@
+<div ng-controller="UserRolesController">
+
+	<div class="row">
+		<button ng-click="openNewRoleModal()">New Role</button>
+	</div>
+
+	<table>
+		<th>Role Name</th>
+		<th>System Privileges</th>
+		<th>Parent Role Name</th>
+		<th>Operation</th>
+
+		<tr ng-repeat="role in roles">
+			<td>{{role.name}}</td>
+			<td>{{role.privileges}}</td>
+			<td>Parent Role</td>
+			<td><button ng-click="openModifyModal()">Modify</button><button>Delete</button></td>
+		</tr>
+	</table>
+
+
+	<div ng-controller="ModifyRoleModalController">
+		<script type="text/ng-template" id="modify_role_modal.html">
+		<div class="modal-header">
+			<h3 class="modal-title">Modify Role</h3>
+		</div>
+		<div class="modal-body">
+			<div ng-include="'html/manage_partials/privileges_table.html'"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-click="ok()">OK</button>
+			<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+		</script>
+	</div>
+
+	<div ng-controller="NewRoleModalController">
+		<script type="text/ng-template" id="new_role_modal.html">
+		<div class="modal-header">
+			<h3 class="modal-title">New Role</h3>
+		</div>
+		<div class="modal-body">
+			<div ng-include="'html/manage_partials/privileges_table.html'"></div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" ng-click="ok()">OK</button>
+			<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+		</div>
+		</script>
+	</div>
+
+</div>

@@ -8,7 +8,12 @@ var userSchema = mongoose.Schema({
 	pwd: String,
 	phone_no: String,
 	email: String,
-	trackers: [{name: String, id: Number, model: String}]
+	trackers: [{name: String, id: Number, model: String}],
+	owner: String,
+	role: String,
+	privileges: [String],
+	status: String,
+	max_trackers: Number,
 });
 
 userSchema.methods.validPassword = function(password, callback) {
