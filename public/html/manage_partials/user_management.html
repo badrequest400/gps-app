@@ -1,0 +1,57 @@
+<div ng-controller="UserManagementController">
+
+	<div class="row">
+		<button ng-click="openNewUserModal()">Add New User</button><input type="text">
+	</div>
+
+	<table>
+		<th>Username</th>
+		<th>Max Trackers</th>
+		<th>User Role</th>
+		<th>Owner</th>
+		<th>User State</th>
+		<th>Operation</th>
+		<th>Expire Date</th>
+
+		<tr ng-repeat="user in users">
+			<td>{{user.username}}</td>
+			<td>{{user.max_trackers}}</td>
+			<td>{{user.role}}</td>
+			<td>{{user.owner}}</td>
+			<td>{{user.status}}</td>
+			<td>Expire Date</td>
+			<td><button ng-click="openModifyModal()">Modify</button><button>Delete</button></td>
+		</tr>
+	</table>
+
+	<div ng-controller="ModifyUserModalController">
+		<script type="text/ng-template" id="modify_user_modal.html">
+			<div class="modal-header">
+				<h3 class="modal-title">Modify User</h3>
+			</div>
+			<div class="modal-body">
+				Modify User Placeholder
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+	</div>
+
+	<div ng-controller="NewUserModalController">
+		<script type="text/ng-template" id="new_user_modal.html">
+			<div class="modal-header">
+				<h3 class="modal-title">MOdify User</h3>
+			</div>
+			<div class="modal-body">
+				New User Placeholder
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+	</div>
+
+</div>

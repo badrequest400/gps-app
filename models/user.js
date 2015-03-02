@@ -3,10 +3,17 @@ var bcrypt = require('bcrypt');
 
 var userSchema = mongoose.Schema({
 
-	_id: String,
-	name: String,
+	username: String,
+	fullname: String,
 	pwd: String,
-	phone_no: String
+	phone_no: String,
+	email: String,
+	trackers: [{name: String, id: Number, model: String}],
+	owner: String,
+	role: String,
+	privileges: [String],
+	status: String,
+	max_trackers: Number,
 });
 
 userSchema.methods.validPassword = function(password, callback) {

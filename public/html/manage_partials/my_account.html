@@ -1,0 +1,29 @@
+<div ng-controller="AccountController">
+
+	<form>
+		<table>
+			<tr><td>Old Password</td><td><input type="text" name="oldpassword" ng-model="passwordForm.old"></td></tr>
+			<tr><td>New Password</td><td><input type="text" name="newpassword" ng-model="passwordForm.new"></td></tr>
+			<tr><td>Confirm Password</td><td><input type="text" name="confirmpassword" ng-model="passwordForm.confirm"></td></tr>
+			<tr><td><button ng-click="changePassword()">Save</button></tr></td>
+		</table>
+	</form>
+
+	<div class="alert alert-success" role="alert" ng-if="passwordMessage">{{passwordMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="passwordAlert">{{passwordAlert}}</div>
+
+	<form>
+		<table>
+			<tr><td>Full Name</td><td><input type="text" name"fullname" ng-model="userForm.fullname"></td></tr>
+			<tr><td>Email</td><td><input type="text" name"email" ng-model="userForm.email"></td></tr>
+			<tr><td>Username</td><td><input type="text" name"username" ng-model="userForm.username"></td></tr>
+			<tr><td>Phone Number</td><td><input type="text" name"phone_no" ng-model="userForm.phone_no"></td></tr>
+			<tr><td>Send email alerts for alarm events</td><td><input type="checkbox" name"alerts" checked ng-model="userForm.alerts"></td></tr>
+			<tr><td><button ng-click="updateUser()">Save</button></td></tr>
+		</table>
+	</form>
+
+	<div class="alert alert-success" role="alert" ng-if="userMessage">{{userMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="userAlert">{{userAlert}}</div>
+
+</div>
