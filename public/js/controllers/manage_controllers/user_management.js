@@ -21,7 +21,7 @@ angular.module('GpsKovetoApp')
 	};
 	$scope.openNewUserModal = function() {
 		var modalInstance = $modal.open({
-			templateUrl: 'new_user_modal.html',
+			templateUrl: 'modify_user_modal.html',
 			controller: 'NewUserModalController',
 			size: 'md'
 		});
