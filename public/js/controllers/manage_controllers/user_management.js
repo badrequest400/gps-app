@@ -16,14 +16,14 @@ angular.module('GpsKovetoApp')
 		var modalInstance = $modal.open({
 			templateUrl: 'modify_user_modal.html',
 			controller: 'ModifyUserModalController',
-			size: 'md',
+			size: 'md'
 		});
 	};
 	$scope.openNewUserModal = function() {
 		var modalInstance = $modal.open({
 			templateUrl: 'new_user_modal.html',
 			controller: 'NewUserModalController',
-			size: 'md',
+			size: 'md'
 		});
 	};
 }])

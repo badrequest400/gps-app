@@ -1,4 +1,4 @@
-var Reports = require('../models/report.js');
+var Reports = require('../models/report.js').Reports;
 
 module.exports.deleteHistory = function(req, res) {
 
