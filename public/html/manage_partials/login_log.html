@@ -1,0 +1,24 @@
+<div ng-controller="LoginLogController">
+
+    <div class="col-md-12">
+
+        <table>
+
+            <tr>
+                <th>User</th>
+                <th>Timestamp</th>
+                <th>IP</th>
+                <th>Authorised</th>
+            </tr>
+            <tr ng-repeat="login in logins">
+                <th>{{login.user}}</th>
+                <th>{{login.timestamp}}</th>
+                <th>{{login.ip}}</th>
+                <th>{{login.authorised}}</th>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>

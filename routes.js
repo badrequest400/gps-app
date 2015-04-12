@@ -11,6 +11,7 @@ module.exports = function(app) {
 	var auth = require('./api/auth.js');
 	app.post('/signup', auth.signup);
 	app.post('/login', auth.login);
+	app.get('/loginlog', auth.getLoginLog);
 
 	//USERS
 	var user = require('./api/user.js');
@@ -22,6 +23,17 @@ module.exports = function(app) {
 	//ROLES
 	var role = require('./api/role.js');
 	app.get('/get_roles', role.getRoles);
+
+	//GENERAL
+	var general = require('./api/general.js');
+	app.post('/delete_history', general.deleteHistory);
+
+	//TRACKERS
+	var tracker = require('./api/tracker.js');
+	app.get('/models', tracker.getModels);
+	app.post('/delete_model', tracker.deleteModel);
+	app.post('/update_model', tracker.updateModel);
+
 
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)
 	app.get('*', function(req, res) {

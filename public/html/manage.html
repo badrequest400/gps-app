@@ -6,18 +6,16 @@
 				<div class="manage-menu-title">Manage</div>
 				<div class="table">
 					<div class="table-row" ng-click="setSelected('tracker_config')"><a><div class="table-cell" style="color:red;">Tracker Config</div></a></div>
-					<div class="table-row" ng-click="setSelected('my_account')"><a><div class="table-cell" style="color:red;">My Account</div></a></div>
-					<div class="table-row" ng-click="setSelected('task')"><a><div class="table-cell" >Task</div></a></div>
+					<div class="table-row" ng-click="setSelected('my_account')"><a><div class="table-cell" style="color:green;">My Account</div></a></div>
 					<div class="table-row" ng-click="setSelected('alarm')"><a><div class="table-cell" >Alarm Event</div></a></div>
-					<div class="table-row"><a><div class="table-cell"><b>Admin Functions</b></div></a></div>
+					<div class="table-row"><div class="table-cell"><b>Admin Functions</b></div></div>
 					<div class="table-row" ng-click="setSelected('user_management')"><a><div class="table-cell" style="color:red;">User Management</div></a></div>
 					<div class="table-row" ng-click="setSelected('io')"><a><div class="table-cell" >I/O Port</div></a></div>
 					<div class="table-row" ng-click="setSelected('user_roles')"><a><div class="table-cell" style="color:red;">User Roles</div></a></div>
 					<div class="table-row" ng-click="setSelected('system_config')"><a><div class="table-cell" >System Config</div></a></div>
-					<div class="table-row" ng-click="setSelected('field_customize')"><a><div class="table-cell" >Field Customize</div></a></div>
-					<div class="table-row" ng-click="setSelected('model_management')"><a><div class="table-cell" >Model Management</div></a></div>
-					<div class="table-row" ng-click="setSelected('login_log')"><a><div class="table-cell" >Login Log</div></a></div>
-					<div class="table-row" ng-click="setSelected('data_management')"><a><div class="table-cell" >Data Management</div></a></div>
+					<div class="table-row" ng-click="setSelected('model_management')"><a><div class="table-cell"  style="color:green;">Model Management - no modal footer</div></a></div>
+					<div class="table-row" ng-click="setSelected('login_log')"><a><div class="table-cell" style="color:green;">Login Log</div></a></div>
+					<div class="table-row" ng-click="setSelected('data_management')"><a><div class="table-cell" style="color:red;">Data Management</div></a></div>
 					<div class="table-row" ng-click="setSelected('system_status')"><a><div class="table-cell" >System Status</div></a></div>
 				</div>
 			</div>
@@ -25,16 +23,14 @@
 			<div class="col-md-8">
 				<div ng-if="selected == 'tracker_config'" ng-include="'html/manage_partials/tracker_config.html'"></div>
 				<div ng-if="selected == 'my_account'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'task'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'alarm'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'user_management'" ng-include="'html/manage_partials/user_management.html'"></div>
 				<div ng-if="selected == 'io'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'user_roles'" ng-include="'html/manage_partials/user_roles.html'"></div>
 				<div ng-if="selected == 'system_config'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'field_customize'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'model_management'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'login_log'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'data_management'" ng-include="'html/manage_partials/my_account.html'"></div>
+				<div ng-if="selected == 'model_management'" ng-include="'html/manage_partials/model_management.html'"></div>
+				<div ng-if="selected == 'login_log'" ng-include="'html/manage_partials/login_log.html'"></div>
+				<div ng-if="selected == 'data_management'" ng-include="'html/manage_partials/data_management.html'"></div>
 				<div ng-if="selected == 'system_status'" ng-include="'html/manage_partials/my_account.html'"></div>
 			</div>
 

@@ -1,0 +1,57 @@
+<div ng-controller="ModelManagementController">
+
+    <div class="col-md-12">
+
+        <div class="row">
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Server Port</th>
+                    <th>Protocol</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="model in models">
+                    <td>{{model.name}}</td>
+                    <td>{{model.model}}</td>
+                    <td>{{model.serverPort}}</td>
+                    <td>{{model.protocol}}</td>
+                    <td><button ng-click="openModifyModelModal(model)">Modify</button><button ng-click="deleteModel(model.name)">Delete</button></td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div ng-controller="ModifyModelModalController">
+        <script type="text/ng-template" id="modify_model_modal.html">
+            <div class="modal-header">
+                <h3 class="modal-title">Modify Model</h3>
+            </div>
+            <div class="modal-body">
+                <table>
+                        <tr><th>Name:</th><td><input type="text" ng-model="model.name"></td></tr>
+                        <tr><th>Model:</th><td><input type="text" ng-model="model.model"></td></tr>
+                        <tr><th>Server Port:</th><td><input type="text" ng-model="model.serverPort"></td></tr>
+                        <tr><th>Protocol:</th><td><select ng-model="model.protocol">
+                            <option value="TCP">TCP</option>
+                            <option value="UDP">UDP</option>
+                        </select></td></tr>
+                        <tr><th>Driver:</th><td><input type="text" ng-model="model.driver"></td></tr>
+                        <tr><th>Description:</th><td><textarea ng-model="model.description"></td></tr>
+                        <tr><th>Script:</th><td><textarea ng-model="model.script"></td></tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+        </script>
+    </div>
+
+	<div class="alert alert-success" role="alert" ng-if="userMessage">{{userMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="userAlert">{{userAlert}}</div>
+
+</div>
