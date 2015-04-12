@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
 var User = require('../models/user.js').User;
+var LoginLog = require('../models/login.js').LoginLog;
 var configJWT = require('../config/jwt.js');
 
 
@@ -19,16 +20,19 @@ module.exports.login = function(req, res) {
 		};
 
 		if(!user) {
+			logLogin(req.body.username, false, req.ip);
 			return res.status(401).end('Wrong username or password');
 		};
 
 		user.validPassword(req.body.password, function(match) {
 			if (!match) {
+				logLogin(req.body.username, false, req.ip);
 				return res.status(401).end('Wrong username or password');
 			}
 
 			var token = jwt.sign(user, configJWT.secret, {expiresInMinutes: 60});
 
+			logLogin(req.body.username, true, req.ip);
 			return res.status(200).send({token: token, user: {username: user.username, fullname: user.fullname, access_level: user.access_level}});
 		});
 	});
@@ -64,7 +68,34 @@ module.exports.signup = function(req, res) {
 
 			var token = jwt.sign(newUser, configJWT.secret, {expiresInMinutes: 60});
 
-			return res.status(200).send({token: token, user: {email: newUser._id, name: newUser.name, access_level: newUser.access_level}});
+			res.status(200).end(JSON.stringify({token: token, user: {email: newUser._id, name: newUser.name, access_level: newUser.access_level}}));
 		});
+	});
+};
+
+module.exports.getLoginLog = function(req, res) {
+
+	LoginLog.find(function(err, docs) {
+		if(err) {
+			res.status(500).end('Something went wrong, could not fetch login log');
+			return;
+		};
+
+		res.status(200).end(JSON.stringify(docs));
+	})
+};
+
+function logLogin(user, authorised, ip) {
+
+	login = new LoginLog();
+	login.user = user;
+	login.timestamp = new Date();
+	login.ip = ip;
+	login.authorised = authorised;
+
+	login.save(function(err) {
+		if (err) {
+			console.log('Something went wrong! Could not save login attempt');
+		};
 	});
 };

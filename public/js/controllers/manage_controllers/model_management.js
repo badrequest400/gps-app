@@ -50,7 +50,12 @@ angular.module('GpsKovetoApp')
     $scope.model = model;
 
 	$scope.ok = function() {
-		// SUBMIT
+		$http.post('/update_model', $scope.model)
+        .success(function(data, status) {
+            //
+        }).error(function(data, status) {
+            //
+        });
 	};
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');

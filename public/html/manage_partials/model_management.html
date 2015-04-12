@@ -35,7 +35,10 @@
                         <tr><th>Name:</th><td><input type="text" ng-model="model.name"></td></tr>
                         <tr><th>Model:</th><td><input type="text" ng-model="model.model"></td></tr>
                         <tr><th>Server Port:</th><td><input type="text" ng-model="model.serverPort"></td></tr>
-                        <tr><th>Protocol:</th><td><input type="text" ng-model="model.protocol"></td></tr>
+                        <tr><th>Protocol:</th><td><select ng-model="model.protocol">
+                            <option value="TCP">TCP</option>
+                            <option value="UDP">UDP</option>
+                        </select></td></tr>
                         <tr><th>Driver:</th><td><input type="text" ng-model="model.driver"></td></tr>
                         <tr><th>Description:</th><td><textarea ng-model="model.description"></td></tr>
                         <tr><th>Script:</th><td><textarea ng-model="model.script"></td></tr>
