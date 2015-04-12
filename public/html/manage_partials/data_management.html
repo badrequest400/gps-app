@@ -1,0 +1,43 @@
+<div ng-controller="DataManagementController">
+
+        <div class="col-md-4">
+            <h2>Delete GPS History<h2>
+            <div class="row">
+                Start:
+                <div class="row">
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="fromDate" is-open="fromOpened" ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button id="from" type="button" class="btn btn-default" ng-click="datePickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                End:
+                <div class="row">
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="toDate" is-open="toOpened" ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button id="to" type="button" class="btn btn-default" ng-click="datePickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" ng-click="deleteHistory()">Delete</button>
+
+            <h2>Delete addresses on record</h2>
+            <button>Placeholder for address delete</button>
+
+            <h2>Add address to the map</h2>
+
+        </div>
+
+	<div class="alert alert-success" role="alert" ng-if="userMessage">{{userMessage}}</div>
+	<div class="alert alert-danger" role="alert" ng-if="userAlert">{{userAlert}}</div>
+
+</div>
