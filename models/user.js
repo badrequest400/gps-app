@@ -14,6 +14,9 @@ var userSchema = mongoose.Schema({
 	privileges: [String],
 	status: String,
 	max_trackers: Number,
+	expiryDate: Date,
+	notes: String,
+	handlingSteps: String
 });
 
 userSchema.methods.validPassword = function(password, callback) {

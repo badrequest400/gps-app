@@ -20,7 +20,7 @@
 			<td>{{user.owner}}</td>
 			<td>{{user.status}}</td>
 			<td>Expire Date</td>
-			<td><button ng-click="openModifyModal()">Modify</button><button>Delete</button></td>
+			<td><button ng-click="openModifyModal(user)">Modify</button><button>Delete</button></td>
 		</tr>
 	</table>
 
@@ -30,22 +30,73 @@
 				<h3 class="modal-title">Modify User</h3>
 			</div>
 			<div class="modal-body">
-				Modify User Placeholder
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-primary" ng-click="ok()">OK</button>
-				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-			</div>
-		</script>
-	</div>
+			<table>
+					<tr><th>Username:</th><td><input type="text" ng-model="user.name"></td></tr>
+					<tr><th>New password:</th><td><input type="text" ng-model="user.password"></td></tr>
+					<tr><th>Confirm new password:</th><td><input type="text" ng-model="user.passwordConfirm"></td></tr>
+					<tr><th>Timezone:</th><td><input type="text" ng-model="user.timezone"></td></tr>
+					<tr><th>Max number of trackers:</th><td><input type="text" ng-model="user.max_trackers"></td></tr>
+					<tr><th>User role:</th><td>
 
-	<div ng-controller="NewUserModalController">
-		<script type="text/ng-template" id="new_user_modal.html">
-			<div class="modal-header">
-				<h3 class="modal-title">MOdify User</h3>
-			</div>
-			<div class="modal-body">
-				New User Placeholder
+					<div class="btn-group" dropdown is-open="status.isopen">
+						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+							Koveto Valasztas <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li ng-repeat="item in items">
+								<a href ng-click="">{{item}}</a>
+							</li>
+						</ul>
+					</div>
+
+					</td></tr>
+					<tr><th>Status:</th><td>
+
+					<div class="btn-group" dropdown is-open="status.isopen">
+						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+							Koveto Valasztas <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href ng-click="">Active</a>
+							</li>
+							<li>
+								<a href ng-click="">Inactive</a>
+							</li>
+						</ul>
+					</div>
+
+					</td></tr>
+					<tr><th>Expiry Date:</th><td>
+
+						<p class="input-group">
+							<input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="toDate" is-open="toOpened" ng-required="true" close-text="Close" ng-model="user.expiryDate"/>
+							<span class="input-group-btn">
+								<button id="to" type="button" class="btn btn-default" ng-click="datePickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</p>
+
+					</td></tr>
+					<tr><th>Owner:</th><td>
+
+					<div class="btn-group" dropdown is-open="status.isopen">
+						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+							Koveto Valasztas <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href ng-click="">Active</a>
+							</li>
+							<li>
+								<a href ng-click="">Inactive</a>
+							</li>
+						</ul>
+					</div>
+
+					</td></tr>
+					<tr><th>Realtime handling steps:</th><td><textarea ng-model="user.handlingSteps"></textarea></td></tr>
+					<tr><th>Notes:</th><td><textarea ng-model="user.notes"></textarea></td></tr>
+			</table>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-primary" ng-click="ok()">OK</button>
