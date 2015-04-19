@@ -20,7 +20,7 @@
 			<td>{{user.owner}}</td>
 			<td>{{user.status}}</td>
 			<td>Expire Date</td>
-			<td><button ng-click="openModifyModal(u)">Modify</button><button>Delete</button></td>
+			<td><button ng-click="openModifyModal(user)">Modify</button><button>Delete</button></td>
 		</tr>
 	</table>
 
@@ -31,11 +31,11 @@
 			</div>
 			<div class="modal-body">
 			<table>
-					<tr><th>Username:</th><td><input type="text" ng-model="user.name"></td></tr>
-					<tr><th>New password:</th><td><input type="text" ng-model="user.password"></td></tr>
-					<tr><th>Confirm new password:</th><td><input type="text" ng-model="user.passwordConfirm"></td></tr>
-					<tr><th>Timezone:</th><td><input type="text" ng-model="user.timezone"></td></tr>
-					<tr><th>Max number of trackers:</th><td><input type="text" ng-model="user.max_trackers"></td></tr>
+					<tr><th>Username:</th><td><input type="text" ng-model="form.username"></td></tr>
+					<tr><th>New password:</th><td><input type="text" ng-model="form.password"></td></tr>
+					<tr><th>Confirm new password:</th><td><input type="text" ng-model="form.passwordConfirm"></td></tr>
+					<tr><th>Timezone:</th><td><input type="text" ng-model="form.timezone"></td></tr>
+					<tr><th>Max number of trackers:</th><td><input type="text" ng-model="form.max_trackers"></td></tr>
 					<tr><th>User role:</th><td>
 
 					<div class="btn-group" dropdown is-open="status.isopen">
@@ -91,9 +91,11 @@
 					</div>
 
 					</td></tr>
-					<tr><th>Realtime handling steps:</th><td><textarea ng-model="user.handlingSteps"></textarea></td></tr>
-					<tr><th>Notes:</th><td><textarea ng-model="user.notes"></textarea></td></tr>
+					<tr><th>Realtime handling steps:</th><td><textarea ng-model="form.handlingSteps"></textarea></td></tr>
+					<tr><th>Notes:</th><td><textarea ng-model="form.notes"></textarea></td></tr>
 			</table>
+			<div class="alert alert-warning" role="alert">{{alert}}</div>
+			<div class="alert alert-success" role="alert">{{message}}</div>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-primary" ng-click="ok()">OK</button>

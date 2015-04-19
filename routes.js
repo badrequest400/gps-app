@@ -16,9 +16,9 @@ module.exports = function(app) {
 	//USERS
 	var user = require('./api/user.js');
 	app.get('/get_users', user.getUsers);
-	app.post('/get_users', user.getUsersFilteredOwner);
 	app.get('/get_user/:username', user.getUser);
 	app.post('/change_password/:username', user.changePassword);
+	app.post('/change_password_admin/:username', user.changePasswordAdmin);
 	app.post('/update_details/:username', user.updateDetails);
 
 	//ROLES

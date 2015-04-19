@@ -11,6 +11,7 @@ angular.module('GpsKovetoApp')
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status) {
             AuthService.loggedIn = true;
+            
             $window.sessionStorage.token = data.token;
             $window.sessionStorage.username = data.user.username;
             $window.sessionStorage.fullname = data.user.fullname;
@@ -20,6 +21,16 @@ angular.module('GpsKovetoApp')
             $window.sessionStorage.privileges = angular.toJson(data.user.privileges);
             $window.sessionStorage.status = data.user.status;
             $window.sessionStorage.owned_users = angular.toJson(data.user.owned_users);
+
+            $scope.sessionUser.username = $window.sessionStorage.username;
+            $scope.sessionUser.fullname = $window.sessionStorage.fullname;
+            $scope.sessionUser.trackers = angular.fromJson($window.sessionStorage.trackers);
+            $scope.sessionUser.owner = $window.sessionStorage.owner;
+            $scope.sessionUser.role = $window.sessionStorage.role;
+            $scope.sessionUser.privileges = angular.fromJson($window.sessionStorage.privileges);
+            $scope.sessionUser.status = $window.sessionStorage.status;
+            $scope.sessionUser.owned_users = angular.fromJson($window.sessionStorage.owned_users);
+
             $location.path('/map');
         }).error(function(data, status) {
             console.log(status);
