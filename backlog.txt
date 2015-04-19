@@ -1,0 +1,4 @@
+secure API backend with JWT token
+on account settings get user info from use robj stored in Angular
+$window.sessionStorage.user doesn't get set
+refresh $scope.sessionUser when loging out

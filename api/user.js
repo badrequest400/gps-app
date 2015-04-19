@@ -2,9 +2,23 @@ var User  = require('../models/user.js').User;
 
 module.exports.getUsers = function(req, res) {
 
-	User.find(function(err, docs) {
+	User.find({}, {pwd:0}, function(err, docs) {
 		if(err) {
 			res.status(500).end('Could not get users from the DB');
+			return;
+		};
+
+		res.status(200).end(JSON.stringify(docs));
+	});
+};
+
+module.exports.getUsersFilteredOwner = function(req, res) {
+
+	var userList = req.body.userList;
+
+	User.find({username: {$in: userList}}, {pwd: 0}, function(err, docs) {
+		if(err) {
+			res.status(500).end('Could not get owner filtered list of users from the DB');
 			return;
 		};
 

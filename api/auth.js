@@ -33,7 +33,19 @@ module.exports.login = function(req, res) {
 			var token = jwt.sign(user, configJWT.secret, {expiresInMinutes: 60});
 
 			logLogin(req.body.username, true, req.ip);
-			return res.status(200).send({token: token, user: {username: user.username, fullname: user.fullname, access_level: user.access_level}});
+			return res.status(200).send({
+				token: token,
+				user: {
+					username: user.username,
+					fullname: user.fullname,
+					trackers: user.trackers,
+					owner: user.owner,
+					role: user.role,
+					privileges: user.privileges,
+					status: user.status,
+					owned_users: user.owned_users
+				}
+			});
 		});
 	});
 };

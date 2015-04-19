@@ -6,8 +6,13 @@ angular.module('GpsKovetoApp')
 		this.$location = $location;
 		this.$routeParams = $routeParams;
 
-		$scope.user = {};
-		$scope.user.username = $window.sessionStorage.userName;
-		$scope.user.accessLevel = $window.sessionStorage.userAccessLevel;
-		// $scope.user.pic = $window.sessionStorage.userPic;
+		$scope.sessionUser = {};
+		$scope.sessionUser.username = $window.sessionStorage.username;
+		$scope.sessionUser.fullname = $window.sessionStorage.fullname;
+		$scope.sessionUser.trackers = angular.fromJson($window.sessionStorage.trackers);
+		$scope.sessionUser.owner = $window.sessionStorage.owner;
+		$scope.sessionUser.role = $window.sessionStorage.role;
+		$scope.sessionUser.privileges = angular.fromJson($window.sessionStorage.privileges);
+		$scope.sessionUser.status = $window.sessionStorage.status;
+		$scope.sessionUser.owned_users = angular.fromJson($window.sessionStorage.owned_users);
 }]);

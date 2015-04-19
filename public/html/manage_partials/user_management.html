@@ -20,7 +20,7 @@
 			<td>{{user.owner}}</td>
 			<td>{{user.status}}</td>
 			<td>Expire Date</td>
-			<td><button ng-click="openModifyModal(user)">Modify</button><button>Delete</button></td>
+			<td><button ng-click="openModifyModal(u)">Modify</button><button>Delete</button></td>
 		</tr>
 	</table>
 
@@ -40,11 +40,11 @@
 
 					<div class="btn-group" dropdown is-open="status.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.role}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li ng-repeat="item in items">
-								<a href ng-click="">{{item}}</a>
+							<li ng-repeat="role in roles">
+								<a href ng-click="setRole(role.name)">{{role.name}}</a>
 							</li>
 						</ul>
 					</div>
@@ -52,16 +52,16 @@
 					</td></tr>
 					<tr><th>Status:</th><td>
 
-					<div class="btn-group" dropdown is-open="status.isopen">
+					<div class="btn-group" dropdown is-open="status2.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.status}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li>
-								<a href ng-click="">Active</a>
+								<a href ng-click="setStatus('Active')">Active</a>
 							</li>
 							<li>
-								<a href ng-click="">Inactive</a>
+								<a href ng-click="setStatus('Inactive')">Inactive</a>
 							</li>
 						</ul>
 					</div>
@@ -79,16 +79,13 @@
 					</td></tr>
 					<tr><th>Owner:</th><td>
 
-					<div class="btn-group" dropdown is-open="status.isopen">
+					<div class="btn-group" dropdown is-open="status3.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.owner}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li>
-								<a href ng-click="">Active</a>
-							</li>
-							<li>
-								<a href ng-click="">Inactive</a>
+							<li ng-repeat="user in users">
+								<a href ng-click="setOwner(user.username)">{{user.username}}</a>
 							</li>
 						</ul>
 					</div>

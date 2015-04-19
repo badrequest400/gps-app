@@ -12,11 +12,15 @@ angular.module('GpsKovetoApp')
         .success(function(data, status) {
             AuthService.loggedIn = true;
             $window.sessionStorage.token = data.token;
-            $window.sessionStorage.userName = data.user.username;
-            $window.sessionStorage.userAccessLevel = data.user.access_level;
-            $scope.user.username = data.user.username;
-            $scope.user.accessLevel = data.user.access_level;
-            $location.path('/streams');
+            $window.sessionStorage.username = data.user.username;
+            $window.sessionStorage.fullname = data.user.fullname;
+            $window.sessionStorage.trackers = angular.toJson(data.user.trackers);
+            $window.sessionStorage.owner = data.user.owner;
+            $window.sessionStorage.role = data.user.role;
+            $window.sessionStorage.privileges = angular.toJson(data.user.privileges);
+            $window.sessionStorage.status = data.user.status;
+            $window.sessionStorage.owned_users = angular.toJson(data.user.owned_users);
+            $location.path('/map');
         }).error(function(data, status) {
             console.log(status);
             console.log(data);
@@ -27,8 +31,14 @@ angular.module('GpsKovetoApp')
         if(AuthService.loggedIn) {
             AuthService.loggedIn = false;
             delete $window.sessionStorage.token;
-            delete $window.sessionStorage.userName;
-            $scope.user = {};
+            delete $window.sessionStorage.username;
+            delete $window.sessionStorage.fullname;
+            delete $window.sessionStorage.trackers;
+            delete $window.sessionStorage.owner;
+            delete $window.sessionStorage.role;
+            delete $window.sessionStorage.privileges;
+            delete $window.sessionStorage.status;
+            delete $window.sessionStorage.owned_users;
             $location.path('/');
         };
     };

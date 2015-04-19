@@ -4,7 +4,7 @@ angular.module('GpsKovetoApp')
 
 	$scope.userForm = {};
 
-	$http.get('/get_user/' + $scope.user.username)
+	$http.get('/get_user/' + $scope.sessionUser.username)
 	.success(function(data) {
 		$scope.userForm.fullname = data.fullname;
 		$scope.userForm.email = data.email;
@@ -17,7 +17,7 @@ angular.module('GpsKovetoApp')
 	});
 
 	$scope.passwordForm = {
-		username: $scope.user.username,
+		username: $scope.sessionUser.username,
 		old: '',
 		new: '',
 		confirm: ''
@@ -35,7 +35,7 @@ angular.module('GpsKovetoApp')
 		} else {
 
 			if($scope.passwordForm.new == $scope.passwordForm.confirm) {
-				$http.post('/change_password/' + $scope.user.username, $scope.passwordForm)
+				$http.post('/change_password/' + $scope.sessionUser.username, $scope.passwordForm)
 				.success(function(data) {
 					$scope.passwordMessage = data;
 				}).error(function(data, status) {
@@ -50,7 +50,7 @@ angular.module('GpsKovetoApp')
 	};
 
 	$scope.updateUser = function() {
-		$http.post('/update_details/' + $scope.user.username, $scope.userForm)
+		$http.post('/update_details/' + $scope.sessionUser.username, $scope.userForm)
 		.success(function(data) {
 			$scope.userMessage = data;
 		}).error(function(data, status) {
