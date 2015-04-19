@@ -2,14 +2,27 @@ var User  = require('../models/user.js').User;
 
 module.exports.getUsers = function(req, res) {
 
-	User.find(function(err, docs) {
-		if(err) {
-			res.status(500).end('Could not get users from the DB');
-			return;
-		};
+	if(req.query.owner) {
+		User.find({owner: req.query.owner}, {pwd:0}, function(err, docs) {
+			if(err) {
+				res.status(500).end('Could not get owner filtered list of users from the DB');
+				return;
+			};
 
-		res.status(200).end(JSON.stringify(docs));
-	});
+			res.status(200).end(JSON.stringify(docs));
+		});
+
+	} else {
+
+		User.find({}, {pwd:0}, function(err, docs) {
+			if(err) {
+				res.status(500).end('Could not get users from the DB');
+				return;
+			};
+
+			res.status(200).end(JSON.stringify(docs));
+		});
+	};
 };
 
 module.exports.getUser = function(req, res) {
@@ -51,6 +64,28 @@ module.exports.changePassword = function(req, res) {
 				res.status(404).end('Old password does not match');
 				return;
 			};
+		});
+	});
+};
+
+module.exports.changePasswordAdmin = function(req, res) {
+
+	User.findOne({username: req.params.username}, function(err, user) {
+		if(err) {
+			res.status(500).end('Could not find user');
+			return;
+		};
+
+		user.pwd = user.generateHash(req.body.new);
+		user.save(function(err) {
+			if(err) {
+				console.log(err);
+				res.status(500).end('Could not change password');
+				return;
+			};
+
+			res.status(200).end('Successfully changed password');
+			return;
 		});
 	});
 };

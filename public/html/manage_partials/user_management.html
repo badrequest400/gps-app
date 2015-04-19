@@ -31,20 +31,20 @@
 			</div>
 			<div class="modal-body">
 			<table>
-					<tr><th>Username:</th><td><input type="text" ng-model="user.name"></td></tr>
-					<tr><th>New password:</th><td><input type="text" ng-model="user.password"></td></tr>
-					<tr><th>Confirm new password:</th><td><input type="text" ng-model="user.passwordConfirm"></td></tr>
-					<tr><th>Timezone:</th><td><input type="text" ng-model="user.timezone"></td></tr>
-					<tr><th>Max number of trackers:</th><td><input type="text" ng-model="user.max_trackers"></td></tr>
+					<tr><th>Username:</th><td><input type="text" ng-model="form.username"></td></tr>
+					<tr><th>New password:</th><td><input type="text" ng-model="form.password"></td></tr>
+					<tr><th>Confirm new password:</th><td><input type="text" ng-model="form.passwordConfirm"></td></tr>
+					<tr><th>Timezone:</th><td><input type="text" ng-model="form.timezone"></td></tr>
+					<tr><th>Max number of trackers:</th><td><input type="text" ng-model="form.max_trackers"></td></tr>
 					<tr><th>User role:</th><td>
 
 					<div class="btn-group" dropdown is-open="status.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.role}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li ng-repeat="item in items">
-								<a href ng-click="">{{item}}</a>
+							<li ng-repeat="role in roles">
+								<a href ng-click="setRole(role.name)">{{role.name}}</a>
 							</li>
 						</ul>
 					</div>
@@ -52,16 +52,16 @@
 					</td></tr>
 					<tr><th>Status:</th><td>
 
-					<div class="btn-group" dropdown is-open="status.isopen">
+					<div class="btn-group" dropdown is-open="status2.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.status}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
 							<li>
-								<a href ng-click="">Active</a>
+								<a href ng-click="setStatus('Active')">Active</a>
 							</li>
 							<li>
-								<a href ng-click="">Inactive</a>
+								<a href ng-click="setStatus('Inactive')">Inactive</a>
 							</li>
 						</ul>
 					</div>
@@ -79,24 +79,23 @@
 					</td></tr>
 					<tr><th>Owner:</th><td>
 
-					<div class="btn-group" dropdown is-open="status.isopen">
+					<div class="btn-group" dropdown is-open="status3.isopen">
 						<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-							Koveto Valasztas <span class="caret"></span>
+							{{form.owner}} <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li>
-								<a href ng-click="">Active</a>
-							</li>
-							<li>
-								<a href ng-click="">Inactive</a>
+							<li ng-repeat="user in users">
+								<a href ng-click="setOwner(user.username)">{{user.username}}</a>
 							</li>
 						</ul>
 					</div>
 
 					</td></tr>
-					<tr><th>Realtime handling steps:</th><td><textarea ng-model="user.handlingSteps"></textarea></td></tr>
-					<tr><th>Notes:</th><td><textarea ng-model="user.notes"></textarea></td></tr>
+					<tr><th>Realtime handling steps:</th><td><textarea ng-model="form.handlingSteps"></textarea></td></tr>
+					<tr><th>Notes:</th><td><textarea ng-model="form.notes"></textarea></td></tr>
 			</table>
+			<div class="alert alert-warning" role="alert">{{alert}}</div>
+			<div class="alert alert-success" role="alert">{{message}}</div>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-primary" ng-click="ok()">OK</button>

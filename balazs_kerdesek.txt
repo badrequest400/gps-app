@@ -1,1 +1,30 @@
-Manage -> tracker config -> modify -> Setup IO? hogyan fog mukodni, mit jelentenek ezek pontosan?
+Valos
+
+    Kimenet - Bemenet vs. analog bemenetek  (kijelzesre es kimenetek kapcsolasa)
+    mi az a POI?
+
+Jelentes
+
+    AD1 AD2 ? mik ezek?
+
+Kezeles
+
+    userek birtok viszonya
+        ha user birtokol, latja azon user osszes beallitasat?
+        rendben van a role oroklodes nelkul? mit jelent itt az orklodes?
+
+    alarm events? van lista?
+
+    kimenet-bemenet -analog AD
+
+    Manage -> tracker config -> modify -> Setup IO? hogyan fog mukodni, mit jelentenek ezek pontosan?
+
+
+
+
+
+
+
+
+tiger lmf rendszam analog 1-es uzemanyag szint erzekelo
+egy koveto tobb userhez is tartozhat
