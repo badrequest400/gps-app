@@ -4,6 +4,7 @@ angular.module('GpsKovetoApp')
 
 	$scope.users = [];
 	$scope.users[0] = $scope.sessionUser;
+	$scope.roles;
 
 	$http.get('/get_users?owner=' + $scope.sessionUser.username)
 	.success(function(data) {
@@ -15,10 +16,19 @@ angular.module('GpsKovetoApp')
 		console.log(data);
 	});
 
+	$http.get('/get_roles')
+	.success(function(data, status) {
+		$scope.roles = data;
+	}).error(function(data, status) {
+		console.log(status);
+		console.log(data);
+	});
+
 	$scope.openModifyModal = function(current_user) {
 		var modalInstance = $modal.open({
 			templateUrl: 'modify_user_modal.html',
 			controller: 'ModifyUserModalController',
+			scope: $scope,
 			size: 'md',
 			resolve: {
 				users: function() {
@@ -26,6 +36,9 @@ angular.module('GpsKovetoApp')
 				},
 				current_user: function() {
 					return current_user;
+				},
+				roles: function() {
+					return $scope.roles;
 				}
 			}
 		});
@@ -34,16 +47,38 @@ angular.module('GpsKovetoApp')
 		var modalInstance = $modal.open({
 			templateUrl: 'modify_user_modal.html',
 			controller: 'NewUserModalController',
-			size: 'md'
+			scope: $scope,
+			size: 'md',
+			resolve: {
+				users: function() {
+					return $scope.users;
+				},
+				roles: function() {
+					return $scope.roles;
+				}
+			}
 		});
 	};
+
+	// Listen for Model changes from modal child scopes
+	$scope.$on('newUserAdded', function(event, data) {
+		$scope.users.push(data);
+	});
+	$scope.$on('userDetailsUpdated', function(event, data) {
+		for(var i=0; i<$scope.users.length; i++) {
+			if($scope.users[i].username == data.original_username) {
+				$scope.users[i] = data;
+			};
+		};
+	});
 }])
 
-.controller('ModifyUserModalController', ['$scope', '$modalInstance', '$http', 'users', 'current_user',
-	function($scope, $modalInstance, $http, users, current_user) {
+.controller('ModifyUserModalController', ['$scope', '$modalInstance', '$http', 'users', 'current_user', 'roles',
+	function($scope, $modalInstance, $http, users, current_user, roles) {
 
 	$scope.current_user = current_user;
 	$scope.users = users;
+	$scope.roles = roles;
 
 	$scope.alert = '';
 	$scope.message = '';
@@ -65,6 +100,8 @@ angular.module('GpsKovetoApp')
 		$scope.form.owner = 'Owner';
 	};
 	$scope.form.username = $scope.current_user.username;
+	// in case the username changes the view can be updated based on original_username
+	$scope.form.original_username = $scope.current_user.username;
 	$scope.form.max_trackers = $scope.current_user.max_trackers;
 	$scope.form.expiryDate = $scope.current_user.expiryDate;
 	$scope.form.handlingSteps = $scope.current_user.handlingSteps;
@@ -79,7 +116,10 @@ angular.module('GpsKovetoApp')
 
 			$http.post('/update_details/' + $scope.current_user.username, $scope.form)
 			.success(function(data, status) {
-				$modalInstance.dismiss('ok');
+				//Notify parent controller of model change
+				$scope.$emit('userDetailsUpdated', $scope.form);
+				$modalInstance.close();
+
 			}).error(function(data, status) {
 				//
 			});
@@ -96,7 +136,10 @@ angular.module('GpsKovetoApp')
 
 					$http.post('/update_details/' + $scope.current_user.username, $scope.form)
 					.success(function(data, status) {
-						$modalInstance.dismiss('ok');
+						//Notify parent controller of model change
+						$scope.$emit('userDetailsUpdated', $scope.form);
+						$modalInstance.close();
+
 					}).error(function(data, status) {
 						//
 					});
@@ -112,13 +155,6 @@ angular.module('GpsKovetoApp')
 		$modalInstance.dismiss('cancel');
 	};
 
-	$http.get('/get_roles')
-	.success(function(data, status) {
-		$scope.roles = data;
-	}).error(function(data, status) {
-		//
-	});
-
 	$scope.status = {
 		isopen: false
 	};
@@ -127,6 +163,7 @@ angular.module('GpsKovetoApp')
 		$event.stopPropagation();
 		$scope.status.isopen = !$scope.status.isopen;
 	};
+
 	$scope.setRole = function(val) {
 		$scope.form.role = val;
 	};
@@ -138,12 +175,50 @@ angular.module('GpsKovetoApp')
 	};
 }])
 
-.controller('NewUserModalController', ['$scope', '$modalInstance', function($scope, $modalInstance) {
+.controller('NewUserModalController', ['$scope', '$modalInstance', '$http', 'users', 'roles',
+	function($scope, $modalInstance, $http, users, roles) {
+
+	$scope.alert = '';
+	$scope.message = '';
+
+	$scope.users = users;
+	$scope.roles = roles;
+
+	$scope.form = {};
+	$scope.form.role = 'Role';		//default
+	$scope.form.status = 'Status';	//default
+	$scope.form.owner = 'Owner';	//default
+	$scope.form.username = '';
+	$scope.form.max_trackers = '';
+	$scope.form.expiryDate = '';
+	$scope.form.handlingSteps = '';
+	$scope.form.notes = '';
+	$scope.form.password = undefined;
+	$scope.form.passwordConfrim = undefined;
+
 	$scope.ok = function() {
-		// SUBMIT
+
+		$http.post('/create_user', $scope.form)
+		.success(function(data, status) {
+			// Notify parent scope of new user to update View
+			$scope.$emit('newUserAdded', $scope.form);
+			$modalInstance.close();
+
+		}).error(function(data, status) {
+			$scope.alert = data;
+		});
 	};
 	$scope.cancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
 
+	$scope.setRole = function(val) {
+		$scope.form.role = val;
+	};
+	$scope.setStatus = function(val) {
+		$scope.form.status = val;
+	};
+	$scope.setOwner = function(val) {
+		$scope.form.owner = val;
+	};
 }]);

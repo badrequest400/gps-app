@@ -101,3 +101,17 @@ module.exports.updateDetails = function(req, res) {
 		res.status(200).end('Successfully updated user detail');
 	});
 };
+
+module.exports.createUser = function(req, res) {
+
+	var newUser = new User(req.body);
+
+	newUser.save(function(err) {
+		if(err) {
+			res.status(500).end('Could not create new user');
+			return;
+		};
+
+		res.status(200).end('Successfully created new user');
+	});
+};
