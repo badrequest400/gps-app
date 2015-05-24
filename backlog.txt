@@ -15,3 +15,8 @@ User Management
     add check for empty user creation (probably generalize into service)
 
     write services to get rid of duplication (e.g. setRole, setOwner.....)
+
+
+Data Management
+
+    Working fine, add address/ delete address needed? (not done yet)

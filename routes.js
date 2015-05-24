@@ -32,9 +32,9 @@ module.exports = function(app) {
 
 	//TRACKERS
 	var tracker = require('./api/tracker.js');
-	app.get('/models', tracker.getModels);
-	app.post('/delete_model', tracker.deleteModel);
-	app.post('/update_model', tracker.updateModel);
+	app.get('/trackers/models', tracker.getModels);
+	app.post('/trackers/delete_model', tracker.deleteModel);
+	app.post('/trackers/update_model', tracker.updateModel);
 
 
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)

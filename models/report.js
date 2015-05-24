@@ -11,7 +11,11 @@ var reportSchema = mongoose.Schema({
 	lat : Number,
 	lng : Number,
 	timestamp : Date,
-	GID : Number,
+	tracker : {
+		name: String,
+		model: String,
+		GID: Number
+	}
 });
 
 module.exports.Reports = mongoose.model('Reports', reportSchema);

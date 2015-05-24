@@ -6,7 +6,7 @@ angular.module('GpsKovetoApp')
 
     $scope.models;
 
-    $http.get('/models')
+    $http.get('/trackers/models')
     .success(function(data, status) {
         $scope.models = data;
     }).error(function(data, status) {
@@ -14,7 +14,7 @@ angular.module('GpsKovetoApp')
     });
 
     $scope.deleteModel = function(name) {
-        $http.post('/delete_model', {"name": name})
+        $http.post('/trackers/delete_model', {"name": name})
         .success(function(data, status) {
 
             // update the view by removing model from models array
@@ -50,7 +50,7 @@ angular.module('GpsKovetoApp')
     $scope.model = model;
 
 	$scope.ok = function() {
-		$http.post('/update_model', $scope.model)
+		$http.post('/trackers/update_model', $scope.model)
         .success(function(data, status) {
             //
         }).error(function(data, status) {

@@ -155,6 +155,7 @@ angular.module('GpsKovetoApp')
 		$modalInstance.dismiss('cancel');
 	};
 
+	// Drop-down button
 	$scope.status = {
 		isopen: false
 	};

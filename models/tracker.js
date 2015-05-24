@@ -9,7 +9,8 @@ var trackerSchema = mongoose.Schema({
     protocol: String,
 	driver: String,
 	description: String,
-	script: String
+	script: String,
+	GID: Number
 });
 
 
