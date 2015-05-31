@@ -6,7 +6,7 @@ angular.module('GpsKovetoApp')
 
     $scope.models;
 
-    $http.get('/trackers/models')
+    $http.get('/trackers/trackers')
     .success(function(data, status) {
         $scope.models = data;
     }).error(function(data, status) {

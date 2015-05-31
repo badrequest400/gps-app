@@ -1,7 +1,7 @@
 var Tracker = require('../models/tracker.js').Tracker;
 
 
-module.exports.getModels = function(req, res) {
+module.exports.getTrackers = function(req, res) {
 
     Tracker.find(function(err, docs) {
         if(err) {
@@ -13,7 +13,7 @@ module.exports.getModels = function(req, res) {
     });
 };
 
-module.exports.deleteModel = function(req, res) {
+module.exports.deleteTracker = function(req, res) {
 
     Tracker.find({name: req.body.name}).remove(function(err) {
         if(err) {
@@ -25,9 +25,9 @@ module.exports.deleteModel = function(req, res) {
     });
 };
 
-module.exports.updateModel = function(req, res) {
+module.exports.updateTracker = function(req, res) {
 
-    Tracker.update({name: req.body.name}, function(err) {
+    Tracker.update({name: req.query.tracker}, req.body, function(err) {
         if(err) {
             res.status(500).end('Could not update tracker model in DB');
             return;

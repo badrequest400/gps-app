@@ -16,13 +16,13 @@
 				<div class="table-cell">{{tracker.name}}</div>
 				<div class="table-cell">{{tracker.model}}</div>
 				<div class="table-cell">{{tracker.id}}</div>
-				<div class="table-cell" ng-click="openModal()">Modify</div>
-				<div class="table-cell">Delete</div>
+				<div class="table-cell" ng-click="openModal(tracker)">Modify</div>
+				<div class="table-cell" ng-click="deleteTracker(tracker)" ng-click-confirm="Are you sure you want to delete this tracker?">Delete</div>
 			</div>
 		</div>
 	</div>
 
-	<div ng-controller="TrackerConfigModalController">
+	<div ng-controller="ModifyTrackerModalController">
 
 		<script type="text/ng-template" id="tracker_config_modal.html">
 			<div class="modal-header">
@@ -30,12 +30,12 @@
 			</div>
 			<div class="modal-body">
 				<table>
-				<tr><td>Name:</td> <td></td></tr>
-				<tr><td>Tracker ID:</td> <td></td></tr>
-				<tr><td>Model:</td> <td></td></tr>
+				<tr><td>Name:</td> <td>{{form.name}}</td></tr>
+				<tr><td>Tracker ID:</td> <td>{{form.GID}}</td></tr>
+				<tr><td>Model:</td> <td>{{form.model}}</td></tr>
 				<tr><td>Add to User:</td> <td></td></tr>
+				<tr><td>Users:</td> <td></td></tr>
 				<tr><td>Tracker Image:</td> <td></td></tr>
-				<tr><td>Add more fields here</td></tr>
 				<tr><td><button>Setup IO</button></td> <td><button>Modify</button></td></tr>
 				</table>
 			</div>

@@ -10,7 +10,8 @@ var trackerSchema = mongoose.Schema({
 	driver: String,
 	description: String,
 	script: String,
-	GID: Number
+	GID: Number,
+	users: [String]
 });
 
 
