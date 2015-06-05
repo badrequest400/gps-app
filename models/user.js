@@ -8,7 +8,7 @@ var userSchema = mongoose.Schema({
 	pwd: String,
 	phone_no: String,
 	email: String,
-	trackers: [{name: String, id: Number, model: String}],
+	trackers: [String],
 	owner: String,
 	role: String,
 	privileges: [String],

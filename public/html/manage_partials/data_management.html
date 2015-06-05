@@ -28,7 +28,18 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary" ng-click="deleteHistory()">Delete</button>
+            <div class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                    {{selected_tracker}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-repeat="tracker in trackers">
+                        <a href ng-click="setTracker(tracker.name)">{{tracker.name}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" ng-click="deleteHistory()" ng-click-confirm="Are you sure you want to delete the history?">Delete</button>
 
             <h2>Delete addresses on record</h2>
             <button>Placeholder for address delete</button>

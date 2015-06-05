@@ -28,3 +28,16 @@ Kezeles
 
 tiger lmf rendszam analog 1-es uzemanyag szint erzekelo
 egy koveto tobb userhez is tartozhat
+
+
+
+
+
+
+
+
+COST:
+Estimate of your Monthly Bill ($ 125.22)    m3.M -> Mongo
+                                            t2.small -> Node tracker
+                                            t1.micro -> app
+                                            200 GB General Purpose SSD

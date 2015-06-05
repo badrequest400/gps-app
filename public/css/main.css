@@ -4,25 +4,66 @@ html, body {
 	padding: 0;
 }
 
+.blockquote-fine {
+	font-size: 100%;
+	padding: 3 4;
+  margin: 0;
+}
+
+.toggle-text-head {
+	padding: 5 0;
+  /*margin: 5 0;*/
+}
+
+.input,
+.input-sizeable {
+	padding-left: 4px;
+}
+.input-sizeable {
+	width: 100%;
+}
+
+.panel-note {
+	padding-left: 0;
+	background-color: #F6FCFF;
+}
+
+.modal-title {
+	color: #00264a;
+}
+
+.modal-header {
+	background-color: #C6C6C6;
+}
+
 .rch-navbar {
 	background-color: #00264a;
 	color: white;
 	border-top: 0.4em solid #0098cc;
 }
+.rch-navbar>li:hover {
+	background-color: #000000;
+	color: white;
+}
 
 .rch-header-user {
-	line-height: 100%;
-	color: #C2C2C2;
-	height: 50px;
-	display: block;
+	/*line-height: 100%;*/
+	color: #0098cc;
+	margin-right:10px;
+	/*margin-top: 15px;*/
+	height: 100%;
+	vertical-align: middle;
 }
 
 .navbar {
 	margin-bottom:0px;
+	navbar-fixed-top;
 }
 
 #map-panel {
 	height: 600px;
+	width: 100%;
+	margin-bottom: 50px;
 }
 
 .main-content {
@@ -57,10 +98,24 @@ html, body {
 	border-width: thin;
 }
 td {
-	border: solid black 1px;
 	padding: 10px;
 }
 th {
-	border: solid black 1px;
 	padding: 10px;
+}
+
+.modal-body td {
+	padding: 10px;
+}
+
+.modal-body th {
+	padding: 10px;
+}
+
+.modal-textarea {
+	max-width: 200px;
+}
+
+.text {
+	margin-left: 5px;
 }
