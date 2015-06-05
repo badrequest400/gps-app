@@ -20,7 +20,7 @@
 <body>
 
 	<div class="navbar navbar-fixed-top rch-navbar" role="navigation">
-		<div class="container">
+		<div class="container-fluid">
 			<div ng-controller="AuthController">
 
 				<div class="navbar-header">
@@ -34,22 +34,34 @@
 				</div>
 				<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
-							<li><a style="color: white;" href="/map">Terkep</a></li> <!--class="active"-->
-							<li><a style="color: white;" href="/realtime">Valos</a></li>
-							<li><a style="color: white;" href="/history">Tortenet</a></li>
-							<li><a style="color: white;" href="#">Jelentes</a></li>
-							<li><a style="color: white;" href="/manage">Kezeles</a></li>
-
+							<li><a style="color: white;" href="/map">Térkép</a></li> <!--class="active"-->
+							<li><a style="color: white;" href="/realtime">GPS követés</a></li>
+							<li><a style="color: white;" href="/history">Történet</a></li>
+							<li><a style="color: white;" href="#">Jelentés</a></li>
+							<li><a style="color: white;" href="/manage">Kezelés</a></li>
 						</ul>
-						<div class="pull-right rch-header-user"><!--a different solution needs to be done maybe just shut down button-->
-							<p><span class="glyphicon glyphicon-user"></span> <a href="/admin" style="text-decoration:none; color: white;">
-								Udvozoljuk, {{sessionUser.username}}</a>
-								<button class="btn btn-default btn-xs" type="submit" ng-click="logout()">
-									<span class="glyphicon glyphicon-log-out"></span> Logout
+						<!--ul class="nav navbar-nav navbar-right">
+							<li>
+								<div class="rch-header-user pull-right">
+									<div class="glyphicon glyphicon-user"></div> <a href="/admin" style="text-decoration:none; color: white;">
+									Üdvözöljük, {{sessionUser.username}} </a>
+									<button class="btn btn-default btn-xs" type="submit" ng-click="logout()">
+										<div class="glyphicon glyphicon-log-out"></div> Logout
+									</button>
+								</div>
+							</li>
+						</ul-->
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group rch-header-user">
+								<div class="glyphicon glyphicon-user" style="font-size:14px"></div> <a href="/admin" style="text-decoration:none; color: white;">
+								Üdvözöljük, {{sessionUser.username}}</a>
+								<button class="btn btn-default" type="submit" ng-click="logout()">
+									<div class="glyphicon glyphicon-log-out"></div> Logout
 								</button>
-						</div>
-				</div>
+							</div>
 
+						</form>
+				</div>
 			</div>
 		</div>
 	</div>
