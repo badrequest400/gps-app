@@ -11,7 +11,7 @@ angular.module('GpsKovetoApp')
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status) {
             AuthService.loggedIn = true;
-            
+
             $window.sessionStorage.token = data.token;
             $window.sessionStorage.username = data.user.username;
             $window.sessionStorage.fullname = data.user.fullname;
