@@ -5,23 +5,65 @@
 			<div class="col-xs-12 col-sm-12 col-md-4">
 				<tabset>
 					<tab heading="Pozíció">
-						<small><h3>Pozíció meghatározás</h3><br></small>
+						<h3>Pozíció meghatározás</h3>
 						<div class="row">
 							<div class="col-xs-5 col-sm-6 col-md-5">
-								<p><small>É-D:</small><br>
-								<input class="input-sizeable" type="text" ng-model="locate.lat"><br>
-								<small>K-Ny:</small><br>
-								<input class="input-sizeable" type="text" ng-model="locate.lng"></p>
+								<p>
+									<small>É-D</small><br>
+
+									<input class="input-sizeable" type="text" ng-model="locate.lat"><br>
+									<small>K-Ny</small><br>
+									<input class="input-sizeable" type="text" ng-model="locate.lng">
+								</p>
 								<p><button type="button" class="btn btn-primary" ng-click="locate.locate()">Keresés</button></p>
 								<p><small><b><u>Cím:</u></b> {{locate.address}}</small></p>
-								<small><b><u>Távolság:</u></b> <br></small>
+								<p><small><b><u>Távolság:</u></b></small></p>
 							</div>
 							<div class="col-xs-7 col-sm-6 col-md-7">
 								<div class="panel panel-info">
 									<div class="panel-heading"><small>Beviteli formátumok</small></div>
 									<div class="panel-body">
 										<small>
-											<b><a class="toggle-text-head" data-toggle="collapse" href="#degCollapse"><p>Fok:perc:mp<br>vagy tizedes fok</a><span class="caret"></b></p>
+											<a class="toggle-text-head" data-toggle="collapse" href="#degCollapse"><p><b>Fok:perc:mp<br>vagy tizedes fok</a></b><span class="caret"></p>
+											<div id="degCollapse" class="collapse">
+												<p>Használjon mínusz előjelet az egyenlítőtől délre,
+												vagy Greenwich-től nyugatra eső koordinátáknál.</p>
+												<p><blockquote small class="blockquote-fine">47:29:56.29 v. 47.498970<br>-19:2:36.97 v. -47.498970</blockquote></p>
+											</div>
+											<b><a class="toggle-text-head" data-toggle="collapse" href="#nsewCollapse"><p>N-S, E-W jelölés</a><span class="caret"></b></p>
+											<div id="nsewCollapse" class="collapse">
+												<p>É-D, K-Ny jelölés pozitív tizedes fok értékekkel.</p>
+												<p><blockquote small class="blockquote-fine">N47.498970, S47.498970<br>E19.043604, W19.043604</blockquote></p>
+											</div>
+										</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</tab>
+
+					<tab heading="Útvonal tervezés">
+						<h3>Útvonal tervezés</h3>
+						<div class="row">
+							<div class="col-xs-5 col-sm-6 col-md-5">
+								<h4>Indulási pont</h4>
+								<p><small>É-D</small><br>
+								<input class="input-sizeable" type="text" ng-model="plan.lat_start"><br>
+								<small>K-Ny</small><br>
+								<input class="input-sizeable" type="text" ng-model="plan.lng_start"></p>
+								<h4>Érkezési pont</h4>
+								<p><small>É-D</small><br>
+								<input class="input-sizeable" type="text" ng-model="plan.lat_dest"><br>
+								<small>K-Ny</small><br>
+								<input class="input-sizeable" type="text" ng-model="plan.lng_dest"></p>
+								<p><button type="button" class="btn btn-primary" ng-click="plan.plan()">Tervezés</button></p>
+							</div>
+							<div class="col-xs-7 col-sm-6 col-md-7">
+								<div class="panel panel-info">
+									<div class="panel-heading"><small>Beviteli formátumok</small></div>
+									<div class="panel-body">
+										<small>
+											<a class="toggle-text-head" data-toggle="collapse" href="#degCollapse"><p><b>Fok:perc:mp<br>vagy tizedes fok</a></b><span class="caret"></p>
 											<div id="degCollapse" class="collapse">
 												<p>Használjon mínusz előjelet az egyenlítőtől délre,
 												vagy Greenwich-től nyugatra eső koordinátáknál.</p>
@@ -37,23 +79,6 @@
 								</div>
 							</div>
 						</div>
-					</tab>
-
-					<tab heading="Útvonal tervezés">
-						<h4>Indulasi pont</h4>
-						<br>
-						Lat: <input type="text" ng-model="plan.lat_start">
-						<br>
-						Lng: <input type="text" ng-model="plan.lng_start">
-						<br>
-						<h4>Erkezesi pont</h4>
-						<br>
-						Lat: <input type="text" ng-model="plan.lat_dest">
-						<br>
-						Lng: <input type="text" ng-model="plan.lng_dest">
-						<br>
-						<br>
-						<button type="button" class="btn btn-primary" ng-click="plan.plan()">Tervezes</button>
 					</tab>
 				</tabset>
 			</div>

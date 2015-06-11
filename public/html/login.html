@@ -1,23 +1,17 @@
 <div ng-controller="AuthController">
 
-    <div class="container">
-
-        <!-- <div class="col-md-8"> -->
-        <form class="form-signin">
-
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="username" class="sr-only">Email address</label>
-            <input id="username" class="form-control" placeholder="Username" ng-model="username" required autofocus>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" class="form-control" placeholder="Password" ng-model="password" required>
-
-            <br>
-
-            <button class="btn btn-lg btn-primary btn-block" ng-click="login()">Sign in</button>
-
-        </form>
-        <!-- </div> -->
-
-    </div> <!-- /container -->
-
+  <div id="loginPanel" class="panel panel-info">
+    <div class="panel-heading">
+      <h3>Üdvözöljük!</h3>
+    </div>
+    <div class="panel-body">
+      <form class="form-signin">
+        <label for="username" class="sr-only">Email address</label>
+        <input id="username" class="form-control" placeholder="Felhasználónév" ng-model="username" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" type="password" class="form-control" placeholder="Jelszó" ng-model="password" required>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" ng-click="login()">Bejelentkezés</button>
+      </form>
+    </div>
+  </div>
 </div>

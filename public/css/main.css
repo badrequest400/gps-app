@@ -2,6 +2,225 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	font-family: "Helvetica Neue", Arial, Verdana, Geneva, sans-serif;
+	font-size: 92%;
+}
+
+/*
+------------------------------------------------------
+												GENERAL
+------------------------------------------------------
+*/
+
+.main-content {
+	margin-top: 110px;
+}
+
+@media (max-width: 863) {
+	.main-content {
+		margin-top: 120px;
+	}
+}
+
+h3 {
+	font-size: 1.5em;
+	margin: 10px 0px 15px;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 1.2em;
+	margin: 0px 0px 5px;
+	font-weight: bold;
+}
+
+.input,
+.input-sizeable {
+	padding: 1px 4px;
+	height: 1.7em;
+}
+
+.input-sizeable {
+	width: 100%;
+}
+
+/*
+------------------------------------------------------
+												general
+------------------------------------------------------
+*/
+
+/*
+------------------------------------------------------
+												NAVBAR
+------------------------------------------------------
+	Colors (for search & replace)
+	background / hover color: #00264a
+	top border / hover background / text color: #58bbe6
+	active background: #3a4a8b #475ca4 #335ca4 #2a3c68
+	navs color / active color: white;
+*/
+
+#navbarBackgroundLayer {
+	position: fixed;
+	display: block;
+	top: 0;
+	height: 55px;
+	width: 100%;
+	margin: 0px;
+	background-color: #00264a;
+	z-index: 1;
+}
+
+#GPSNavbar {
+	background-color: #00264a;
+	opacity: 0.9;
+	color: #58bbe6;
+	border: 0px;
+	margin: 0px;
+	border-top: 0.4em solid #58bbe6;
+}
+
+#GPSNavbar .navbar-brand {
+	display: block;
+	color: #58bbe6;
+	font-size: 1.4em;
+	margin-right: 20px;
+}
+
+#GPSNavbar .navbar-collapse {
+	border: 0px;
+	margin: 0px;
+	opacity: 1;
+}
+
+#GPSNavbar .navbar-collapse .in {
+	border: 0px;
+	margin: 0px;
+	padding-bottom: 30px;
+	opacity: 0.9;
+}
+
+#GPSNavbar .navbar-collapse .btn-logout {
+	margin: 8px -2px 7px 8px;
+}
+
+#GPSNavbar .navbar-collapse .btn-logout:hover {
+	background-color: #58bbe6;
+	color: #00264a;
+	border-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-collapse .user-display {
+	list-style-type: none;
+	min-height: 50px;
+	max-height: 50px;
+	margin: 0px 2px 0px 0px;
+	padding-top: 14px;
+	/*padding-top: 13px;*/
+}
+
+#GPSNavbar .navbar-collapse .user-display .user-icon {
+	display: inline;
+	font-size: 1.3em;
+}
+
+#GPSNavbar .navbar-collapse .user-display .user-text {
+	display: inline;
+	margin-left: 5px;
+}
+
+#GPSNavbar .navbar-toggle {
+/*-- button icon from 3 .toggle-icon-bars --*/
+	margin-right: 5px;
+	border-width: 2px;
+	border-radius: 6px;
+	border-color: #58bbe6;
+	background-color: transparent;
+	padding: 7px 6px 4px;
+}
+
+#GPSNavbar .navbar-toggle .toggle-icon-bar {
+	margin: 0px 0px 4px; /* distance between bars */
+	width: 20px;
+	height: 2px;
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-toggle:hover {
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-toggle:hover .toggle-icon-bar {
+	background-color: #00264a;
+}
+
+#GPSNavbar .navbar-toggle:active {
+	background-color: transparent;
+}
+
+#GPSNavbar .navbar-toggle:active .toggle-icon-bar {
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-nav > li > a {
+	color: white;
+}
+
+#GPSNavbar .navbar-nav > li > a:hover {
+	background-color: #58bbe6;
+	color: #00264a;
+}
+
+#GPSNavbar .navbar-nav > li > a.active {
+	background-color: #3a4a8b;
+	border-left: 0.25em solid #58bbe6;
+	color: white;
+}
+
+@media (max-width: 767px) {
+	#GPSNavbar .navbar-collapse .user-display {
+		padding-top: 7px;
+	}
+	#GPSNavbar .navbar-collapse .btn-logout {
+		margin: 0px -12px 10px 8px;
+	}
+	#GPSNavbar .navbar-nav > li > a.active {
+		border-left: 0.6em solid #58bbe6;
+	}
+}
+/*
+------------------------------------------------------
+										navbar
+------------------------------------------------------
+*/
+
+#loginPanel {
+	width: 300px;
+	margin: auto;
+	margin-top: 200px;
+}
+
+#loginPanel .panel-heading {
+	margin: 0em;
+	text-align: center;
+}
+
+#loginPanel h3 {
+	padding: 0.05em;
+	margin: 0em;
+}
+
+#loginPanel .form-control {
+	margin-top: .4em;
+}
+
+#loginPanel .btn-signin {
+	margin-top: 20px;
+}
+
+.panel-info {
+	padding-bottom: -10px;
 }
 
 .blockquote-fine {
@@ -11,63 +230,25 @@ html, body {
 }
 
 .toggle-text-head {
-	padding: 5 0;
-  /*margin: 5 0;*/
 }
 
 .input,
 .input-sizeable {
 	padding-left: 4px;
 }
+
 .input-sizeable {
 	width: 100%;
-}
-
-.panel-note {
-	padding-left: 0;
-	background-color: #F6FCFF;
 }
 
 .modal-title {
 	color: #00264a;
 }
 
-.modal-header {
-	background-color: #C6C6C6;
-}
-
-.rch-navbar {
-	background-color: #00264a;
-	color: white;
-	border-top: 0.4em solid #0098cc;
-}
-.rch-navbar>li:hover {
-	background-color: #000000;
-	color: white;
-}
-
-.rch-header-user {
-	/*line-height: 100%;*/
-	color: #0098cc;
-	margin-right:10px;
-	/*margin-top: 15px;*/
-	height: 100%;
-	vertical-align: middle;
-}
-
-.navbar {
-	margin-bottom:0px;
-	navbar-fixed-top;
-}
-
 #map-panel {
 	height: 600px;
 	width: 100%;
 	margin-bottom: 50px;
-}
-
-.main-content {
-	margin-top: 100px;
 }
 
 .odd {

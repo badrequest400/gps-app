@@ -19,52 +19,50 @@
 
 <body>
 
-	<div class="navbar navbar-fixed-top rch-navbar" role="navigation">
-		<div class="container-fluid">
-			<div ng-controller="AuthController">
+<p id="navbarBackgroundLayer"></p> <!-- Color layer under navbar to fake 100% opacity for the header -->
 
-				<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a style="color: white;" class="navbar-brand" href="/map">GPSKoveto.Hu</a>
-				</div>
-				<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li><a style="color: white;" href="/map">Térkép</a></li> <!--class="active"-->
-							<li><a style="color: white;" href="/realtime">GPS követés</a></li>
-							<li><a style="color: white;" href="/history">Történet</a></li>
-							<li><a style="color: white;" href="#">Jelentés</a></li>
-							<li><a style="color: white;" href="/manage">Kezelés</a></li>
-						</ul>
-						<!--ul class="nav navbar-nav navbar-right">
-							<li>
-								<div class="rch-header-user pull-right">
-									<div class="glyphicon glyphicon-user"></div> <a href="/admin" style="text-decoration:none; color: white;">
-									Üdvözöljük, {{sessionUser.username}} </a>
-									<button class="btn btn-default btn-xs" type="submit" ng-click="logout()">
-										<div class="glyphicon glyphicon-log-out"></div> Logout
-									</button>
-								</div>
-							</li>
-						</ul-->
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group rch-header-user">
-								<div class="glyphicon glyphicon-user" style="font-size:14px"></div> <a href="/admin" style="text-decoration:none; color: white;">
-								Üdvözöljük, {{sessionUser.username}}</a>
-								<button class="btn btn-default" type="submit" ng-click="logout()">
-									<div class="glyphicon glyphicon-log-out"></div> Logout
-								</button>
-							</div>
+<nav id="GPSNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="FlaggingController as activeFlag">
+  <div class="container-fluid">
+		<div ng-controller="AuthController">
 
-						</form>
-				</div>
-			</div>
-		</div>
-	</div>
+	    <div class="navbar-header">
+
+				<a href="/map" class="navbar-brand" ng-click="activeFlag.setFlag(1)" ng-class="{active: activeFlag.isFlagSet(1)}">GPSKoveto.hu</a>
+
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" ng-show="sessionUser.username">
+	        <span class="sr-only">Toggle navigation</span>
+					<p class="toggle-icon-bar"></p>
+					<p class="toggle-icon-bar"></p>
+					<p class="toggle-icon-bar"></p>
+	      </button>
+
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="navbar">
+
+	      <ul class="nav navbar-nav" ng-show="sessionUser.username">
+					<li>
+						<a href="/map" class="nav-hover" ng-click="activeFlag.setFlag(1)" ng-class="{active: activeFlag.isFlagSet(1)}">Térkép</a>
+					</li>
+					<li><a href="/realtime" class="nav-hover" ng-click="activeFlag.setFlag(2)" ng-class="{active: activeFlag.isFlagSet(2)}">GPS követés</a></li>
+					<li><a href="/history" class="nav-hover" ng-click="activeFlag.setFlag(3)" ng-class="{active: activeFlag.isFlagSet(3)}">Történet</a></li>
+					<li><a href="#" class="nav-hover" ng-click="activeFlag.setFlag(4)" ng-class="{active: activeFlag.isFlagSet(4)}">Jelentés</a></li>
+					<li><a href="/manage" class="nav-hover" ng-click="activeFlag.setFlag(5)" ng-class="{active: activeFlag.isFlagSet(5)}">Kezelés</a></li>
+	      </ul>
+
+				<button class="btn-logout btn btn-primary pull-right" ng-click="logout()" ng-show="sessionUser.username">Kijelentkezés</button>
+
+				<ul class="user-display pull-right" ng-show="sessionUser.username">
+					<li class="user-icon glyphicon glyphicon-user"></li>
+					<li class="user-text">{{sessionUser.username}}</li>
+				</ul>
+
+	    </div><!-- /.navbar-collapse -->
+		</div><!-- /AuthController -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 
 	<!--  NG-VIEW -->
 	<div ng-view class="main-content"></div>
@@ -72,7 +70,7 @@
 
 	<!-- Angular.js -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js"></script>
 	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
 
     <!-- Main client-side Angular App -->
@@ -93,6 +91,8 @@
     <script type="text/javascript" src="js/controllers/manage_controllers/data_management.js"></script>
     <script type="text/javascript" src="js/controllers/manage_controllers/model_management.js"></script>
     <script type="text/javascript" src="js/controllers/manage_controllers/login_log.js"></script>
+
+		<script type="text/javascript" src="js/controllers/flagging.js"></script>
 
 	<!-- Angular Services -->
 	<script type="text/javascript" src="js/services/geocode.js"></script>
