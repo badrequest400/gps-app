@@ -1,7 +1,7 @@
 angular.module('GpsKovetoApp')
 
-.controller('AuthController', ['$scope', '$location', '$http', '$window', 'AuthService',
-    function($scope, $location, $http, $window, AuthService) {
+.controller('AuthController', ['$scope', '$route', '$location', '$http', '$window', 'AuthService',
+    function($scope, $route, $location, $http, $window, AuthService) {
 
     $scope.username = '';
     $scope.password = '';
@@ -11,7 +11,7 @@ angular.module('GpsKovetoApp')
         $http.post('/login', {username: $scope.username, password: $scope.password})
         .success(function(data, status) {
             AuthService.loggedIn = true;
-            
+
             $window.sessionStorage.token = data.token;
             $window.sessionStorage.username = data.user.username;
             $window.sessionStorage.fullname = data.user.fullname;
@@ -32,6 +32,7 @@ angular.module('GpsKovetoApp')
             $scope.sessionUser.owned_users = angular.fromJson($window.sessionStorage.owned_users);
 
             $location.path('/map');
+
         }).error(function(data, status) {
             console.log(status);
             console.log(data);
@@ -50,7 +51,8 @@ angular.module('GpsKovetoApp')
             delete $window.sessionStorage.privileges;
             delete $window.sessionStorage.status;
             delete $window.sessionStorage.owned_users;
-            $location.path('/');
+            //$location.path('/');
+            $window.location.assign('/');
         };
     };
 
