@@ -8,7 +8,9 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 
 	<!-- JavaScript -->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?region=hu&libraries=places&key=AIzaSyAZi6yRUkCPkuvdGgJlP2W4IUl5-4wcphk"></script>
@@ -29,7 +31,7 @@
 
 				<a href="/map" class="navbar-brand" ng-click="activeFlag.setFlag(1)" ng-class="{active: activeFlag.isFlagSet(1)}">GPSKoveto.hu</a>
 
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" ng-show="sessionUser.username">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" ng-show="sessionUser.loggedin">
 	        <span class="sr-only">Toggle navigation</span>
 					<p class="toggle-icon-bar"></p>
 					<p class="toggle-icon-bar"></p>
@@ -41,20 +43,18 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="navbar">
 
-	      <ul class="nav navbar-nav" ng-show="sessionUser.username">
-					<li>
-						<a href="/map" class="nav-hover" ng-click="activeFlag.setFlag(1)" ng-class="{active: activeFlag.isFlagSet(1)}">Térkép</a>
-					</li>
-					<li><a href="/realtime" class="nav-hover" ng-click="activeFlag.setFlag(2)" ng-class="{active: activeFlag.isFlagSet(2)}">GPS követés</a></li>
-					<li><a href="/history" class="nav-hover" ng-click="activeFlag.setFlag(3)" ng-class="{active: activeFlag.isFlagSet(3)}">Történet</a></li>
-					<li><a href="#" class="nav-hover" ng-click="activeFlag.setFlag(4)" ng-class="{active: activeFlag.isFlagSet(4)}">Jelentés</a></li>
-					<li><a href="/manage" class="nav-hover" ng-click="activeFlag.setFlag(5)" ng-class="{active: activeFlag.isFlagSet(5)}">Kezelés</a></li>
+	      <ul class="nav navbar-nav" ng-show="sessionUser.loggedin">
+					<li><a href="/map" ng-click="activeFlag.setFlag(1)" ng-class="{active: activeFlag.isFlagSet(1)}">Térkép</a></li>
+					<li><a href="/realtime" ng-click="activeFlag.setFlag(2)" ng-class="{active: activeFlag.isFlagSet(2)}">GPS követés</a></li>
+					<li><a href="/history" ng-click="activeFlag.setFlag(3)" ng-class="{active: activeFlag.isFlagSet(3)}">Történet</a></li>
+					<li><a href="#" ng-click="activeFlag.setFlag(4)" ng-class="{active: activeFlag.isFlagSet(4)}">Jelentések</a></li>
+					<li><a href="/manage" ng-click="activeFlag.setFlag(5)" ng-class="{active: activeFlag.isFlagSet(5)}">Kezelés</a></li>
 	      </ul>
 
-				<button class="btn-logout btn btn-primary pull-right" ng-click="logout()" ng-show="sessionUser.username">Kijelentkezés</button>
+				<button class="btn-logout btn btn-primary pull-right" ng-click="logout()" ng-show="sessionUser.loggedin">Kijelentkezés</button>
 
-				<ul class="user-display pull-right" ng-show="sessionUser.username">
-					<li class="user-icon glyphicon glyphicon-user"></li>
+				<ul class="user-display pull-right" ng-show="sessionUser.loggedin">
+					<li class="user-icon fa fa-user"></li>
 					<li class="user-text">{{sessionUser.username}}</li>
 				</ul>
 
@@ -91,7 +91,6 @@
     <script type="text/javascript" src="js/controllers/manage_controllers/data_management.js"></script>
     <script type="text/javascript" src="js/controllers/manage_controllers/model_management.js"></script>
     <script type="text/javascript" src="js/controllers/manage_controllers/login_log.js"></script>
-
 		<script type="text/javascript" src="js/controllers/flagging.js"></script>
 
 	<!-- Angular Services -->
@@ -101,6 +100,7 @@
 
 	<!-- Angular Directives -->
 	<script type="text/javascript" src="js/directives/click_confirm.js"></script>
+  <script type="text/javascript" src="js/directives/squeezebox.js"></script>
 
 </body>
 

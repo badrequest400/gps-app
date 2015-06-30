@@ -2,16 +2,36 @@ angular.module('GpsKovetoApp')
 
 .controller('TrackerConfigController', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
 
-	$scope.users;
+	$scope.users = [];
+	// POPSZ: need it for the Accordion control
+	$scope.sessionUser.isOpen = true;
+	$scope.users[0] = $scope.sessionUser;
+	// popsz
 	$scope.isCollapsed = true;
 
-	$http.get('/owned_users')
-	.success(function(data, status) {
-		$scope.users = data;
+	// POPSZ -----------------------------------------------------------
+	// $http.get('/owned_users')
+	// .success(function(data, status) {
+	// 	$scope.users = data;
+	// }).error(function(data, status) {
+	// 	console.log(status);
+	// 	console.log(data);
+	// });
+
+	// from user_management.js:
+	$http.get('/get_users?owner=' + $scope.sessionUser.username)
+	.success(function(data) {
+		data.forEach(function(user) {
+			// POPSZ: need it for the Accordion control
+			user.isOpen = false;
+			// popsz
+			$scope.users.push(user);
+		});
 	}).error(function(data, status) {
 		console.log(status);
 		console.log(data);
 	});
+	// popsz -------------------------------------------------------------
 
 	$scope.openModal = function(tracker) {
 		var modalInstance = $modal.open({

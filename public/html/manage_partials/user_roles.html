@@ -1,52 +1,79 @@
 <div ng-controller="UserRolesController">
 
-	<div class="row">
-		<button ng-click="openNewRoleModal()">New Role</button>
+	<div id="panelManageRoles" class="panel panel-flex-body panel-primary">
+
+		<div class="panel-heading">
+			<h4>Felhasználói szerepkörök</h4>
+		</div>
+
+		<div class="panel-body">
+			<div class="flex-item-flex">
+				<b>Figyelem!</b><br>Mindig körültekintően módosítsa a szerepköröket, mert a változás hatással lehet minden felhasználóra!
+			</div>
+			<button id="btnNewRole" class="flex-item-fixed btn btn-sm btn-primary" ng-click="openNewUserModal()">Új szerepkör</button>
+		</div>
+
+		<div class="table-responsive">
+			<table id="tableRoles" class="table table-striped table-hover">
+				<colgroup>
+					<col id="colRole">
+					<col id="colPrivileges">
+					<col id="colParentRole">
+					<col id="colAction">
+				</colgroup>
+				<thead class="thead-clickable">
+					<tr>
+						<th><a href="#">Szerepkör</a></th>
+						<th><a href="#">Jogosultságok</a></th>
+						<th><a href="#">Szülő szerepkör</a></th>
+						<th><a class="centered" href="#">Művelet</a></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="role in roles">
+						<td>{{role.name}}</td>
+						<td>{{role.privileges}}</td>
+						<td>Parent role</td>
+						<td class="centered">
+							<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModal(role)"></button>
+							<button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-	<table>
-		<th>Role Name</th>
-		<th>System Privileges</th>
-		<th>Parent Role Name</th>
-		<th>Operation</th>
-
-		<tr ng-repeat="role in roles">
-			<td>{{role.name}}</td>
-			<td>{{role.privileges}}</td>
-			<td>Parent Role</td>
-			<td><button ng-click="openModifyModal()">Modify</button><button>Delete</button></td>
-		</tr>
-	</table>
 
 
 	<div ng-controller="ModifyRoleModalController">
 		<script type="text/ng-template" id="modify_role_modal.html">
-		<div class="modal-header">
-			<h3 class="modal-title">Modify Role</h3>
-		</div>
-		<div class="modal-body">
-			<div ng-include="'html/manage_partials/privileges_table.html'"></div>
-		</div>
-		<div class="modal-footer">
-			<button class="btn btn-primary" ng-click="ok()">OK</button>
-			<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-		</div>
+			<div class="modal-header bg-primary modal-header-modify">
+				<h4 class="modal-title modal-title-modify">Modify Role <small>{{current_role.name}}</small></h4>
+			</div>
+			<div id="modalbodyPrivileges" class="modal-body">
+				<div ng-include="'html/manage_partials/privileges_table.html'"></div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
 		</script>
 	</div>
 
 	<div ng-controller="NewRoleModalController">
 		<script type="text/ng-template" id="new_role_modal.html">
-		<div class="modal-header">
-			<h3 class="modal-title">New Role</h3>
-		</div>
-		<div class="modal-body">
-			<div ng-include="'html/manage_partials/privileges_table.html'"></div>
-		</div>
-		<div class="modal-footer">
-			<button class="btn btn-primary" ng-click="ok()">OK</button>
-			<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-		</div>
+			<div class="modal-header modal-header-new">
+				<h4 class="modal-title modal-title-new">New Role</h4>
+			</div>
+			<div class="modal-body">
+				<div ng-include="'html/manage_partials/privileges_table.html'"></div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
 		</script>
 	</div>
 
+</div>
 </div>

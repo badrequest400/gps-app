@@ -2,24 +2,30 @@
 	<div class="container-fluid">
 		<div class="row">
 
-			<div class="col-xs-12 col-sm-12 col-md-4">
+			<div class="col-xs-12 col-sm-4 col-md-4">
 				<tabset>
 					<tab heading="Pozíció">
 						<h3>Pozíció meghatározás</h3>
 						<div class="row">
-							<div class="col-xs-5 col-sm-6 col-md-5">
-								<p>
-									<small>É-D</small><br>
+							<!-- div class="col-xs-12 col-sm-4 col-md-4" -->
+								<form>
+									<div class="form-group" id="formgroupPosition">
+										<div class="input-group input-group-sm">
+										  <span class="input-group-addon">É-D</span>
+										  <input type="text" class="form-control" placeholder="hosszúság" ng-model="locate.lat">
+										</div>
+										<div class="input-group input-group-sm">
+										  <span class="input-group-addon">K-Ny</span>
+										  <input type="text" class="form-control" placeholder="szélesség" ng-model="locate.lng">
+										</div>
+										<button type="button" class="btn btn-primary form-control" ng-click="locate.locate()">Keresés</button>
+										<p><small><b><u>Cím:</u></b> {{locate.address}}</small></p>
+										<p><small><b><u>Távolság:</u></b></small></p>
+									</div>
+								</form>
+							<!-- /div -->
 
-									<input class="input-sizeable" type="text" ng-model="locate.lat"><br>
-									<small>K-Ny</small><br>
-									<input class="input-sizeable" type="text" ng-model="locate.lng">
-								</p>
-								<p><button type="button" class="btn btn-primary" ng-click="locate.locate()">Keresés</button></p>
-								<p><small><b><u>Cím:</u></b> {{locate.address}}</small></p>
-								<p><small><b><u>Távolság:</u></b></small></p>
-							</div>
-							<div class="col-xs-7 col-sm-6 col-md-7">
+							<!-- div class="col-xs-7 col-sm-6 col-md-7">
 								<div class="panel panel-info">
 									<div class="panel-heading"><small>Beviteli formátumok</small></div>
 									<div class="panel-body">
@@ -38,7 +44,7 @@
 										</small>
 									</div>
 								</div>
-							</div>
+							</div -->
 						</div>
 					</tab>
 
@@ -85,7 +91,7 @@
 
 			<!--div class="clearfix visible-sm-block"></div-->
 
-			<div class="col-xs-12 col-sm-12 col-md-8">
+			<div class="col-xs-12 col-sm-8 col-md-8">
 				<input id="places-input" class="controls" type="text" placeholder="Search Places...">
 				<br>
 				<div id="map-panel" class="map-sizeable" ng-init="map_init()"></div>
