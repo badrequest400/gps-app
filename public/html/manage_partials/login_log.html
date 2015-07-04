@@ -1,24 +1,52 @@
 <div ng-controller="LoginLogController">
 
-    <div class="col-md-12">
+  <div id="panelManageLogins" class="panel panel-flex-body panel-primary">
 
-        <table>
+		<div class="panel-heading">
+			<h4>Bejelentkezési napló</h4>
+		</div>
 
-            <tr>
-                <th>User</th>
-                <th>Timestamp</th>
-                <th>IP</th>
-                <th>Authorised</th>
-            </tr>
-            <tr ng-repeat="login in logins">
-                <th>{{login.user}}</th>
-                <th>{{login.timestamp}}</th>
-                <th>{{login.ip}}</th>
-                <th>{{login.authorised}}</th>
-            </tr>
-
-        </table>
-
+    <div class="panel-body">
+  		<!-- <div class="table-responsive"> -->
+  			<table id="tableLogins" class="table table-striped table-hover">
+  				<colgroup>
+  					<col id="colUser">
+  					<col id="colTimestamp">
+  					<col id="colIP">
+  					<col id="colSuccess">
+  				</colgroup>
+  				<thead class="thead-clickable">
+  					<tr>
+  						<th>
+                <a ng-click="order('user + timestamp')" href="#">Felhasználó
+                <span class="sortorder" ng-show="sortby === 'user + timestamp'" ng-class="{reverse:reverse}"></span></a>
+              </th>
+  						<th>
+                <a ng-click="order('timestamp')" href="#">Időpont
+                <span class="sortorder" ng-show="sortby === 'timestamp'" ng-class="{reverse:reverse}"></span></a>
+              </th>
+  						<th>
+                <a ng-click="order('ip')" href="#">IP címről
+                <span class="sortorder" ng-show="sortby === 'ip'" ng-class="{reverse:reverse}"></span></a>
+              </th>
+  						<th>
+                <a ng-click="order('authorised')" href="#">Sikeres belépés
+                <span class="sortorder" ng-show="sortby === 'authorised'" ng-class="{reverse:reverse}"></span></a>
+              </th>
+  					</tr>
+  				</thead>
+  				<tbody>
+  					<tr ng-repeat="login in logins | orderBy:sortby:reverse" ng-class="{failed:!{{login.authorised}}}">
+              <td>{{login.user}}</td>
+              <td>{{login.timestamp}}</td>
+              <td>{{login.ip}}</td>
+              <td>{{login.authorised}}</td>
+  					</tr>
+  				</tbody>
+  			</table>
+  		<!-- </div> -->
     </div>
+
+  </div>
 
 </div>

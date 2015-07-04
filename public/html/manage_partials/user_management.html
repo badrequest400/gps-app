@@ -1,33 +1,62 @@
 <div ng-controller="UserManagementController">
 
-	<div class="row">
-		<button ng-click="openNewUserModal()">Add New User</button><input type="text">
+	<div id="panelManageUsers" class="panel panel-flex-body panel-primary">
+
+		<div class="panel-heading">
+			<h4>Felhasználók kezelése</h4>
+		</div>
+
+		<div class="panel-body">
+			<div id="inputSearchUser" class="flex-item-flex">
+				<div class="input-group input-group-sm" input="search">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary fa fa-search"></button>
+					</span>
+					<input type="text" class="form-control" placeholder="felhasználónév">
+				</div>
+			</div>
+			<button id="btnNewUser" class="flex-item-fixed btn btn-sm btn-primary" ng-click="openNewUserModal()">Új felhasználó</button>
+		</div>
+
+		<div class="table-responsive">
+			<table id="tableUsers" class="table table-striped table-hover">
+				<colgroup>
+					<col id="colSpanData" span="6">
+					<col id="colAction">
+				</colgroup>
+				<thead class="thead-clickable">
+					<tr>
+						<th><a href="#">Felhasználó</a></th>
+						<th><a href="#">Maximális követőszám</a></th>
+						<th><a href="#">Szerepkör</a></th>
+						<th><a href="#">Felügyeli</a></th>
+						<th><a href="#">Állapot</a></th>
+						<th><a href="#">Lejárat dátuma</a></th>
+						<th><a class="centered" href="#">Művelet</a></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users">
+						<td>{{user.username}}</td>
+						<td>{{user.max_trackers}}</td>
+						<td>{{user.role}}</td>
+						<td>{{user.owner}}</td>
+						<td>{{user.status}}</td>
+						<td>Expire Date</td>
+						<td class="centered">
+							<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModal(user)"></button>
+							<button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-disabled="user.username=='admin'"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-	<table>
-		<th>Username</th>
-		<th>Max Trackers</th>
-		<th>User Role</th>
-		<th>Owner</th>
-		<th>User State</th>
-		<th>Expire Date</th>
-		<th>Operation</th>
-
-		<tr ng-repeat="user in users">
-			<td>{{user.username}}</td>
-			<td>{{user.max_trackers}}</td>
-			<td>{{user.role}}</td>
-			<td>{{user.owner}}</td>
-			<td>{{user.status}}</td>
-			<td>Expire Date</td>
-			<td><button ng-click="openModifyModal(user)">Modify</button><button>Delete</button></td>
-		</tr>
-	</table>
 
 	<div ng-controller="ModifyUserModalController">
 		<script type="text/ng-template" id="modify_user_modal.html">
 			<div class="modal-header">
-				<h3 class="modal-title">Modify User {{current_user.username}}</h3>
+				<h3 class="modal-title">Modify User <small>{{current_user.username}}</small></h3>
 			</div>
 			<div class="modal-body">
 			<table>

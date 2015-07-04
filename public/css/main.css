@@ -6,297 +6,290 @@ html, body {
 	font-size: 92%;
 }
 
-/*
-------------------------------------------------------
-												GENERAL
-------------------------------------------------------
-*/
+/* --------------------------------------------------------------------------------------------------------------------
+                              												GENERAL STUFF
+---------------------------------------------------------------------------------------------------------------------*/
 
-.main-content {
-	margin-top: 110px;
+.main-content {margin-top:110px;}
+
+/* -----------------------------------------------------------------------------
+                        Panel with flexbox body
+		  			(e.g. Manage-panels with header-body-table structure)
+----------------------------------------------------------------------------- */
+.panel-body {
+	overflow-x: auto;
+	overflow-y: auto;
 }
-
-@media (max-width: 863) {
-	.main-content {
-		margin-top: 120px;
-	}
+.panel-flex-body .panel-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+	margin: 0px;
+	padding: 15px;
 }
+.flex-item-fixed {flex:0 0 auto;align-self:auto;}
+.flex-item-flex  {flex:1 1 auto;align-self: auto;}
 
-h3 {
-	font-size: 1.5em;
-	margin: 10px 0px 15px;
+/* -----------------------------------------------------------------------------
+                                Menu panel
+		          (Manage, Reports - use <ul .nav-list> for items)
+----------------------------------------------------------------------------- */
+.panel-menu {margin:0px 15px 15px 0px;min-width:230px;border:0px;box-shadow:2px 2px 6px #888888;}
+.panel-menu .nav-list>li {line-height:.86;cursor:pointer;white-space:nowrap;font-size:1em;}
+.panel-menu .nav-list>li>a {padding-top:9px;padding-bottom:9px;}
+.panel-menu .nav-header {
+	margin: 10px 0px 5px;
+	padding: 0px 0px 5px 3px;
+	cursor: default!important;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	color: rgba(0,0,0,0.5);
+	font-size: 0.8em!important;
+	font-stretch: normal;
 	font-weight: bold;
 }
+.panel-menu .nav-list .active>a,
+.panel-menu .nav-list .active>a:hover {background-color:#337ab7;color:white!important;border-radius:4px;}
+.panel-menu .nav-list .active>a:active {background-color:#286090;color:white!important;border-radius:4px;}
+.panel-menu .nav-list>li>a:hover {background-color:rgba(0,0,0,0.15);color:rgba(0,0,0,0.8)!important;border-radius:4px;}
+.panel-menu .nav-list>li>a:active {background-color:#286090;color:white!important;border-radius:4px;}
 
-h4 {
-	font-size: 1.2em;
-	margin: 0px 0px 5px;
-	font-weight: bold;
+/* -----------------------------------------------------------------------------
+                              Table defaults
+----------------------------------------------------------------------------- */
+.table {display:table;table-layout:fixed;min-width:600px;}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:normal;}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {padding:3px 10px;vertical-align:middle;border-top:1px solid rgba(0,0,0,0.05);}
+
+.table-striped>tbody>tr:nth-of-type(even) {background-color: rgba(0,0,0,0.05);}
+.table-striped>tbody>tr:nth-of-type(odd)  {background-color: transparent;}
+.table-hover  >tbody>tr:hover						  {background-color: rgba(0,0,0,0.15);}
+
+/* -----------------------------------------------------------------------------
+                          Clickable table header
+			        (for e.g. sorting, use <a> inside header cells)
+----------------------------------------------------------------------------- */
+.thead-clickable>tr>td,
+.thead-clickable>tr>th {
+	height: 40px;
+	font-size: .94em;
+	padding: 0px !important;
+	white-space: normal !important;
+	background-color: rgba(0,0,0,0.1);
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-
-.input,
-.input-sizeable {
-	padding: 1px 4px;
-	height: 1.7em;
-}
-
-.input-sizeable {
-	width: 100%;
-}
-
-/*
-------------------------------------------------------
-												general
-------------------------------------------------------
-*/
-
-/*
-------------------------------------------------------
-												NAVBAR
-------------------------------------------------------
-	Colors (for search & replace)
-	background / hover color: #00264a
-	top border / hover background / text color: #58bbe6
-	active background: #3a4a8b #475ca4 #335ca4 #2a3c68
-	navs color / active color: white;
-*/
-
-#navbarBackgroundLayer {
-	position: fixed;
-	display: block;
-	top: 0;
-	height: 55px;
-	width: 100%;
-	margin: 0px;
-	background-color: #00264a;
-	z-index: 1;
-}
-
-#GPSNavbar {
-	background-color: #00264a;
-	opacity: 0.9;
-	color: #58bbe6;
-	border: 0px;
-	margin: 0px;
-	border-top: 0.4em solid #58bbe6;
-}
-
-#GPSNavbar .navbar-brand {
-	display: block;
-	color: #58bbe6;
-	font-size: 1.4em;
-	margin-right: 20px;
-}
-
-#GPSNavbar .navbar-collapse {
-	border: 0px;
-	margin: 0px;
-	opacity: 1;
-}
-
-#GPSNavbar .navbar-collapse .in {
-	border: 0px;
-	margin: 0px;
-	padding-bottom: 30px;
-	opacity: 0.9;
-}
-
-#GPSNavbar .navbar-collapse .btn-logout {
-	margin: 8px -2px 7px 8px;
-}
-
-#GPSNavbar .navbar-collapse .btn-logout:hover {
-	background-color: #58bbe6;
-	color: #00264a;
-	border-color: #58bbe6;
-}
-
-#GPSNavbar .navbar-collapse .user-display {
-	list-style-type: none;
-	min-height: 50px;
-	max-height: 50px;
-	margin: 0px 2px 0px 0px;
-	padding-top: 14px;
-	/*padding-top: 13px;*/
-}
-
-#GPSNavbar .navbar-collapse .user-display .user-icon {
-	display: inline;
-	font-size: 1.3em;
-}
-
-#GPSNavbar .navbar-collapse .user-display .user-text {
-	display: inline;
-	margin-left: 5px;
-}
-
-#GPSNavbar .navbar-toggle {
-/*-- button icon from 3 .toggle-icon-bars --*/
-	margin-right: 5px;
-	border-width: 2px;
-	border-radius: 6px;
-	border-color: #58bbe6;
+/* Uses flex, as normal block won't center vertically when full-height */
+.thead-clickable>tr>th>a {
+  text-decoration: none !important;
+  color: inherit;
 	background-color: transparent;
-	padding: 7px 6px 4px;
+  padding: 0px 8px;
+  display: -webkit-flex;
+  display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+	-ms-align-items: center;
+  align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+  height: 100%;
+}
+.thead-clickable>tr>th>a:hover {background-color: rgba(0,0,0,0.15);}
+.thead-clickable>tr>th>a:active {background-color: rgba(0,0,0,0.2);}
+
+.sortorder:after {content:'\25b2';color:rgba(0,0,0,0.3);margin-left:4px;}
+.sortorder.reverse:after {content:'\25bc';color:rgba(0,0,0,0.3);margin-left:4px;}
+
+/* -----------------------------------------------------------------------------
+       Centers content horizontally e.g. in table cells (normal & flex)
+----------------------------------------------------------------------------- */
+.centered {
+	padding: inherit 0px;
+	text-align: center !important;
+	justify-content: center !important;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
 }
 
-#GPSNavbar .navbar-toggle .toggle-icon-bar {
-	margin: 0px 0px 4px; /* distance between bars */
-	width: 20px;
-	height: 2px;
-	background-color: #58bbe6;
+/* -----------------------------------------------------------------------------
+                              Modal defaults
+----------------------------------------------------------------------------- */
+.modal-header-modify {border-top-left-radius:4px;border-top-right-radius:4px;}
+.modal-title-modify  {color:white;background-color:transparent;}
+.modal-body          {overflow:auto;}
+.modal-textarea      {max-width:200px;}
+
+
+
+/* -----------------------------------------------------------------------------
+                              CONTROLS
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+                       Normal checkbox with label
+     (controls the position of the checkbox label and makes it clickable)
+				       Usage: <label .chk-label><input>...</label>
+----------------------------------------------------------------------------- */
+.chk-label {
+	display: inline-block;
+	text-indent: -18px;
+	padding-left: 18px;
+	font-weight: normal;
+	line-height: 1.2;
+	cursor: pointer;
 }
 
-#GPSNavbar .navbar-toggle:hover {
-	background-color: #58bbe6;
+.chk-label>input {
+  vertical-align: middle;
+	margin: -1.2% 5px 0px 0px;
+	cursor: pointer;
 }
 
-#GPSNavbar .navbar-toggle:hover .toggle-icon-bar {
-	background-color: #00264a;
+/* -----------------------------------------------------------------------------
+                   Flat button (gets painted on hover)
+				               Use for single-icon buttons
+----------------------------------------------------------------------------- */
+.btn-flat,
+.btn-flat-xs,
+.btn-flat-sm,
+.btn-flat-lg,
+.btn-flat-danger,
+.btn-flat-primary,
+.btn-flat-success,
+.btn-flat-warning {
+	border: 0px;
+	padding: 8px 6px 6px;
+	margin: 0px 0px 0px 2px;
+	color: rgba(0,0,0,0.5);
+	background: transparent;
+	font-size:1.8em;
 }
+.btn-flat-danger:hover,
+.btn-flat-danger:focus,
+.btn-flat-danger:active {background-color:#c9302c;color:white;outline:0;}
+.btn-flat-danger:disabled {color:rgba(0,0,0,0.3);}
+.btn-flat-primary:hover,
+.btn-flat-primary:focus,
+.btn-flat-primary:active  {background-color:#286090;color:white;outline:0;}
+.btn-flat-primary:disabled {color:rgba(0,0,0,0.3);}
+.btn-flat    {font-size:1.9em;}
+.btn-flat-xs {font-size:0.94em;}
+.btn-flat-sm {font-size:1.4em;}
+.btn-flat-lg {font-size:2.3em;}
 
-#GPSNavbar .navbar-toggle:active {
+/* -----------------------------------------------------------------------------
+                          Squeezebox (Accordion)
+----------------------------------------------------------------------------- */
+squeezebox.button-style .panel-group {margin:0px;}
+squeezebox.button-style .panel-heading {padding:2px 0px;}
+squeezebox.button-style .panel-body {padding:0px;}
+squeezebox.button-style .panel-title {height:auto;}
+squeezebox.button-style .panel-title a {
+	text-decoration: none;
+  color: inherit;
 	background-color: transparent;
+  padding: 0px 10px;
+	display: flex;
+	flex-wrap: wrap;
+  align-items: center;
+	justify-content: flex-start;
+	height: 100%;
 }
+squeezebox.button-style .panel-title a:focus {outline:0;}
+squeezebox.button-style .panel-title a .panel-title-item {margin-right: 10px;}
+squeezebox.button-style .panel-title a .panel-title-item.label {padding: 6px;}
+squeezebox.button-style .panel-heading:hover {background-color:rgba(0,0,0,0.1);border-top-left-radius:3px;border-top-right-radius:3px;}
+squeezebox.button-style .panel-title-plus {
+	display: flex;
+  align-items: center;
+	padding: 0px 3px;
+	height: 100%;
+}
+squeezebox.button-style .panel-title-plus .btn {margin-left:-2px;}
+.squeezebox-wrapper {margin:5px 5px 5px 15px;}
+/* -----------------------------------------------------------------------------
+                              MISC
+----------------------------------------------------------------------------- */
+h3 {font-size:1.5em;margin:10px 0px;font-weight:bold;}
+h4 {font-size:1.2em;margin:5px 0px;font-weight:bold;}
 
-#GPSNavbar .navbar-toggle:active .toggle-icon-bar {
-	background-color: #58bbe6;
-}
+.input[text] {padding:1px 4px;height:1.7em;min-width:130px;}
 
-#GPSNavbar .navbar-nav > li > a {
-	color: white;
-}
+.blockquote-fine {font-size:100%;padding: 3 4;margin: 0;}
 
-#GPSNavbar .navbar-nav > li > a:hover {
-	background-color: #58bbe6;
-	color: #00264a;
-}
+.text {margin-left:5px;}
 
-#GPSNavbar .navbar-nav > li > a.active {
-	background-color: #3a4a8b;
-	border-left: 0.25em solid #58bbe6;
-	color: white;
-}
+/* --------------------------------------------------------------------------------------------------------------------
+                              									INSTANCE NON-DEFAULTS
+---------------------------------------------------------------------------------------------------------------------*/
+#formgroupPosition {min-width:200px;max-width:300px;padding-left:15px;}
+#formgroupPosition .input-group {margin-bottom:3px;padding:0px;}
+#formgroupPosition .input-group-addon {font-size:.8em;font-weight:bold;width:36px;padding:0px;}
 
-@media (max-width: 767px) {
-	#GPSNavbar .navbar-collapse .user-display {
-		padding-top: 7px;
-	}
-	#GPSNavbar .navbar-collapse .btn-logout {
-		margin: 0px -12px 10px 8px;
-	}
-	#GPSNavbar .navbar-nav > li > a.active {
-		border-left: 0.6em solid #58bbe6;
-	}
-}
-/*
-------------------------------------------------------
-										navbar
-------------------------------------------------------
-*/
+#panelManageUsers                        {max-width:900px;}
+#panelManageUsers #inputSearchUser       {flex:1 1 70%;align-items:baseline}
+#panelManageUsers #tableUsers            {min-width:620px;}
+#panelManageUsers #tableUsers #colAction {width:7em;}
+#panelManageUsers #btnNewUser            {margin-left:1.4em;}
 
-#loginPanel {
-	width: 300px;
-	margin: auto;
-	margin-top: 200px;
-}
+#panelManageRoles                            {max-width:800px;}
+#panelManageRoles #tableRoles #colRole       {width:20%;}
+#panelManageRoles #tableRoles #colPrivileges {width:60%;}
+#panelManageRoles #tableRoles #colParentRole {width:20%;}
+#panelManageRoles #tableRoles #colAction     {width:7em;}
+#panelManageRoles #btnNewRole                {margin-left: 1.4em;}
 
-#loginPanel .panel-heading {
-	margin: 0em;
-	text-align: center;
-}
+#panelManageModels                           {max-width:700px;}
+#panelManageModels #tableModels #colAction   {width:7em;}
+#panelManageModels #btnNewModel              {margin-left: 1.4em;}
 
-#loginPanel h3 {
-	padding: 0.05em;
-	margin: 0em;
-}
+#panelManageLogins                            {max-width:600px;}
+#panelManageLogins .panel-body                {height:700px;padding:0px;}
+#panelManageLogins #tableLogins               {min-width:480px;margin-left:-1px;}
+#panelManageLogins #tableLogins #colUser      {width:20%;}
+#panelManageLogins #tableLogins #colTimestamp {width:42%;}
+#panelManageLogins #tableLogins #colIP        {width:18%;}
+#panelManageLogins #tableLogins #colSuccess   {width:20%;}
+#panelManageLogins #tableLogins tbody tr.failed {background-color:#e25853;color:white;}
+#panelManageLogins #tableLogins tbody tr.failed:hover {background-color:#cb4d48;}
 
-#loginPanel .form-control {
-	margin-top: .4em;
-}
+#modalbodyPrivileges {max-height:695px;padding:10px 5px 0px 10px;}
+#tablePrivileges {margin-top:-1px;min-width:100%;border-collapse:collapse;border:none;}
+#tablePrivileges .chk-label {display:block;}
+#tablePrivileges tbody tr th {height:35px;font-size:1.15em;border-top:1px solid #337ab7;border-bottom:1px solid #337ab7;}
+#tablePrivileges tbody tr:first-child th {border-top-left-radius:4px;border-top-right-radius:5px;}
+#tablePrivileges tbody td {height:30px;padding:.85% 6px 0px;white-space:normal;border-right:1px solid #337ab7;}
+#tablePrivileges tbody td:hover {background-color:rgba(0,0,0,0.15);}
+#tablePrivileges tbody td:empty:hover {background-color:inherit;}
+#tablePrivileges tbody tr td:last-child {border-right:0px;}
 
-#loginPanel .btn-signin {
-	margin-top: 20px;
-}
+#loginPanel {min-width:200px;max-width:300px;margin:auto;margin-top:200px;}
+#loginPanel .panel-heading {margin:0px;text-align:center;}
+#loginPanel h3 {padding:0.05em;margin:0px;}
+#loginPanel .form-control {margin-top:.4em;}
+#loginPanel .btn-signin {margin-top:20px;}
 
-.panel-info {
-	padding-bottom: -10px;
-}
+#map-panel {height:600px;width:100%;margin-bottom:50px;}
 
-.blockquote-fine {
-	font-size: 100%;
-	padding: 3 4;
-  margin: 0;
-}
-
-.toggle-text-head {
-}
-
-.input,
-.input-sizeable {
-	padding-left: 4px;
-}
-
-.input-sizeable {
-	width: 100%;
-}
-
-.modal-title {
-	color: #00264a;
-}
-
-#map-panel {
-	height: 600px;
-	width: 100%;
-	margin-bottom: 50px;
-}
-
-.odd {
-	background-color: #cde7fc;
-}
-
-.history > th {
-	padding: 5px;
-}
-.history td {
-	padding: 5px;
-}
-
-.table {
-	display: table;
-}
-.table-header {
-	display: table-row;
-}
-.table-row {
-	display: table-row;
-}
-.table-cell {
-	display: table-cell;
-	padding-left: 5px;
-	padding-right: 5px;
-	border: solid;
-	border-width: thin;
-}
-td {
-	padding: 10px;
-}
-th {
-	padding: 10px;
-}
-
-.modal-body td {
-	padding: 10px;
-}
-
-.modal-body th {
-	padding: 10px;
-}
-
-.modal-textarea {
-	max-width: 200px;
-}
-
-.text {
-	margin-left: 5px;
-}
+#panelManageTrackers {max-width:700px;max-height:800px;padding:0px;}
+#panelManageTrackers #squeezeboxRoot>.panel-heading {border-radius:0px;background-color: green}
+#panelManageTrackers #tableTrackers #colName   {width:56%;}
+#panelManageTrackers #tableTrackers #colModel  {width:18%;}
+#panelManageTrackers #tableTrackers #colGID    {width:26%;}
+#panelManageTrackers #tableTrackers #colAction {width:7em;}
+#trackersPlaceholder {color:rgba(0,0,0,0.3);margin:5px 10px;}
+#tableTrackers {margin:0px;border-bottom:1px solid rgba(0,0,0,0.15);min-width:400px;}
+#tableTrackers #colAction  {width:7em;}
+#tableTrackers thead tr th {height:24px;}

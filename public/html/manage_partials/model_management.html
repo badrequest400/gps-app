@@ -1,29 +1,72 @@
 <div ng-controller="ModelManagementController">
 
-    <div class="col-md-12">
+  <div id="panelManageModels" class="panel panel-flex-body panel-primary">
 
-        <div class="row">
+		<div class="panel-heading">
+			<h4>Követő típusok</h4>
+		</div>
 
-            <table>
+		<div class="panel-body">
+			<div class="flex-item-flex">
+				<b>Figyelem!</b><br>Mindig körültekintően módosítsa a típus beállításokat, mert bármilyen változás hatással lehet arra, ahogy a követő a szerver felé jelent!
+			</div>
+			<button id="btnNewModel" class="flex-item-fixed btn btn-sm btn-primary" ng-click="openNewUserModal()">Új típus</button>
+		</div>
+
+		<div class="table-responsive">
+			<table id="tableModels" class="table table-striped table-hover">
+				<colgroup>
+					<col id="colSpanData" span="4">
+					<col id="colAction">
+				</colgroup>
+				<thead class="thead-clickable">
+					<tr>
+						<th><a href="#">Név</a></th>
+						<th><a href="#">Típus</a></th>
+						<th><a href="#">Kiszolgáló port</a></th>
+            <th><a href="#">Protokoll</a></th>
+						<th><a class="centered" href="#">Művelet</a></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="model in models">
+						<td>{{model.name}}</td>
+						<td>{{model.model}}</td>
+            <td>{{model.serverPort}}</td>
+            <td>{{model.protocol}}</td>
+						<td class="centered">
+							<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModelModal(model)"></button>
+							<button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-click="deleteModel(model.name)"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+            <!-- <table class="table table-striped table-hover table-responsive">
                 <tr>
-                    <th>Name</th>
-                    <th>Model</th>
-                    <th>Server Port</th>
-                    <th>Protocol</th>
-                    <th>Action</th>
+                  <th>Name</th>
+                  <th>Model</th>
+                  <th>Server Port</th>
+                  <th>Protocol</th>
+                  <th class="center-middle">Action</th>
                 </tr>
                 <tr ng-repeat="model in models">
-                    <td>{{model.name}}</td>
-                    <td>{{model.model}}</td>
-                    <td>{{model.serverPort}}</td>
-                    <td>{{model.protocol}}</td>
-                    <td><button ng-click="openModifyModelModal(model)">Modify</button><button ng-click="deleteModel(model.name)">Delete</button></td>
+                  <td>{{model.name}}</td>
+                  <td>{{model.model}}</td>
+                  <td>{{model.serverPort}}</td>
+                  <td>{{model.protocol}}</td>
+                  <td class="center-middle">
+                    <button class="btn btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModelModal(model)"></button>
+                    <button class="btn btn-flat-danger fa fa-lg fa-times-circle" ng-click="deleteModel(model.name)"></button>
+                  </td>
                 </tr>
             </table>
 
         </div>
 
-    </div>
+    </div> -->
 
     <div ng-controller="ModifyModelModalController">
         <script type="text/ng-template" id="modify_model_modal.html">

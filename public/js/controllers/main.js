@@ -15,4 +15,5 @@ angular.module('GpsKovetoApp')
 		$scope.sessionUser.privileges = angular.fromJson($window.sessionStorage.privileges);
 		$scope.sessionUser.status = $window.sessionStorage.status;
 		$scope.sessionUser.owned_users = angular.fromJson($window.sessionStorage.owned_users);
+		$scope.sessionUser.loggedin = $window.sessionStorage.loggedin;
 }]);

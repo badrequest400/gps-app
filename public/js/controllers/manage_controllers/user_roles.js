@@ -12,11 +12,17 @@ angular.module('GpsKovetoApp')
 		console.log(data);
 	});
 
-	$scope.openModifyModal = function() {
+	$scope.openModifyModal = function(current_role) {
 		var modalInstance = $modal.open({
 			templateUrl: 'modify_role_modal.html',
 			controller: 'ModifyRoleModalController',
 			size: 'lg',
+			scope: $scope,
+			resolve: {
+				current_role: function() {
+					return current_role;
+				}
+			}
 		});
 	};
 	$scope.openNewRoleModal = function() {

@@ -1,39 +1,49 @@
 <div ng-condivoller="ManageCondivoller">
-	<div class="container">
+	<div class="container-fluid">
+	<!-- <div class="container-flex"> -->
 		<div class="row">
 
-			<div class="manage-menu col-md-2">
-				<div class="manage-menu-title">Manage</div>
-				<div class="table">
-					<div class="table-row" ng-click="setSelected('tracker_config')"><a><div class="table-cell" style="color:red;">Tracker Config</div></a></div>
-					<div class="table-row" ng-click="setSelected('my_account')"><a><div class="table-cell" style="color:green;">My Account</div></a></div>
-					<div class="table-row" ng-click="setSelected('alarm')"><a><div class="table-cell" >Alarm Event</div></a></div>
-					<div class="table-row"><div class="table-cell"><b>Admin Functions</b></div></div>
-					<div class="table-row" ng-click="setSelected('user_management')"><a><div class="table-cell" style="color:green;">User Management</div></a></div>
-					<div class="table-row" ng-click="setSelected('io')"><a><div class="table-cell" >I/O Port</div></a></div>
-					<div class="table-row" ng-click="setSelected('user_roles')"><a><div class="table-cell" style="color:red;">User Roles</div></a></div>
-					<div class="table-row" ng-click="setSelected('system_config')"><a><div class="table-cell" >System Config</div></a></div>
-					<div class="table-row" ng-click="setSelected('model_management')"><a><div class="table-cell"  style="color:green;">Model Management</div></a></div>
-					<div class="table-row" ng-click="setSelected('login_log')"><a><div class="table-cell" style="color:green;">Login Log</div></a></div>
-					<div class="table-row" ng-click="setSelected('data_management')"><a><div class="table-cell" style="color:green;">Data Management</div></a></div>
-					<div class="table-row" ng-click="setSelected('system_status')"><a><div class="table-cell" >System Status</div></a></div>
+			<div class="col-xs-12 col-sm-4 col-md-3">
+				<div class="panel panel-menu panel-info" id="panelManageMenu">
+
+					<div class="panel-heading">
+						<h4>Kezelés</h4>
+					</div>
+
+					<div class="panel-body">
+						<ul class="nav nav-list">
+							<li ng-click="setSelected('tracker_config')" ng-class="{active: selected == 'tracker_config'}"><a>Követők kezelése</a></li>
+							<li ng-click="setSelected('alarm')" ng-class="{active: selected == 'alarm'}"><a>Riasztások</a></li>
+							<li ng-click="setSelected('my_account')" ng-class="{active: selected == 'my_account'}"><a style="color:green;">Felhasználói fiók</a></li>
+							<li class="nav-header">RENDSZERGAZDA BEÁLLÍTÁSOK</li>
+							<li ng-click="setSelected('user_roles')" ng-class="{active: selected == 'user_roles'}"><a style="color:red;">Felhasználói szerepkörök</a></li>
+							<li ng-click="setSelected('user_management')" ng-class="{active: selected == 'user_management'}"><a style="color:green;">Felhasználók kezelése</a></li>
+							<li ng-click="setSelected('model_management')" ng-class="{active: selected == 'model_management'}"><a style="color:green;">Követő típusok</a></li>
+							<li ng-click="setSelected('io')" ng-class="{active: selected == 'io'}"><a>Ki- és bemenetek kezelése</a></li>
+							<li ng-click="setSelected('data_management')" ng-class="{active: selected == 'data_management'}"><a style="color:green;">Adatok kezelése</a></li>
+							<li ng-click="setSelected('system_config')" ng-class="{active: selected == 'system_config'}"><a>Rendszer beállítások</a></li>
+							<li ng-click="setSelected('system_status')" ng-class="{active: selected == 'system_status'}"><a>Rendszer állapot</a></li>
+							<li ng-click="setSelected('login_log')" ng-class="{active: selected == 'login_log'}"><a style="color:green;">Bejelentkezési napló</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 
-			<div class="col-md-8">
+			<div class="col-xs-12 col-sm-8 col-md-9">
+			<div>
 				<div ng-if="selected == 'tracker_config'" ng-include="'html/manage_partials/tracker_config.html'"></div>
-				<div ng-if="selected == 'my_account'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'alarm'" ng-include="'html/manage_partials/my_account.html'"></div>
-				<div ng-if="selected == 'user_management'" ng-include="'html/manage_partials/user_management.html'"></div>
-				<div ng-if="selected == 'io'" ng-include="'html/manage_partials/my_account.html'"></div>
+				<div ng-if="selected == 'my_account'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'user_roles'" ng-include="'html/manage_partials/user_roles.html'"></div>
-				<div ng-if="selected == 'system_config'" ng-include="'html/manage_partials/my_account.html'"></div>
+				<div ng-if="selected == 'user_management'" ng-include="'html/manage_partials/user_management.html'"></div>
 				<div ng-if="selected == 'model_management'" ng-include="'html/manage_partials/model_management.html'"></div>
-				<div ng-if="selected == 'login_log'" ng-include="'html/manage_partials/login_log.html'"></div>
+				<div ng-if="selected == 'io'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'data_management'" ng-include="'html/manage_partials/data_management.html'"></div>
+				<div ng-if="selected == 'system_config'" ng-include="'html/manage_partials/my_account.html'"></div>
 				<div ng-if="selected == 'system_status'" ng-include="'html/manage_partials/my_account.html'"></div>
+				<div ng-if="selected == 'login_log'" ng-include="'html/manage_partials/login_log.html'"></div>
 			</div>
 
 		</div>
-	</div>
+	<!-- </div> -->
 </div>

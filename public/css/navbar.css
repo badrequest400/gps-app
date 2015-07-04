@@ -1,0 +1,144 @@
+/*
+------------------------------------------------------
+												NAVBAR
+------------------------------------------------------
+	Colors (for search & replace)
+	background / hover color: #00264a
+	top border / hover background / text color: #58bbe6
+	active background: #3a4a8b #475ca4 #335ca4 #2a3c68
+	navs color / active color: white;
+*/
+
+#navbarBackgroundLayer {
+	position: fixed;
+	display: block;
+	top: 0;
+	height: 55px;
+	width: 100%;
+	margin: 0px;
+	background-color: #00264a;
+	z-index: 1;
+}
+
+#GPSNavbar {
+	background-color: #00264a;
+	opacity: 0.9;
+	color: #58bbe6;
+	border: 0px;
+	margin: 0px;
+	border-top: 0.4em solid #58bbe6;
+}
+
+#GPSNavbar .navbar-brand {
+	display: block;
+	color: #58bbe6;
+	font-size: 1.4em;
+	margin-right: 20px;
+}
+
+#GPSNavbar .navbar-collapse {
+	border: 0px;
+	margin: 0px;
+	opacity: 1;
+}
+
+#GPSNavbar .navbar-collapse .in {
+	border: 0px;
+	margin: 0px;
+	padding-bottom: 30px;
+	opacity: 0.9;
+}
+
+#GPSNavbar .navbar-collapse .btn-logout {
+	margin: 8px -2px 7px 8px;
+}
+
+#GPSNavbar .navbar-collapse .btn-logout:hover {
+	background-color: #58bbe6;
+	color: #00264a;
+	border-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-collapse .user-display {
+	list-style-type: none;
+	min-height: 50px;
+	max-height: 50px;
+	margin: 0px 2px 0px 0px;
+	padding-top: 14px;
+}
+
+#GPSNavbar .navbar-collapse .user-display .user-icon {
+	display: inline;
+	font-size: 1.3em;
+}
+
+#GPSNavbar .navbar-collapse .user-display .user-text {
+	display: inline;
+	margin-left: 5px;
+}
+
+#GPSNavbar .navbar-toggle {
+/*-- button icon from 3 .toggle-icon-bars --*/
+	margin-right: 5px;
+	border-width: 2px;
+	border-radius: 6px;
+	border-color: #58bbe6;
+	background-color: transparent;
+	padding: 7px 6px 4px;
+}
+
+#GPSNavbar .navbar-toggle .toggle-icon-bar {
+	margin: 0px 0px 4px; /* distance between bars */
+	width: 20px;
+	height: 2px;
+	border: 0px;
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-toggle:hover {
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-toggle:hover .toggle-icon-bar {
+	background-color: #00264a;
+}
+
+#GPSNavbar .navbar-toggle:active {
+	background-color: transparent;
+}
+
+#GPSNavbar .navbar-toggle:active .toggle-icon-bar {
+	background-color: #58bbe6;
+}
+
+#GPSNavbar .navbar-nav > li > a {
+	color: white;
+}
+
+#GPSNavbar .navbar-nav > li > a:hover {
+	background-color: #58bbe6;
+	color: #00264a;
+}
+
+#GPSNavbar .navbar-nav > li > a.active {
+	background-color: #3a4a8b;
+	border-left: 0.25em solid #58bbe6;
+	color: white;
+}
+
+@media (max-width: 767px) {
+	#GPSNavbar .navbar-collapse .user-display {
+		padding-top: 7px;
+	}
+	#GPSNavbar .navbar-collapse .btn-logout {
+		margin: 0px -12px 10px 8px;
+	}
+	#GPSNavbar .navbar-nav > li > a.active {
+		border-left: 0.6em solid #58bbe6;
+	}
+}
+/*
+------------------------------------------------------
+										navbar
+------------------------------------------------------
+*/
