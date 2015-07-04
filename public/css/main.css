@@ -170,7 +170,7 @@ html, body {
 .btn-flat-success,
 .btn-flat-warning {
 	border: 0px;
-	padding: 8px 6px 6px;
+	padding: 6px 4px 4px;
 	margin: 0px 0px 0px 2px;
 	color: rgba(0,0,0,0.5);
 	background: transparent;
@@ -195,7 +195,7 @@ html, body {
 squeezebox.button-style .panel-group {margin:0px;}
 squeezebox.button-style .panel-heading {padding:2px 0px;}
 squeezebox.button-style .panel-body {padding:0px;}
-squeezebox.button-style .panel-title {height:auto;}
+squeezebox.button-style .panel-title {height:100%;}
 squeezebox.button-style .panel-title a {
 	text-decoration: none;
   color: inherit;
@@ -215,9 +215,9 @@ squeezebox.button-style .panel-title-plus {
 	display: flex;
   align-items: center;
 	padding: 0px 3px;
-	height: 100%;
+	height: auto;
 }
-squeezebox.button-style .panel-title-plus .btn {margin-left:-2px;}
+squeezebox.button-style .panel-title-plus .btn {padding:6px 4px;margin-left:-2px;height:auto;}
 .squeezebox-wrapper {margin:5px 5px 5px 15px;}
 /* -----------------------------------------------------------------------------
                               MISC
@@ -268,8 +268,8 @@ h4 {font-size:1.2em;margin:5px 0px;font-weight:bold;}
 #modalbodyPrivileges {max-height:695px;padding:10px 5px 0px 10px;}
 #tablePrivileges {margin-top:-1px;min-width:100%;border-collapse:collapse;border:none;}
 #tablePrivileges .chk-label {display:block;}
+#tablePrivileges tbody tr:first-child th {border-top-left-radius:4px;border-top-right-radius:4px;}
 #tablePrivileges tbody tr th {height:35px;font-size:1.15em;border-top:1px solid #337ab7;border-bottom:1px solid #337ab7;}
-#tablePrivileges tbody tr:first-child th {border-top-left-radius:4px;border-top-right-radius:5px;}
 #tablePrivileges tbody td {height:30px;padding:.85% 6px 0px;white-space:normal;border-right:1px solid #337ab7;}
 #tablePrivileges tbody td:hover {background-color:rgba(0,0,0,0.15);}
 #tablePrivileges tbody td:empty:hover {background-color:inherit;}
@@ -284,11 +284,12 @@ h4 {font-size:1.2em;margin:5px 0px;font-weight:bold;}
 #map-panel {height:600px;width:100%;margin-bottom:50px;}
 
 #panelManageTrackers {max-width:700px;max-height:800px;padding:0px;}
-#panelManageTrackers #squeezeboxRoot>.panel-heading {border-radius:0px;background-color: green}
+#panelManageTrackers .top-heading > .panel-heading {border-radius:0px;background-color: green}
 #panelManageTrackers #tableTrackers #colName   {width:56%;}
 #panelManageTrackers #tableTrackers #colModel  {width:18%;}
 #panelManageTrackers #tableTrackers #colGID    {width:26%;}
 #panelManageTrackers #tableTrackers #colAction {width:7em;}
+#panelManageTrackers #tableTrackers tbody td {padding:2px inherit;height:auto;}
 #trackersPlaceholder {color:rgba(0,0,0,0.3);margin:5px 10px;}
 #tableTrackers {margin:0px;border-bottom:1px solid rgba(0,0,0,0.15);min-width:400px;}
 #tableTrackers #colAction  {width:7em;}

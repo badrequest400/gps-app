@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var trackerSchema = mongoose.Schema({
 
 	name: String,
-    model: String,
+  model: String,
 	serverPort: Number,
-    protocol: String,
+  protocol: String,
 	driver: String,
 	description: String,
 	script: String,

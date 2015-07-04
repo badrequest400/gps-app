@@ -42,7 +42,7 @@ angular.module('GpsKovetoApp')
 }])
 
 // The squeezebox directive simply sets up the directive controller
-// and adds an squeezebox CSS class to itself element.
+// and adds a squeezebox CSS class to itself element.
 .directive('squeezebox', function () {
   return {
     restrict:'EA',
@@ -53,10 +53,10 @@ angular.module('GpsKovetoApp')
   };
 })
 
-// The squeezebox-group directive indicates a block of html that will expand and collapse in an squeezebox
+// The squeezebox-group directive indicates a block of html that will expand and collapse in a squeezebox
 .directive('squeezeboxGroup', function() {
   return {
-    require:'^squeezebox',         // We need this directive to be inside an squeezebox
+    require:'^squeezebox',         // We need this directive to be inside a squeezebox
     restrict:'EA',
     transclude:true,              // It transcludes the contents of the directive into the template
     replace: true,                // The element containing the directive will be replaced with the template
@@ -92,7 +92,7 @@ angular.module('GpsKovetoApp')
   };
 })
 
-// Use squeezebox-heading below an squeezebox-group to provide a heading containing HTML
+// Use squeezebox-heading below a squeezebox-group to provide a heading containing HTML
 // <squeezebox-group>
 //   <squeezebox-heading>Heading containing HTML - <img src="..."></squeezebox-heading>
 // </squeezebox-group>

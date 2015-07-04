@@ -11,15 +11,15 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Tabs</th>
 				<th class="bg-info">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_location" value="tab_location" checked>Map</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_realtime" value="tab_realtime" checked>Realtime</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_history" value="tab_history" checked>History</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_report" value="tab_report" checked>Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_location" ng-checked="tabChecked" value="tab_location" checked>Map</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_realtime" ng-checked="tabChecked" value="tab_realtime" checked>Realtime</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_history" ng-checked="tabChecked" value="tab_history" checked>History</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_report" ng-checked="tabChecked" value="tab_report" checked>Report</label></td>
 			</tr>
 			<tr>
 				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="tab_manage" value="tab_manage">Manage</label></td>
@@ -30,69 +30,69 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Realtime Tab</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right" ng-click="tabChecked = true"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right" ng-click="tabChecked = false"></button>
 				</th>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_geofence" value="realtime_geofence" checked>Geo-fence</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_speedalarm" value="realtime_speedalarm" checked>Speed Alarm</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_stopengine" value="realtime_stopengine" checked>Stop Engine</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_clearstoreddata" value="realtime_clearstoreddata">Clear Stored Data</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_geofence" value="realtime_geofence" checked>Geo-fence</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_speedalarm" value="realtime_speedalarm" checked>Speed Alarm</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_stopengine" value="realtime_stopengine" checked>Stop Engine</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_clearstoreddata" value="realtime_clearstoreddata">Clear Stored Data</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_sendsms" value="realtime_sendsms" checked>Send SMS</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_sendcommand" value="realtime_sendcommand" checked>Send Command</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_takephoto" value="realtime_takephoto" checked>Take Photo</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_restartgps" value="realtime_restartgps">Restart GPS</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_sendsms" value="realtime_sendsms" checked>Send SMS</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_sendcommand" value="realtime_sendcommand" checked>Send Command</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_takephoto" value="realtime_takephoto" checked>Take Photo</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_restartgps" value="realtime_restartgps">Restart GPS</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_updateposition" value="realtime_updateposition" checked>Update Position</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_reportinterval" value="realtime_reportinterval" checked>Report Interval</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_sellallsubusertrackers" value="realtime_sellallsubusertrackers" checked>See All Sub User Trackers</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_sellalltrackers" value="realtime_sellalltrackers">See All Trackers in System</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_updateposition" value="realtime_updateposition" checked>Update Position</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_reportinterval" value="realtime_reportinterval" checked>Report Interval</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_sellallsubusertrackers" value="realtime_sellallsubusertrackers" checked>See All Sub User Trackers</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_sellalltrackers" value="realtime_sellalltrackers">See All Trackers in System</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_view_poi" value="realtime_view_poi">View POI</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_public_poi" value="realtime_public_poi">Add Public POI</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_handlealarm" value="realtime_handlealarm">Handle Alarm</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_manual_alarm" value="realtime_manual_alarm">Manual Alarm</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_view_poi" value="realtime_view_poi">View POI</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_public_poi" value="realtime_public_poi">Add Public POI</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_handlealarm" value="realtime_handlealarm">Handle Alarm</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_manual_alarm" value="realtime_manual_alarm">Manual Alarm</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_dash_panel" value="show_dash_panel" checked>Show Dash Panel</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_add_poi" value="realtime_add_poi">Add POI</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_trackerSrc" value="realtime_trackerSrc" checked>Add Tracker Image</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_rich_info" value="realtime_rich_info" checked>Rich Info</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_show_dash_panel" value="show_dash_panel" checked>Show Dash Panel</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_add_poi" value="realtime_add_poi">Add POI</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_trackerSrc" value="realtime_trackerSrc" checked>Add Tracker Image</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_rich_info" value="realtime_rich_info" checked>Rich Info</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="alarm_action" value="alarm_action" checked>Alarm Action</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="alarm_time" value="alarm_time">Alarm Time</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="realtime_history_line" value="realtime_history_line">History Line</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_alarm_action" value="alarm_action" checked>Alarm Action</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_alarm_time" value="alarm_time">Alarm Time</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rt_history_line" value="realtime_history_line">History Line</label></td>
 				<td></td>
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Realtime Tab / Left Side Panel</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_user_list" value="show_user_list" checked>Show User List</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_quick_findbox" value="show_quick_findbox" checked>Show Quick Findbox</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_output_box" value="show_output_box" checked>Show Output Box</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_OutputInput" value="show_OutputInput" checked>Show IO Interface</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_user_list" value="show_user_list" checked>Show User List</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_quick_findbox" value="show_quick_findbox" checked>Show Quick Findbox</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_output_box" value="show_output_box" checked>Show Output Box</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_OutputInput" value="show_OutputInput" checked>Show IO Interface</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_devices_list" value="show_devices_list" checked>Show Devices List</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_model_tra_list" value="show_model_tra_list" checked>Show Model In Tracker List</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_name_tra_list" value="show_name_tra_list" checked>Show Name In Tracker List</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="show_id_tra_list" value="show_id_tra_list">Show Device ID In Tracker List</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_devices_list" value="show_devices_list" checked>Show Devices List</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_model_tra_list" value="show_model_tra_list" checked>Show Model In Tracker List</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_name_tra_list" value="show_name_tra_list" checked>Show Name In Tracker List</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rtlp_show_id_tra_list" value="show_id_tra_list">Show Device ID In Tracker List</label></td>
 			</tr>
 			<tr>
 				<th class="bg-info text-primary" colspan="3">History Tab</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
@@ -103,45 +103,45 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Report Tab</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_gpsreport" value="report_gpsreport" checked>GPS Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_distancereport" value="report_distancereport" checked>Distance Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_stopreport" value="report_stopreport" checked>Stop Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_photoreport" value="report_photoreport" checked>Photo Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_gpsreport" value="report_gpsreport" checked>GPS Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_distancereport" value="report_distancereport" checked>Distance Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_stopreport" value="report_stopreport" checked>Stop Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_photoreport" value="report_photoreport" checked>Photo Report</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_invalidreport" value="report_invalidreport" checked>Invalid Tracker Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_alarmreport" value="report_alarmreport">Handle Alarm Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_speedchart" value="report_speedchart" checked>Speed Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_adreport" value="report_adreport" checked>AD Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_invalidreport" value="report_invalidreport" checked>Invalid Tracker Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_alarmreport" value="report_alarmreport">Handle Alarm Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_speedchart" value="report_speedchart" checked>Speed Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_adreport" value="report_adreport" checked>AD Report</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_last_pos_report" value="report_last_pos_report">Last Position Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_ioreport" value="report_ioreport" checked>I/O Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_tripreport" value="report_tripreport" checked>Trip Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_fuelreport" value="report_fuelreport" checked>Fuel Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_last_pos_report" value="report_last_pos_report">Last Position Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_ioreport" value="report_ioreport" checked>I/O Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_tripreport" value="report_tripreport" checked>Trip Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_fuelreport" value="report_fuelreport" checked>Fuel Report</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_idlereport" value="report_idlereport">Idle Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="export_distancereport" value="export_distancereport" checked>Export distance report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_area" value="report_area" checked>Area Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="report_getalladdress" value="report_getalladdress">Get All Address</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_idlereport" value="report_idlereport">Idle Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_export_distancereport" value="export_distancereport" checked>Export distance report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_area" value="report_area" checked>Area Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_getalladdress" value="report_getalladdress">Get All Address</label></td>
 			</tr>
 			<tr>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="customize_report_view" value="customize_report_view">View Customized Report</label></td>
-				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="customize_report_mgr" value="customize_report_mgr">Manage Customized Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_customize_report_view" value="customize_report_view">View Customized Report</label></td>
+				<td><label class="chk-label"><input type="checkbox" name="checkVal" id="rep_customize_report_mgr" value="customize_report_mgr">Manage Customized Report</label></td>
 				<td></td>
 				<td></td>
 			</tr>
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Manage Tab</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
@@ -171,8 +171,8 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Other</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
@@ -184,8 +184,8 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">	Handle Alarm</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>
@@ -251,8 +251,8 @@
 			<tr>
 				<th class="bg-info text-primary" colspan="3">Send Email Alert on</th>
 				<th class="bg-info text-primary">
-					<button type="button"  class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
-					<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
+					<button type="button"  class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-square-o pull-right"></button>
+					<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-check-square-o pull-right"></button>
 				</th>
 			</tr>
 			<tr>

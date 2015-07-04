@@ -3,6 +3,7 @@ angular.module('GpsKovetoApp')
 .controller('UserRolesController', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
 
 	$scope.roles;
+	$scope.tabChecked;
 
 	$http.get('/get_roles')
 	.success(function(data) {

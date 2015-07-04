@@ -12,14 +12,14 @@
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary fa fa-search"></button>
 					</span>
-					<input type="text" class="form-control" placeholder="követőnév">
+					<input type="text" class="form-control" placeholder="követő">
 				</div>
 			</div>
 		</div>
 
 	<!-- Root level -->
 
-		<squeezebox id="squeezeboxRoot" class="button-style" close-others="false">
+		<squeezebox class="button-style top-heading" close-others="false">
 	    <squeezebox-group is-open="users[0].isOpen">
 	      <squeezebox-heading>
 					<span class="fa fa-fw panel-title-item" ng-class="{'fa-user-plus': users[0].owned_users.length != 0, 'fa-user': users[0].owned_users.length === 0}"></span>
@@ -62,8 +62,8 @@
 								<td>{{tracker.model}}</td>
 								<td>{{tracker.GID}}</td>
 								<td class="centered">
-									<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModelModal(model)"></button>
-									<button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-click="deleteModel(model.name)"></button>
+									<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModelModal(model)"></button>
+									<button type="button"  class="btn btn-flat-xs btn-flat-danger fa fa-lg fa-times-circle" ng-click="deleteModel(model.name)"></button>
 								</td>
 							</tr>
 						</tbody>
@@ -169,8 +169,8 @@
 														<td>{{tracker.model}}</td>
 														<td>{{tracker.GID}}</td>
 														<td class="centered">
-															<button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click=""></button>
-															<button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-click=""></button>
+															<button type="button" class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-edit" ng-click=""></button>
+															<button type="button"  class="btn btn-flat-xs btn-flat-danger fa fa-lg fa-times-circle" ng-click=""></button>
 														</td>
 													</tr>
 												</tbody>
