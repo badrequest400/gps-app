@@ -1,0 +1,60 @@
+<!-- Child level -->
+
+            <div class="squeezebox-wrapper"> <!-- for positioning inside parent --> <!-- Should have ng-hide="users[0].owned_users.length === 0" -->
+                <squeezebox class="button-style" close-others="true">
+                    <squeezebox-group>
+                        <squeezebox-heading>
+                                <span class="fa fa-fw panel-title-item" ng-class="{'fa-user-plus': user.owned_users.length != 0, 'fa-user': user.owned_users.length === 0}"></span>
+                                <span class="panel-title-item">{{user.username}}</span>
+                                <span class="label label-warning panel-title-item flex-item-fixed">
+                                    <span ng-show="user.owned_users.length != 0">
+                                        {{user.owned_users.length}}
+                                        <span class="fa fa-user" style="margin-right:6px;"></span>
+                                    </span>
+                                    {{user.trackers.length}}/{{user.max_trackers}}
+                                    <span class="fa fa-automobile"></span>
+                                </span>
+                                <span class="fa panel-title-item" ng-class="{'fa-chevron-down': user.isOpen, 'fa-chevron-right': !user.isOpen}"></span>
+                        </squeezebox-heading>
+                            <squeezebox-heading-plus>
+                                <div ng-show="user.isOpen">
+                                    <button class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-automobile"></button>
+                                    <button class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-user-plus"></button>
+                                </div>
+                        </squeezebox-heading-plus>
+                            <div class="table-responsive" ng-hide="user.trackers.length === 0">
+                                <table id="tableTrackers" class="table table-striped table-hover">
+                                    <colgroup>
+                                        <col id="colName">
+                                        <col id="colModel">
+                                        <col id="colGID">
+                                        <col id="colAction">
+                                    </colgroup>
+                                    <thead class="thead-clickable">
+                                        <tr>
+                                            <th><a href="#">Név</a></th>
+                                            <th><a href="#">Típus</a></th>
+                                            <th><a href="#">Azonosító</a></th>
+                                            <th><a class="centered" href="#">Művelet</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="tracker in user.trackers">
+                                            <td>{{tracker.name}}</td>
+                                            <td>{{tracker.model}}</td>
+                                            <td>{{tracker.GID}}</td>
+                                            <td class="centered">
+                                                <button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click=""></button>
+                                                <button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-click=""></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div ng-repeat="user in user.owned_users" ng-include="'template/hier-element.html'"></div>
+
+                    </squeezebox-group>
+                </squeezebox>
+            </div>
+<!-- Grandchild level -->

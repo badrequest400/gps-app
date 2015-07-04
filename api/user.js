@@ -116,15 +116,15 @@ module.exports.createUser = function(req, res) {
 	});
 };
 
-// GET all users belonging to a parent user
-module.exports.getOwnedUsers = function(req, res) {
-
-	User.findOne(req.query.parent, {owned_users: 1}, function(err, doc) {
-		if(err) {
-			res.status(500).end('Could not get owned users');
-			return;
-		};
-
-		res.status(200).end(JSON.stringify(doc.owned_users));
-	});
-};
+// // GET all users belonging to a parent user
+// module.exports.getOwnedUsers = function(req, res) {
+//
+// 	User.findOne(req.query.parent, {owned_users: 1}, function(err, doc) {
+// 		if(err) {
+// 			res.status(500).end('Could not get owned users');
+// 			return;
+// 		};
+//
+// 		res.status(200).end(JSON.stringify(doc.owned_users));
+// 	});
+// };

@@ -87,6 +87,20 @@ angular.module('GpsKovetoApp')
         if ( !scope.isDisabled ) {
           scope.isOpen = !scope.isOpen;
         }
+
+        // $http.get('/get_users?owner=' + user.username)
+        // .success(function(data) {
+    	// 	data.forEach(function(user) {
+    	// 		// POPSZ: need it for the Accordion control
+    	// 		user.isOpen = false;
+    	// 		// popsz
+    	// 		$scope.users.push(user);
+    	// 	});
+    	// }).error(function(data, status) {
+    	// 	console.log(status);
+    	// 	console.log(data);
+    	// });
+
       };
     }
   };
