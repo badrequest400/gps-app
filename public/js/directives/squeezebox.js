@@ -79,6 +79,7 @@ angular.module('GpsKovetoApp')
 
       scope.self = attrs.self;
       scope.$parent.childUsers = [];
+      scope.$parent.isOpen = scope.isOpen;
 
       scope.$watch('isOpen', function(value) {
         if ( value ) {
@@ -89,6 +90,7 @@ angular.module('GpsKovetoApp')
       scope.toggleOpen = function() {
         if ( !scope.isDisabled ) {
           scope.isOpen = !scope.isOpen;
+          scope.$parent.isOpen = !scope.$parent.isOpen;
         }
 
         if(scope.isOpen && !scope.usersFetched){
