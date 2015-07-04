@@ -54,7 +54,7 @@ angular.module('GpsKovetoApp')
 })
 
 // The squeezebox-group directive indicates a block of html that will expand and collapse in an squeezebox
-.directive('squeezeboxGroup', function() {
+.directive('squeezeboxGroup', function($http) {
   return {
     require:'^squeezebox',         // We need this directive to be inside an squeezebox
     restrict:'EA',
@@ -77,6 +77,9 @@ angular.module('GpsKovetoApp')
     link: function(scope, element, attrs, squeezeboxCtrl) {
       squeezeboxCtrl.addGroup(scope);
 
+      scope.self = attrs.self;
+      scope.$parent.childUsers = [];
+
       scope.$watch('isOpen', function(value) {
         if ( value ) {
           squeezeboxCtrl.closeOthers(scope);
@@ -88,19 +91,19 @@ angular.module('GpsKovetoApp')
           scope.isOpen = !scope.isOpen;
         }
 
-        // $http.get('/get_users?owner=' + user.username)
-        // .success(function(data) {
-    	// 	data.forEach(function(user) {
-    	// 		// POPSZ: need it for the Accordion control
-    	// 		user.isOpen = false;
-    	// 		// popsz
-    	// 		$scope.users.push(user);
-    	// 	});
-    	// }).error(function(data, status) {
-    	// 	console.log(status);
-    	// 	console.log(data);
-    	// });
-
+        if(scope.isOpen && !scope.usersFetched){
+            $http.get('/get_users?owner=' + scope.self)
+            .success(function(data) {
+                data.forEach(function(user) {
+                    user.isOpen = false;
+                    scope.$parent.childUsers.push(user);
+                });
+                scope.usersFetched = true;
+            }).error(function(data, status) {
+                console.log(status);
+                console.log(data);
+            });
+        };
       };
     }
   };

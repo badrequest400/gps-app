@@ -2,7 +2,7 @@
 
             <div class="squeezebox-wrapper"> <!-- for positioning inside parent --> <!-- Should have ng-hide="users[0].owned_users.length === 0" -->
                 <squeezebox class="button-style" close-others="true">
-                    <squeezebox-group>
+                    <squeezebox-group self="{{user.username}}">
                         <squeezebox-heading>
                                 <span class="fa fa-fw panel-title-item" ng-class="{'fa-user-plus': user.owned_users.length != 0, 'fa-user': user.owned_users.length === 0}"></span>
                                 <span class="panel-title-item">{{user.username}}</span>
@@ -52,7 +52,7 @@
                                 </table>
                             </div>
 
-                            <div ng-repeat="user in user.owned_users" ng-include="'template/hier-element.html'"></div>
+                            <div ng-repeat="user in childUsers" ng-include="'template/hier-element.html'"></div>
 
                     </squeezebox-group>
                 </squeezebox>
