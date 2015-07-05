@@ -1,0 +1,56 @@
+
+<squeezebox id="squeezeboxRoot" class="button-style" close-others="false">
+<squeezebox-group is-open="users[0].isOpen">
+  <squeezebox-heading>
+            <span class="fa fa-fw panel-title-item" ng-class="{'fa-user-plus': users[0].owned_users.length != 0, 'fa-user': users[0].owned_users.length === 0}"></span>
+            <span class="panel-title-item">{{users[0].username}}</span>
+            <span class="label label-primary panel-title-item flex-item-fixed">
+                <span ng-show="users[0].owned_users.length != 0">
+                    {{users[0].owned_users.length}}
+                    <span class="fa fa-user" style="margin-right:6px;"></span>
+                </span>
+                {{users[0].trackers.length}}/{{users[0].max_trackers}}
+                <span class="fa fa-automobile"></span>
+            </span>
+            <span class="fa panel-title-item" ng-class="{'fa-chevron-down': users[0].isOpen, 'fa-chevron-right': !users[0].isOpen}"></span>
+  </squeezebox-heading>
+  <squeezebox-heading-plus>
+            <div ng-show="users[0].isOpen">
+                <button class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-automobile"></button>
+                <button class="btn btn-flat-xs btn-flat-primary fa fa-lg fa-user-plus"></button>
+            </div>
+  </squeezebox-heading-plus>
+        <div class="table-responsive" ng-hide="users[0].trackers.length === 0">
+            <table id="tableModels" class="table table-striped table-hover">
+                <colgroup>
+                    <col id="colName">
+                    <col id="colModel">
+                    <col id="colGID">
+                    <col id="colAction">
+                </colgroup>
+                <thead class="thead-clickable">
+                    <tr>
+                        <th><a href="#">Név</a></th>
+                        <th><a href="#">Típus</a></th>
+                        <th><a href="#">Azonosító</a></th>
+                        <th><a class="centered" href="#">Művelet</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="tracker in users[0].trackers">
+                        <td>{{tracker.name}}</td>
+                        <td>{{tracker.model}}</td>
+                        <td>{{tracker.GID}}</td>
+                        <td class="centered">
+                            <button type="button" class="btn btn-flat-sm btn-flat-primary fa fa-lg fa-edit" ng-click="openModifyModelModal(model)"></button>
+                            <button type="button"  class="btn btn-flat-sm btn-flat-danger fa fa-lg fa-times-circle" ng-click="deleteModel(model.name)"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-repeat="user in users.slice(1)" ng-include="'template/hier-element.html'"></div>
+
+</squeezebox-group>
+</squeezebox>

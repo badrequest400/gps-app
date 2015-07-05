@@ -53,8 +53,8 @@ angular.module('GpsKovetoApp')
   };
 })
 
-// The squeezebox-group directive indicates a block of html that will expand and collapse in a squeezebox
-.directive('squeezeboxGroup', function() {
+// The squeezebox-group directive indicates a block of html that will expand and collapse in an squeezebox
+.directive('squeezeboxGroup', function($http) {
   return {
     require:'^squeezebox',         // We need this directive to be inside a squeezebox
     restrict:'EA',
@@ -77,6 +77,10 @@ angular.module('GpsKovetoApp')
     link: function(scope, element, attrs, squeezeboxCtrl) {
       squeezeboxCtrl.addGroup(scope);
 
+      scope.self = attrs.self;
+      scope.$parent.childUsers = [];
+      scope.$parent.isOpen = scope.isOpen;
+
       scope.$watch('isOpen', function(value) {
         if ( value ) {
           squeezeboxCtrl.closeOthers(scope);
@@ -86,7 +90,22 @@ angular.module('GpsKovetoApp')
       scope.toggleOpen = function() {
         if ( !scope.isDisabled ) {
           scope.isOpen = !scope.isOpen;
+          scope.$parent.isOpen = !scope.$parent.isOpen;
         }
+
+        if(scope.isOpen && !scope.usersFetched){
+            $http.get('/get_users?owner=' + scope.self)
+            .success(function(data) {
+                data.forEach(function(user) {
+                    user.isOpen = false;
+                    scope.$parent.childUsers.push(user);
+                });
+                scope.usersFetched = true;
+            }).error(function(data, status) {
+                console.log(status);
+                console.log(data);
+            });
+        };
       };
     }
   };
