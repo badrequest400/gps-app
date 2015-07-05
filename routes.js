@@ -16,11 +16,11 @@ module.exports = function(app) {
 	//USERS
 	var user = require('./api/user.js');
 	app.get('/get_users', user.getUsers);
-	app.get('/get_user/:username', user.getUser);
+	app.get('/get_user/:id', user.getUser);
 	app.post('/create_user', user.createUser);
-	app.post('/change_password/:username', user.changePassword);
-	app.post('/change_password_admin/:username', user.changePasswordAdmin);
-	app.post('/update_details/:username', user.updateDetails);
+	app.post('/change_password/:id', user.changePassword);
+	app.post('/change_password_admin/:id', user.changePasswordAdmin);
+	app.post('/update_details/:id', user.updateDetails);
 	// app.get('/owned_users', user.getOwnedUsers);
 
 	//ROLES
@@ -32,7 +32,7 @@ module.exports = function(app) {
 	app.post('/delete_history', general.deleteHistory);
 
 	//TRACKERS
-	var tracker = require('./api/tracker.js');
+	var tracker = require('./api/tracker_model.js');
 	app.get('/trackers/trackers', tracker.getTrackers);
 	app.post('/trackers/delete_tracker', tracker.deleteTracker);
 	app.post('/trackers/update_tracker', tracker.updateTracker);

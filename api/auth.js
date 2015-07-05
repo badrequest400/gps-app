@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
 var User = require('../models/user.js').User;
@@ -36,6 +35,7 @@ module.exports.login = function(req, res) {
 			return res.status(200).send({
 				token: token,
 				user: {
+					_id: user._id,
 					username: user.username,
 					fullname: user.fullname,
 					trackers: user.trackers,
@@ -56,7 +56,7 @@ module.exports.signup = function(req, res) {
 		return res.status(401).send('Provide an email and password!');
 	};
 
-	User.findOne({_id: req.body.email}, {_id:1}, function(err, user) {	// check that user is not registered already
+	User.findOne({email: req.body.email}, {_id:1}, function(err, user) {	// check that user is not registered already
 		if(err) {
 			console.log(err);
 			return res.status(401).end('Something went wrong! Please try again!');
@@ -68,7 +68,7 @@ module.exports.signup = function(req, res) {
 
 		var newUser = new User();
 
-		newUser._id = req.body.email;
+		newUser.email = req.body.email;
 		newUser.name = req.body.name;
 		newUser.pwd = newUser.generateHash(req.body.password);
 		newUser.access_level = 5;

@@ -1,4 +1,4 @@
-var Tracker = require('../models/tracker.js').Tracker;
+var Model = require('../models/tracker_model.js').Model;
 
 
 module.exports.getTrackers = function(req, res) {

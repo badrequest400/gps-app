@@ -18,13 +18,11 @@ angular.module('GpsKovetoApp')
 	// 	console.log(data);
 	// });
 
-	// from user_management.js:
-	$http.get('/get_users?owner=' + $scope.sessionUser.username)
+	$http.get('/get_users?owner=' + $scope.sessionUser._id)
 	.success(function(data) {
 		data.forEach(function(user) {
-			// POPSZ: need it for the Accordion control
+			// needed for the Accordion control
 			user.isOpen = false;
-			// popsz
 			$scope.users.push(user);
 		});
 	}).error(function(data, status) {
