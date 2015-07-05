@@ -1,9 +1,10 @@
 var User  = require('../models/user.js').User;
+var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports.getUsers = function(req, res) {
 
 	if(req.query.owner) {
-		User.find({owner: req.query.owner}, {pwd:0}, function(err, docs) {
+		User.find({owner: new ObjectId(req.query.owner)}, {pwd:0}, function(err, docs) {
 			if(err) {
 				res.status(500).end('Could not get owner filtered list of users from the DB');
 				return;
@@ -27,19 +28,33 @@ module.exports.getUsers = function(req, res) {
 
 module.exports.getUser = function(req, res) {
 
-	User.findOne({username: req.params.username}, function(err, doc) {
-		if(err) {
-			res.status(500).end('Could not get user from the DB');
-			return;
-		};
+	if(req.query.id) {
 
-		res.status(200).end(JSON.stringify(doc));
-	});
+		User.findOne({_id: new ObjectId(req.query.id)}, function(err, doc) {
+			if(err) {
+				res.status(500).end('Could not get user from the DB');
+				return;
+			};
+
+			res.status(200).end(JSON.stringify(doc));
+		});
+
+	} else if(req.query.username) {
+
+		User.findOne({username: req.query.username}, function(err, doc) {
+			if(err) {
+				res.status(500).end('Could not get user from the DB');
+				return;
+			};
+
+			res.status(200).end(JSON.stringify(doc));
+		});
+	};
 };
 
 module.exports.changePassword = function(req, res) {
 
-	User.findOne({username: req.params.username}, function(err, user) {
+	User.findOne({username: new ObjectId(req.params.id)}, function(err, user) {
 		if(err) {
 			res.status(500).end('Could not find user');
 			return;
@@ -70,7 +85,7 @@ module.exports.changePassword = function(req, res) {
 
 module.exports.changePasswordAdmin = function(req, res) {
 
-	User.findOne({username: req.params.username}, function(err, user) {
+	User.findOne({username: new ObjectId(req.params.id)}, function(err, user) {
 		if(err) {
 			res.status(500).end('Could not find user');
 			return;
@@ -92,7 +107,7 @@ module.exports.changePasswordAdmin = function(req, res) {
 
 module.exports.updateDetails = function(req, res) {
 
-	User.update({username: req.params.username}, req.body, function(err) {
+	User.update({username: new ObjectId(req.params.id)}, req.body, function(err) {
 		if(err) {
 			res.status(500).end('Could not update user details');
 			return;
@@ -115,16 +130,3 @@ module.exports.createUser = function(req, res) {
 		res.status(200).end('Successfully created new user');
 	});
 };
-
-// // GET all users belonging to a parent user
-// module.exports.getOwnedUsers = function(req, res) {
-//
-// 	User.findOne(req.query.parent, {owned_users: 1}, function(err, doc) {
-// 		if(err) {
-// 			res.status(500).end('Could not get owned users');
-// 			return;
-// 		};
-//
-// 		res.status(200).end(JSON.stringify(doc.owned_users));
-// 	});
-// };

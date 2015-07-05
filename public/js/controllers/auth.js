@@ -15,6 +15,7 @@ angular.module('GpsKovetoApp')
             AuthService.loggedIn = true;
 
             $window.sessionStorage.token = data.token;
+            $window.sessionStorage._id = data.user._id;
             $window.sessionStorage.username = data.user.username;
             $window.sessionStorage.fullname = data.user.fullname;
             $window.sessionStorage.trackers = angular.toJson(data.user.trackers);
@@ -25,6 +26,7 @@ angular.module('GpsKovetoApp')
             $window.sessionStorage.owned_users = angular.toJson(data.user.owned_users);
             $window.sessionStorage.loggedin = AuthService.loggedIn;
 
+            $scope.sessionUser._id = $window.sessionStorage._id;
             $scope.sessionUser.username = $window.sessionStorage.username;
             $scope.sessionUser.fullname = $window.sessionStorage.fullname;
             $scope.sessionUser.trackers = angular.fromJson($window.sessionStorage.trackers);
@@ -49,6 +51,7 @@ angular.module('GpsKovetoApp')
             AuthService.loggedIn = false;
 
             delete $window.sessionStorage.token;
+            delete $window.sessionStorage._id;
             delete $window.sessionStorage.username;
             delete $window.sessionStorage.fullname;
             delete $window.sessionStorage.trackers;

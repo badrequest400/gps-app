@@ -7,6 +7,7 @@ angular.module('GpsKovetoApp')
 		this.$routeParams = $routeParams;
 
 		$scope.sessionUser = {};
+		$scope.sessionUser._id = $window.sessionStorage._id;
 		$scope.sessionUser.username = $window.sessionStorage.username;
 		$scope.sessionUser.fullname = $window.sessionStorage.fullname;
 		$scope.sessionUser.trackers = angular.fromJson($window.sessionStorage.trackers);

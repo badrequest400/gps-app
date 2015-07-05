@@ -6,7 +6,7 @@ angular.module('GpsKovetoApp')
 	$scope.users[0] = $scope.sessionUser;
 	$scope.roles;
 
-	$http.get('/get_users?owner=' + $scope.sessionUser.username)
+	$http.get('/get_users?owner=' + $scope.sessionUser._id)
 	.success(function(data) {
 		data.forEach(function(user) {
 			$scope.users.push(user);
@@ -66,7 +66,7 @@ angular.module('GpsKovetoApp')
 	});
 	$scope.$on('userDetailsUpdated', function(event, data) {
 		for(var i=0; i<$scope.users.length; i++) {
-			if($scope.users[i].username == data.original_username) {
+			if($scope.users[i].id == data.id) {
 				$scope.users[i] = data;
 			};
 		};
@@ -100,8 +100,6 @@ angular.module('GpsKovetoApp')
 		$scope.form.owner = 'Owner';
 	};
 	$scope.form.username = $scope.current_user.username;
-	// in case the username changes the view can be updated based on original_username
-	$scope.form.original_username = $scope.current_user.username;
 	$scope.form.max_trackers = $scope.current_user.max_trackers;
 	$scope.form.expiryDate = $scope.current_user.expiryDate;
 	$scope.form.handlingSteps = $scope.current_user.handlingSteps;
@@ -114,7 +112,7 @@ angular.module('GpsKovetoApp')
 		// IF PASSWORD FIELDS ARE EMPTY, JUST SUBMIT REST
 		if(!$scope.form.password && !$scope.form.passwordConfrim) {
 
-			$http.post('/update_details/' + $scope.current_user.username, $scope.form)
+			$http.post('/update_details/' + $scope.current_user._id, $scope.form)
 			.success(function(data, status) {
 				//Notify parent controller of model change
 				$scope.$emit('userDetailsUpdated', $scope.form);
@@ -131,10 +129,10 @@ angular.module('GpsKovetoApp')
 				$scope.alert = 'Password and confirmation must match';
 			} else {
 
-				$http.post('/change_password_admin/' + $scope.current_user.username, {new: $scope.form.password})
+				$http.post('/change_password_admin/' + $scope.current_user._id, {new: $scope.form.password})
 				.success(function(data, status) {
 
-					$http.post('/update_details/' + $scope.current_user.username, $scope.form)
+					$http.post('/update_details/' + $scope.current_user._id, $scope.form)
 					.success(function(data, status) {
 						//Notify parent controller of model change
 						$scope.$emit('userDetailsUpdated', $scope.form);
