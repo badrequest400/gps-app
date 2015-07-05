@@ -32,7 +32,7 @@ module.exports = function(app) {
 	app.post('/delete_history', general.deleteHistory);
 
 	//TRACKERS
-	var tracker = require('./api/tracker.js');
+	var tracker = require('./api/tracker_model.js');
 	app.get('/trackers/trackers', tracker.getTrackers);
 	app.post('/trackers/delete_tracker', tracker.deleteTracker);
 	app.post('/trackers/update_tracker', tracker.updateTracker);

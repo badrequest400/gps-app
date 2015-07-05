@@ -54,7 +54,7 @@ module.exports.getUser = function(req, res) {
 
 module.exports.changePassword = function(req, res) {
 
-	User.findOne({username: new ObjectId(req.params.id)}, function(err, user) {
+	User.findOne({_id: new ObjectId(req.params.id)}, function(err, user) {
 		if(err) {
 			res.status(500).end('Could not find user');
 			return;
@@ -85,7 +85,7 @@ module.exports.changePassword = function(req, res) {
 
 module.exports.changePasswordAdmin = function(req, res) {
 
-	User.findOne({username: new ObjectId(req.params.id)}, function(err, user) {
+	User.findOne({_id: new ObjectId(req.params.id)}, function(err, user) {
 		if(err) {
 			res.status(500).end('Could not find user');
 			return;
@@ -107,7 +107,9 @@ module.exports.changePasswordAdmin = function(req, res) {
 
 module.exports.updateDetails = function(req, res) {
 
-	User.update({username: new ObjectId(req.params.id)}, req.body, function(err) {
+	req.body.owner = new ObjectId(req.body.owner);
+
+	User.update({_id: new ObjectId(req.params.id)}, req.body, function(err) {
 		if(err) {
 			res.status(500).end('Could not update user details');
 			return;

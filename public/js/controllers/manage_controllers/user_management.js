@@ -66,7 +66,7 @@ angular.module('GpsKovetoApp')
 	});
 	$scope.$on('userDetailsUpdated', function(event, data) {
 		for(var i=0; i<$scope.users.length; i++) {
-			if($scope.users[i].id == data.id) {
+			if($scope.users[i]._id == data._id) {
 				$scope.users[i] = data;
 			};
 		};
@@ -99,6 +99,7 @@ angular.module('GpsKovetoApp')
 	} else {
 		$scope.form.owner = 'Owner';
 	};
+	$scope.form._id = $scope.current_user._id;
 	$scope.form.username = $scope.current_user.username;
 	$scope.form.max_trackers = $scope.current_user.max_trackers;
 	$scope.form.expiryDate = $scope.current_user.expiryDate;
@@ -119,7 +120,8 @@ angular.module('GpsKovetoApp')
 				$modalInstance.close();
 
 			}).error(function(data, status) {
-				//
+				console.log(status);
+				console.log(data);
 			});
 
 		} else {

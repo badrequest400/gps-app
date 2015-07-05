@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var trackerSchema = mongoose.Schema({
+var modelSchema = mongoose.Schema({
 
     model: String,
     protocol: String,
@@ -11,4 +11,4 @@ var trackerSchema = mongoose.Schema({
 });
 
 
-module.exports.Tracker = mongoose.model('Tracker', trackerSchema);
+module.exports.Model = mongoose.model('Model', modelSchema);
