@@ -78,6 +78,7 @@ angular.module('GpsKovetoApp')
       squeezeboxCtrl.addGroup(scope);
 
       scope.self = attrs.self;
+      console.log(attrs);
       scope.$parent.childUsers = [];
       scope.$parent.isOpen = scope.isOpen;
 
@@ -94,6 +95,7 @@ angular.module('GpsKovetoApp')
         }
 
         if(scope.isOpen && !scope.usersFetched){
+            console.log(scope.self);
             $http.get('/get_users?owner=' + scope.self)
             .success(function(data) {
                 data.forEach(function(user) {

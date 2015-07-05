@@ -16,4 +16,12 @@ angular.module('GpsKovetoApp')
 		$scope.sessionUser.status = $window.sessionStorage.status;
 		$scope.sessionUser.owned_users = angular.fromJson($window.sessionStorage.owned_users);
 		$scope.sessionUser.loggedin = $window.sessionStorage.loggedin;
+
+		// found this on StackOverflow to collapse the open navbar on selection:
+		$(document).on('click','.navbar-collapse.in',function(e) {
+				if( $(e.target).is('a') ) {
+						$(this).collapse('hide');
+				}
+		});
+		// ---------------------------------------------------------------------
 }]);

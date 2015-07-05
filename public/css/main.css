@@ -218,7 +218,19 @@ squeezebox.button-style .panel-title-plus {
 	height: auto;
 }
 squeezebox.button-style .panel-title-plus .btn {padding:6px 4px;margin-left:-2px;height:auto;}
-.squeezebox-wrapper {margin:5px 5px 5px 15px;}
+squeezebox.button-style .panel-group,
+squeezebox.button-style .panel-group .panel,
+squeezebox.button-style .panel-group .panel .panel-heading {
+	border-right:0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+squeezebox.root-level > .panel-group > .panel {
+	border-top-left-radius: 0px;
+	border-left: 0px;
+	border-bottom: 0px;
+}
+.squeezebox-wrapper {margin:5px 0px 5px 15px;}
 /* -----------------------------------------------------------------------------
                               MISC
 ----------------------------------------------------------------------------- */
@@ -284,7 +296,6 @@ h4 {font-size:1.2em;margin:5px 0px;font-weight:bold;}
 #map-panel {height:600px;width:100%;margin-bottom:50px;}
 
 #panelManageTrackers {max-width:700px;max-height:800px;padding:0px;}
-#panelManageTrackers .top-heading > .panel-heading {border-radius:0px;background-color: green}
 #panelManageTrackers #tableTrackers #colName   {width:56%;}
 #panelManageTrackers #tableTrackers #colModel  {width:18%;}
 #panelManageTrackers #tableTrackers #colGID    {width:26%;}
