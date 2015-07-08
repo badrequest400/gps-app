@@ -3,20 +3,10 @@ angular.module('GpsKovetoApp')
 .controller('TrackerConfigController', ['$scope', '$http', '$modal', function($scope, $http, $modal) {
 
 	$scope.users = [];
-	// POPSZ: need it for the Accordion control
+	// accordion controll, parent user is open by default
 	$scope.sessionUser.isOpen = true;
 	$scope.users[0] = $scope.sessionUser;
-	// popsz
 	$scope.isCollapsed = true;
-
-	// POPSZ -----------------------------------------------------------
-	// $http.get('/owned_users')
-	// .success(function(data, status) {
-	// 	$scope.users = data;
-	// }).error(function(data, status) {
-	// 	console.log(status);
-	// 	console.log(data);
-	// });
 
 	$http.get('/get_users?owner=' + $scope.sessionUser._id)
 	.success(function(data) {
