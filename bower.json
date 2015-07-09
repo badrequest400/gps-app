@@ -1,0 +1,29 @@
+{
+  "name": "gps-app",
+  "version": "0.0.0",
+  "authors": [
+    "Balazs Cseh <balazs.cseh89@gmail.com>"
+  ],
+  "description": "App for managing advanced GPS devices",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.2",
+    "bootstrap": "~3.3.5",
+    "font-awesome-bower": "~4.3.0",
+    "angular-bootstrap": "~0.13.0",
+    "angular-route": "~1.4.2"
+  }
+}
