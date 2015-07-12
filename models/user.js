@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-//var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 
 var userSchema = mongoose.Schema({
 
@@ -30,25 +30,16 @@ var userSchema = mongoose.Schema({
 	owned_users: [String]
 });
 
-//userSchema.methods.validPassword = function(password, callback) {
-//	bcrypt.compare(password, this.pwd, function(err, match) {
-//		if (err) callback(err);
-//		callback(match);
-//	});
-//};
 userSchema.methods.validPassword = function(password, callback) {
-	if(this.pwd == password) {
- 		callback(true);
-	} else {
- 		callback(false);
-	};
+	bcrypt.compare(password, this.pwd, function(err, match) {
+		if (err) callback(err);
+		callback(match);
+	});
 };
-//userSchema.methods.generateHash = function(password){
-//	var salt = bcrypt.genSaltSync()
-//	return bcrypt.hashSync(password, salt);
-//};
+
 userSchema.methods.generateHash = function(password){
-	return password;
+	var salt = bcrypt.genSaltSync()
+	return bcrypt.hashSync(password, salt);
 };
 
 module.exports.User = mongoose.model('User', userSchema);

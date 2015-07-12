@@ -12,14 +12,14 @@
     "url": "https://github.com/badrequest400/gps-app.git"
   },
   "author": {
-      "name": "Balazs Cseh",
-      "email": "balazs.cseh89@gmail.com"
+    "name": "Balazs Cseh",
+    "email": "balazs.cseh89@gmail.com"
   },
   "contributors": [
-      {
-          "name": "Artur Cseh",
-          "email": "csartur@gmail.com"
-      }
+    {
+      "name": "Artur Cseh",
+      "email": "csartur@gmail.com"
+    }
   ],
   "license": "ISC",
   "bugs": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/badrequest400/gps-app",
   "dependencies": {
-    "bcrypt": "^0.8.0",
+    "bcrypt": "^0.8.3",
     "body-parser": "^1.10.1",
     "bower": "^1.4.1",
     "express": "^4.10.6",
