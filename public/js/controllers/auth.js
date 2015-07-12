@@ -1,11 +1,21 @@
 angular.module('GpsKovetoApp')
 
-.controller('AuthController', ['$scope', '$location', '$http', '$window', 'AuthService',
-    function($scope, $location, $http, $window, AuthService) {
+.controller('AuthController', ['$scope', '$location', '$http', '$window', 'AuthService', 'matchmedia',
+    function($scope, $location, $http, $window, AuthService, matchmedia) {
 
     $scope.username = '';
     $scope.password = '';
     $scope.sessionUser.loggedin = $window.sessionStorage.loggedin;
+
+    // matchmedia-ng -----------------------------------------------------------
+    var unregister = matchmedia.onPhone(function(mediaQueryList){
+      $scope.isPhone = mediaQueryList.matches;
+    });
+
+    $scope.$on('$destroy', function dismiss() {
+      unregister();
+    });
+    // -------------------------------------------------------------------------
 
     $scope.login = function() {
 

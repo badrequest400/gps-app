@@ -22,7 +22,7 @@
 
 #GPSNavbar {
 	background-color: #00264a;
-	opacity: 0.9;
+	opacity: 1;
 	color: #58bbe6;
 	border: 0px;
 	margin: 0px;
@@ -42,43 +42,33 @@
 	opacity: 1;
 }
 
-#GPSNavbar .navbar-collapse .in {
+#GPSNavbar .navbar-collapse.in {
 	border: 0px;
 	margin: 0px;
-	padding-bottom: 30px;
+	padding: 0px 15px 10px;
 	opacity: 0.9;
 }
 
 #GPSNavbar .navbar-collapse .btn-logout {
-	margin: 8px -2px 7px 8px;
+	margin: 7px 0px 0px;
 }
-
+#GPSNavbar .navbar-collapse .dropup .btn-logout {
+	margin: 2px -15px;
+}
+#GPSNavbar .navbar-collapse .dropup .dropdown-menu {
+	margin: 0px -15px;
+}
+#GPSNavbar .navbar-collapse .dropdown-menu a:hover {
+	background-color: rgba(0,0,0,0.1);
+}
 #GPSNavbar .navbar-collapse .btn-logout:hover {
 	background-color: #58bbe6;
 	color: #00264a;
 	border-color: #58bbe6;
 }
 
-#GPSNavbar .navbar-collapse .user-display {
-	list-style-type: none;
-	min-height: 50px;
-	max-height: 50px;
-	margin: 0px 2px 0px 0px;
-	padding-top: 14px;
-}
-
-#GPSNavbar .navbar-collapse .user-display .user-icon {
-	display: inline;
-	font-size: 1.3em;
-}
-
-#GPSNavbar .navbar-collapse .user-display .user-text {
-	display: inline;
-	margin-left: 5px;
-}
-
 #GPSNavbar .navbar-toggle {
-/*-- button icon from 3 .toggle-icon-bars --*/
+/*-- button icon of 3 .toggle-icon-bars --*/
 	margin-right: 5px;
 	border-width: 2px;
 	border-radius: 6px;
@@ -125,7 +115,7 @@
 	border-left: 0.25em solid #58bbe6;
 	color: white;
 }
-
+/*
 @media (max-width: 767px) {
 	#GPSNavbar .navbar-collapse .user-display {
 		padding-top: 7px;
@@ -137,6 +127,7 @@
 		border-left: 0.6em solid #58bbe6;
 	}
 }
+*/
 /*
 ------------------------------------------------------
 										navbar

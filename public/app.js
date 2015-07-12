@@ -1,4 +1,4 @@
-var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap', 'Auth'])
+var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap', 'Auth', 'matchmedia-ng'])
 .config(['$routeProvider', '$locationProvider', '$httpProvider',
 	function($routeProvider, $locationProvider, $httpProvider) {
 

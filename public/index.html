@@ -51,12 +51,18 @@
 					<li><a href="/manage" ng-click="activeFlag.setFlag(5)" ng-class="{active: activeFlag.isFlagSet(5)}">Kezelés</a></li>
 	      </ul>
 
-				<button class="btn-logout btn btn-primary pull-right" ng-click="logout()" ng-show="sessionUser.loggedin">Kijelentkezés</button>
-
-				<ul class="user-display pull-right" ng-show="sessionUser.loggedin">
-					<li class="user-icon fa fa-user"></li>
-					<li class="user-text">{{sessionUser.username}}</li>
-				</ul>
+				<div class="btn-group pull-right" ng-class="{dropup: isPhone}" ng-show="sessionUser.loggedin">
+				  <button type="button" class="btn btn-logout btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-cloak>
+				    <span class="fa fa-user fa-inline-left"></span>
+						{{sessionUser.username}}<span class="fa fa-inline-right" ng-class="{'fa-caret-up': isPhone, 'fa-caret-down': !isPhone}"></span>
+				  </button>
+				  <ul class="dropdown-menu">
+				    <li><a href="#"><span class="fa fa-fw fa-user fa-inline-left"></span>Felhasználói fiók</a></li>
+				    <li><a href="#"><span class="fa fa-fw fa-cogs fa-inline-left"></span>Testreszabás</a></li>
+				    <li role="separator" class="divider"></li>
+				    <li><a href="#" ng-click="logout()"><span class="fa fa-fw fa-sign-out fa-inline-left"></span>Kijelentkezés</a></li>
+				  </ul>
+				</div>
 
 	    </div><!-- /.navbar-collapse -->
 		</div><!-- /AuthController -->
@@ -71,6 +77,7 @@
 	<!-- Angular.js -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js"></script>
+	<script src="js/matchmedia-ng.js"></script>
 	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
 
     <!-- Main client-side Angular App -->
