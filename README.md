@@ -9,10 +9,13 @@ This is a project built on Node.js, so you will need that installed to do anythi
 Back-end and front-end dependencies are managed by **npm** and **bower**.
 
 First install all back-end dependencies including bower. While in the project root:
+
 ```
 npm install
 ```
+
 Now install all front-end components using bower via npm:
+
 ```
 npm run bower
 ```
