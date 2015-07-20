@@ -1,1 +1,105 @@
 <div ng-include="'html/reporting_partials/common_filter_template.html'"></div>
+<br><br>
+<div class="panel panel-flex-body panel-primary">
+
+    <div class="panel-heading">
+        <h4>GPS Jelentes</h4>
+    </div>
+
+    <div class="panel-body">
+        <div id="inputSearchUser" class="flex-item-flex">
+            <div class="input-group input-group-sm" input="search">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary fa fa-search"></button>
+                </span>
+                <input type="text" class="form-control" placeholder="felhasználónév">
+            </div>
+        </div>
+        <button id="btnNewUser" class="flex-item-fixed btn btn-sm btn-primary" ng-click=""></button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <colgroup>
+                <col id="colSpanData" span="6">
+                <col id="colAction">
+            </colgroup>
+            <thead class="thead-clickable">
+                <tr>
+                    <th><a href="#">Nev</a></th>
+                    <th><a href="#">Datum</a></th>
+                    <th><a href="#">Pozicio</a></th>
+                    <th><a href="#">Sebesseg</a></th>
+                    <th><a href="#">GPS jel</a></th>
+                    <th><a href="#">Irany</a></th>
+                    <th><a href="#">Statusz</a></th>
+                    <th><a href="#">Tavolsag</a></th>
+                    <th><a href="#">Kilometer</a></th>
+                    <th><a href="#">Extra Szenzor</a></th>
+                    <th><a href="#">Cim</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.username}}</td>
+                    <td>{{user.max_trackers}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.owner}}</td>
+                    <td>{{user.status}}</td>
+                    <td>Expire Date</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<select name="r_cmd" id="r_cmd" style="width:150">
+    <option value="__all" selected>Összes adat</option>
+    <option value="__allalarm" >Összes riasztás</option>
+    <option value="1" >SOS Riasztás</option>
+    <option value="2" >Bemenet 2 jelzés</option>
+    <option value="3" >Bemenet 3 jelzés</option>
+    <option value="4" >Bemenet 4 jelzés</option>
+    <option value="5" >Bemenet 5 jelzés</option>
+    <option value="16" >Alacsony feszültség riasztás</option>
+    <option value="17" >Sebességhatár riasztás</option>
+    <option value="18" >Pozícióváltás jelzés</option>
+    <option value="19" >Geo-kerítés jelzés</option>
+    <option value="20" >Reset Riasztás</option>
+    <option value="21" >Nincs GPS jel jelzés</option>
+    <option value="22" >Helyreállt GPS jel jelzés</option>
+    <option value="48" >Analóg 1. jelzés</option>
+    <option value="49" >Analóg 2. jelzés</option>
+    <option value="50" >Analóg 3. jelzés</option>
+    <option value="51" >Analóg 4. jelzés</option>
+    <option value="80" >Tápellátás megszűnt jelzés</option>
+    <option value="82" >Irányváltoztatás jelzés</option>
+    <option value="96" >Futásteljesítmény jelzés</option>
+    <option value="97" >Üzemanyag-veszteség jelzés</option>
+    <option value="98" >Üzemanyag-feltöltés jelzés</option>
+    <option value="101" >Rázkódás jelzés</option>
+    <option value="102" >Alvás jelzés</option>
+    <option value="103" >Felébredés jelzés</option>
+    <option value="104" >Intenzív lassulás jelzés</option>
+    <option value="105" >Intenzív gyorsítás jelzés</option>
+    <option value="112" >Bemenet 1. lekapcsolva</option>
+    <option value="113" >Bemenet 2. lekapcsolva</option>
+    <option value="114" >Bemenet 3. lekapcsolva</option>
+    <option value="115" >Bemenet 4. lekapcsolva</option>
+    <option value="116" >Bemenet 5. lekapcsolva</option>
+    <option value="117" >Vontatás jelzés</option>
+    <option value="118" >Zóna jelzés</option>
+    <option value="119" >Megszűnt GPS jel jelzés</option>
+    <option value="120" >Nincs rázkódás jelzés</option>
+    <option value="121" >Fatigue Driving Alarm</option>
+    <option value="128" >Fatigue Driving Relieve</option>
+    <option value="129" >GSM Jamming</option>
+    <option value="130" >GSM Jam Remove</option>
+    <option value="131" >Exit GeoFence</option>
+    <option value="132" >Enter GeoFence</option>
+    <option value="133" >GPS Jamming</option>
+    <option value="512" >Kézi telefon jelzés</option>
+    <option value="513" >Kézi SMS jelzés</option>
+</select>
