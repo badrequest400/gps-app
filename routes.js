@@ -3,7 +3,7 @@
 module.exports = function(app) {
 
 	//REPORTS
-	var reports = require('./api/report.js');
+	var reports = require('./api/realtime.js');
 	app.get('/latest', reports.getLatest); // WON'T WORK YET!!!
 	app.post('/timefilter', reports.timeFilter);
 
@@ -36,6 +36,10 @@ module.exports = function(app) {
 	app.get('/trackers/trackers', tracker.getTrackers);
 	app.post('/trackers/delete_tracker', tracker.deleteTracker);
 	app.post('/trackers/update_tracker', tracker.updateTracker);
+
+	//REPORTING
+	var reporting = require('./api/reporting.js');
+	app.post('/gps', reporting.gps);
 
 
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)

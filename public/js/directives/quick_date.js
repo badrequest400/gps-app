@@ -19,7 +19,7 @@ angular.module('GpsKovetoApp')
     return {
         restrict: 'A',
         link: function(scope, element, attributes) {
-            
+
             // DEFAULT --> YESTERDAY
             var date = new Date();
             date.setDate(date.getDate()-1);
