@@ -15,8 +15,9 @@ module.exports.timeFilter = function(req, res) {
 };
 
 module.exports.getLatest = function(req, res) {
+	console.log(req.params)
 
-	Latest.findOne(function(err, doc) {
+	Latest.findOne({'tracker.name': req.query.name}, function(err, doc) {
 		if(err)	throw err;
 
 		res.status(200).end(JSON.stringify(doc));

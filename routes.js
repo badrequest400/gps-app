@@ -2,10 +2,10 @@
 
 module.exports = function(app) {
 
-	//REPORTS
-	var reports = require('./api/realtime.js');
-	app.get('/latest', reports.getLatest); // WON'T WORK YET!!!
-	app.post('/timefilter', reports.timeFilter);
+	//REALTIME
+	var realtime = require('./api/realtime.js');
+	app.get('/latest', realtime.getLatest); // WON'T WORK YET!!!
+	app.post('/timefilter', realtime.timeFilter);
 
 	//AUTH
 	var auth = require('./api/auth.js');

@@ -1,0 +1,61 @@
+<div ng-controller="LastPositionController">
+    <div class="row">
+        <select tracker-picker></select>
+        Kereses: <input type="text">
+        Talalat/Oldal: <input type="text">
+        <div ng-include="'html/reporting_partials/common_button_set.html'"></div>
+    </div>
+
+    <br><br>
+
+    <div class="panel panel-flex-body panel-primary">
+
+        <div class="panel-heading">
+            <h4>GPS Jelentes</h4>
+        </div>
+
+        <div class="panel-body">
+            <div id="inputSearchUser" class="flex-item-flex">
+                <div class="input-group input-group-sm" input="search">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary fa fa-search"></button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="felhasználónév">
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <colgroup>
+                    <col id="colSpanData" span="6">
+                    <col id="colAction">
+                </colgroup>
+                <thead class="thead-clickable">
+                    <tr>
+                        <th><a href="#">Nev</a></th>
+                        <th><a href="#">Datum</a></th>
+                        <th><a href="#">Pozicio</a></th>
+                        <th><a href="#">Sebesseg</a></th>
+                        <th><a href="#">GPS jel</a></th>
+                        <th><a href="#">Statusz</a></th>
+                        <th><a href="#">Kilometer Szamlalo</a></th>
+                        <th><a href="#">Cim</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="report in table.reports">
+                        <td>{{report.tracker.name}}</td>
+                        <td>{{report.timestamp}}</td>
+                        <td>{{report.lat}}{{report.lng}}</td>
+                        <td>{{report.speed}}</td>
+                        <td>GPS Jel</td>
+                        <td>Statusz</td>
+                        <td>Kilometer Szamlalo</td>
+                        <td>Cim</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

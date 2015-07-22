@@ -13,9 +13,12 @@
 					<div class="panel-body">
 						<ul class="nav nav-list">
 							<li ng-click="setSelected('gps_report')" ng-class="{active: selected == 'gps_report'}"><a>GPS Jelentes</a></li>
+							<li ng-click="setSelected('last_position')" ng-class="{active: selected == 'last_position'}"><a>Utolso Pozicio</a></li>
 							<li ng-click="setSelected('distance_report')" ng-class="{active: selected == 'distance_report'}"><a>Tavolsag Jelentes</a></li>
 							<li ng-click="setSelected('travel_report')" ng-class="{active: selected == 'travel_report'}"><a>Utazas Jelentes</a></li>
 							<li ng-click="setSelected('stop_report')" ng-class="{active: selected == 'stop_report'}"><a>Megallas Jelentes</a></li>
+							<li ng-click="setSelected('idle_report')" ng-class="{active: selected == 'idle_report'}"><a>Uresjarat Jelentes</a></li>
+							<li ng-click="setSelected('driver_report')" ng-class="{active: selected == 'driver_report'}"><a>Sofor Jelentes</a></li>
 							<li ng-click="setSelected('zone_report')" ng-class="{active: selected == 'zone_report'}"><a>Zona Jelentes</a></li>
 							<li ng-click="setSelected('photo_report')" ng-class="{active: selected == 'photo_report'}"><a>Foto Jelentes</a></li>
 							<li ng-click="setSelected('fuel_report')" ng-class="{active: selected == 'fuel_report'}"><a>Uzemanyag Jelentes</a></li>
@@ -25,6 +28,7 @@
 							<li ng-click="setSelected('io_report')" ng-class="{active: selected == 'io_report'}"><a>Be- es kimeneti Jelentes</a></li>
 							<li ng-click="setSelected('speed_chart')" ng-class="{active: selected == 'speed_chart'}"><a>Sebesseg Diagram</a></li>
 							<li ng-click="setSelected('not_reported')" ng-class="{active: selected == 'not_reported'}"><a>Nem jelentett kovetok</a></li>
+							<li ng-click="setSelected('acknowledged_alarm')" ng-class="{active: selected == 'acknowledged_alarm'}"><a>Kezelt riasztasok jelentes</a></li>
 						</ul>
 					</div>
 				</div>
@@ -33,9 +37,12 @@
 			<div class="col-xs-12 col-sm-8 col-md-9">
 			<div>
 				<div ng-if="selected == 'gps_report'" ng-include="'html/reporting_partials/gps_report.html'"></div>
+				<div ng-if="selected == 'last_position'" ng-include="'html/reporting_partials/last_position.html'"></div>
 				<div ng-if="selected == 'distance_report'" ng-include="'html/reporting_partials/distance_report.html'"></div>
 				<div ng-if="selected == 'travel_report'" ng-include="'html/reporting_partials/travel_report.html'"></div>
 				<div ng-if="selected == 'stop_report'" ng-include="'html/reporting_partials/stop_report.html'"></div>
+				<div ng-if="selected == 'idle_report'" ng-include="'html/reporting_partials/idle_report.html'"></div>
+				<div ng-if="selected == 'driver_report'" ng-include="'html/reporting_partials/driver_report.html'"></div>
 				<div ng-if="selected == 'zone_report'" ng-include="'html/reporting_partials/zone_report.html'"></div>
 				<div ng-if="selected == 'photo_report'" ng-include="'html/reporting_partials/photo_report.html'"></div>
 				<div ng-if="selected == 'fuel_report'" ng-include="'html/reporting_partials/fuel_report.html'"></div>
@@ -45,6 +52,7 @@
 				<div ng-if="selected == 'io_report'" ng-include="'html/reporting_partials/io_report.html'"></div>
 				<div ng-if="selected == 'speed_chart'" ng-include="'html/reporting_partials/speed_chart.html'"></div>
 				<div ng-if="selected == 'not_reported'" ng-include="'html/reporting_partials/not_reported.html'"></div>
+				<div ng-if="selected == 'acknowledged_alarm'" ng-include="'html/reporting_partials/acknowledged_alarm.html'"></div>
 			</div>
 
 		</div>

@@ -26,7 +26,7 @@ angular.module('GpsKovetoApp')
 	//RECURSION --> position update
 
 	$scope.getLatest = function(id) {
-		$http.get('/latest')
+		$http.get('/latest?name=something')
 		.success(function(data) {
 			$scope.report.lat += 0.001;
 			$scope.report.lng += 0.001;
