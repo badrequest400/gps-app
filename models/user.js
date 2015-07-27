@@ -18,6 +18,26 @@ var userSchema = mongoose.Schema({
 		description: String,
 		script: String,
 		GID: Number,
+		io: [{
+			in1: {name: String, type: String},
+			in2: {name: String, type: String},
+			in3: {name: String, type: String},
+			in4: {name: String, type: String},
+			in5: {name: String, type: String},
+			out1: {name: String},
+			out2: {name: String},
+			out3: {name: String},
+			out4: {name: String},
+			out5: {name: String}
+		}],
+		AD: {
+			name: String,
+			min_value: Number,
+			max_value: Number,
+			unit: String,
+			direction: Number, // 0 -> normal, 1 -> inverse
+			type: String
+		}
 	}],
 	owner: mongoose.Schema.ObjectId,
 	role: String,

@@ -31,11 +31,11 @@ module.exports = function(app) {
 	var general = require('./api/general.js');
 	app.post('/delete_history', general.deleteHistory);
 
-	//TRACKERS
-	var tracker = require('./api/tracker_model.js');
-	app.get('/trackers/trackers', tracker.getTrackers);
-	app.post('/trackers/delete_tracker', tracker.deleteTracker);
-	app.post('/trackers/update_tracker', tracker.updateTracker);
+	//TRACKERS MODELS
+	var model = require('./api/tracker_model.js');
+	app.get('/trackers/models', model.getModels);
+	app.post('/trackers/delete_model', model.deleteModel);
+	app.post('/trackers/update_model', model.updateModel);
 
 	//REPORTING
 	var reporting = require('./api/reporting.js');

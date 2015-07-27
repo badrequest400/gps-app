@@ -1,9 +1,11 @@
 var Model = require('../models/tracker_model.js').Model;
 
 
-module.exports.getTrackers = function(req, res) {
+///// API HANDLER FUNCTIONS FOR DEALING WITH TRACKER BASE MODELS DEFINED IN THE SYSTEM
 
-    Tracker.find(function(err, docs) {
+module.exports.getModels = function(req, res) {
+
+    Model.find(function(err, docs) {
         if(err) {
             res.status(500).end('Could not fetch tracker models from DB');
             return;
@@ -13,9 +15,9 @@ module.exports.getTrackers = function(req, res) {
     });
 };
 
-module.exports.deleteTracker = function(req, res) {
+module.exports.deleteModel = function(req, res) {
 
-    Tracker.find({name: req.body.name}).remove(function(err) {
+    Model.find({name: req.body.name}).remove(function(err) {
         if(err) {
             res.status(500).end('Could not delete tracker model from DB');
             return;
@@ -25,9 +27,9 @@ module.exports.deleteTracker = function(req, res) {
     });
 };
 
-module.exports.updateTracker = function(req, res) {
+module.exports.updateModel = function(req, res) {
 
-    Tracker.update({name: req.query.tracker}, req.body, function(err) {
+    Model.update({name: req.query.tracker}, req.body, function(err) {
         if(err) {
             res.status(500).end('Could not update tracker model in DB');
             return;

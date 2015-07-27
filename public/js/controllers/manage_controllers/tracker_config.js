@@ -49,7 +49,7 @@ angular.module('GpsKovetoApp')
 	$scope.form.users = tracker.users;
 
 	$scope.ok = function() {
-		$http.post('/trackers/update_tracker?tracker=' + original_name, $scope.form)
+		$http.post('/trackers/update_model?tracker=' + original_name, $scope.form)
 		.success(function(data, status) {
 			$modalInstance.close();
 		}).error(function(data, status) {
