@@ -16,15 +16,14 @@ module.exports.gps = function(req, res) {
 module.exports.distance = function(req, res) {
 
     var grouping = { $group: {
-                        _id: "",
+                        name: {$first: "$name"},
                         start: {$first: "$timestamp"},
                         end: {$last: "$timestamp"},
-                        distance: {$subtract: [{$last: "$odometer"}, {$first: "$odometer"}]},
-                        duration: {$subtract: [{$last: "$timestamp"}, {$first: "$timestamp"}]},
+                        odometer_start: {$last: "$odometer"},
+                        odometer_end: {$first: "$odometer"},
                         // start_address: {$first: "$address"},  /// SUBJECT TO DECISION, IF WE DO ADDRESS LOOKUPS STRAIGHT ON WRITES OR NOT
                         // end_address: {$last: "$address"},     /// SUBJECT TO DECISION, IF WE DO ADDRESS LOOKUPS STRAIGHT ON WRITES OR NOT
-                        highest_speed: {$max: "$speed"},
-                        odometer_start: {$first:"$odometer"}
+                        max_speed: {$max: "$speed"}
                     }
     };
 
@@ -38,21 +37,35 @@ module.exports.distance = function(req, res) {
         }
 
     } else {
-        grouping.$group._id: null;
+        grouping.$group._id = null;
     };
 
     Reports.aggregate([
-        {$match: timestamp:{$gte: req.query.start, $lte: req.query.end}},
+        {$match: {timestamp:{$gte: new Date(req.query.start), $lte: new Date(req.query.end)}, "tracker.name": req.query.name}},
         {$sort: {timestmap: 1}},
-        {$project:
+        {$project: {
+            name: "$tracker.name",
             timestamp: 1,
-            day: {$dayOfYear: "$timestmap"}
-            week: {$week: "$timestmap"},
-            month: {$month: "$timestmap"},
+            day: {$dayOfYear: "$timestamp"},
+            week: {$week: "$timestamp"},
+            month: {$month: "$timestamp"},
             odometer: 1,
             speed: 1
+            }
         },
-        grouping
+        grouping,
+        {$project: {
+            name: 1,
+            start: 1,
+            end: 1,
+            distance: {$subtract: ["$odometer_end", "$odometer_start"]},
+            duration: {$subtract: ["$end", "$start"]},
+            // start_address: 1,  /// SUBJECT TO DECISION, IF WE DO ADDRESS LOOKUPS STRAIGHT ON WRITES OR NOT
+            // end_address: 1,     /// SUBJECT TO DECISION, IF WE DO ADDRESS LOOKUPS STRAIGHT ON WRITES OR NOT
+            max_speed: 1,
+            odometer_start: 1
+            }
+        }
     ], function(err, docs) {
         if(err)	{
             res.status(500).end('Something went wrong, could not fetch records from DB');

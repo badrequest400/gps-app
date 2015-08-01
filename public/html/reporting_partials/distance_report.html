@@ -2,7 +2,7 @@
 
     <div ng-include="'html/reporting_partials/common_filter_template.html'"></div>
     Csoportositas:
-    <select>
+    <select ng-model="filter.grouping">
         <option value="none">Nincs</option>
         <option value="day">Nap</option>
         <option value="week">Het</option>
@@ -50,16 +50,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr ng-repeat="report in table.reports">
-                        <td>{{report.tracker.name}}</td>
-                        <td>{{report.timestamp}}</td>
-                        <td>{{report.lat}}{{report.lng}}</td>
-                        <td>{{report.speed}}</td>
-                        <td>GPS Jel</td>
-                        <td>Statusz</td>
-                        <td>Kilometer Szamlalo</td>
-                        <td>Cim</td>
-                    </tr> -->
+                    <tr ng-repeat="report in table.reports">
+                        <td>{{report.name}}</td>
+                        <td>{{report.start}}</td>
+                        <td>Kezd Cim</td>
+                        <td>{{report.end}}</td>
+                        <td>Veg Cim</td>
+                        <td>{{report.distance}}</td>
+                        <td>{{report.duration}}</td>
+                        <td>{{report.max_speed}}</td>
+                        <td>{{report.odometer_start}}</td>
+                        <td>Motor Jarat</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

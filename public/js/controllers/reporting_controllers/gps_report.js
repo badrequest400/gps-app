@@ -7,7 +7,7 @@ angular.module('GpsKovetoApp')
 
     $scope.search = function() {
 
-        $http.post('/gps', {start: $scope.filter.from, end: $scope.filter.to, name: $scope.filter.name})
+        $http.post('/reporting/gps', {start: $scope.filter.from, end: $scope.filter.to, name: $scope.filter.name})
         .success(function(data, status) {
             $scope.table.reports = data;
         }).error(function(data, status) {

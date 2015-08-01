@@ -39,8 +39,8 @@ module.exports = function(app) {
 
 	//REPORTING
 	var reporting = require('./api/reporting.js');
-	app.post('/gps', reporting.gps);
-	app.get('/distance', reporting.distance); // QUERY: start(date), end(date), grouping(string[day, week, month])
+	app.post('/reporting/gps', reporting.gps);
+	app.get('/reporting/distance', reporting.distance); // QUERY: start(date), end(date), name(string), grouping(string[day, week, month])
 
 
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)
