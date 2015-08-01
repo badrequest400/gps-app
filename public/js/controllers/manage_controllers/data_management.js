@@ -12,7 +12,7 @@ angular.module('GpsKovetoApp')
 
     $scope.selected_tracker = 'Tracker';
 
-    $http.get('/trackers/trackers')
+    $http.get('/trackers/models')
     .success(function(data, status) {
         data.forEach(function(tracker) {
             $scope.trackers.push(tracker);

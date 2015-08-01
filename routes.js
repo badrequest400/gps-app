@@ -2,10 +2,10 @@
 
 module.exports = function(app) {
 
-	//REPORTS
-	var reports = require('./api/report.js');
-	app.get('/latest', reports.getLatest); // WON'T WORK YET!!!
-	app.post('/timefilter', reports.timeFilter);
+	//REALTIME
+	var realtime = require('./api/realtime.js');
+	app.get('/latest', realtime.getLatest); // WON'T WORK YET!!!
+	app.post('/timefilter', realtime.timeFilter);
 
 	//AUTH
 	var auth = require('./api/auth.js');
@@ -31,11 +31,16 @@ module.exports = function(app) {
 	var general = require('./api/general.js');
 	app.post('/delete_history', general.deleteHistory);
 
-	//TRACKERS
-	var tracker = require('./api/tracker_model.js');
-	app.get('/trackers/trackers', tracker.getTrackers);
-	app.post('/trackers/delete_tracker', tracker.deleteTracker);
-	app.post('/trackers/update_tracker', tracker.updateTracker);
+	//TRACKERS MODELS
+	var model = require('./api/tracker_model.js');
+	app.get('/trackers/models', model.getModels);
+	app.post('/trackers/delete_model', model.deleteModel);
+	app.post('/trackers/update_model', model.updateModel);
+
+	//REPORTING
+	var reporting = require('./api/reporting.js');
+	app.post('/reporting/gps', reporting.gps);
+	app.get('/reporting/distance', reporting.distance); // QUERY: start(date), end(date), name(string), grouping(string[day, week, month])
 
 
 	// NEEDS TO BE LAST ROUTE --> redirect all non-defined requests to / (fix angular refresh issue)

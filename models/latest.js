@@ -11,9 +11,11 @@ var latestSchema = mongoose.Schema({
 	lat : Number,
 	lng : Number,
 	timestamp : Date,
-	GID : Number,
-}, {
-	collection: 'latest'
-});
+	tracker : {
+		name: String,
+		model: String,
+		GID: Number
+	}
+}, {collection: 'latest'});
 
 module.exports.Latest = mongoose.model('Latest', latestSchema);

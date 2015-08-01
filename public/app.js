@@ -45,6 +45,13 @@ var GpsKovetoApp = angular.module('GpsKovetoApp', ['ngRoute', 'ui.bootstrap', 'A
 			controllerAs: 'managevctrl',
 			access: {requireLogin: true}
 		})
+		.when('/reporting', {
+			title: 'Reporting',
+			templateUrl: 'html/reporting.html',
+			controller: 'ReportingController',
+			controllerAs: 'reportingvctrl',
+			access: {requireLogin: true}
+		})
 		.otherwise({
 			redirectTo: '/map'
 		});

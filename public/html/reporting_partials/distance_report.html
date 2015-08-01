@@ -1,0 +1,69 @@
+<div ng-controller="DistanceReportController">
+
+    <div ng-include="'html/reporting_partials/common_filter_template.html'"></div>
+    Csoportositas:
+    <select ng-model="filter.grouping">
+        <option value="none">Nincs</option>
+        <option value="day">Nap</option>
+        <option value="week">Het</option>
+        <option value="month">Honap</option>
+    </select>
+    <div ng-include="'html/reporting_partials/common_button_set.html'"></div>
+
+    <br><br>
+
+    <div class="panel panel-flex-body panel-primary">
+
+        <div class="panel-heading">
+            <h4>Tavolsag Jelentes</h4>
+        </div>
+
+        <div class="panel-body">
+            <div id="inputSearchUser" class="flex-item-flex">
+                <div class="input-group input-group-sm" input="search">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary fa fa-search"></button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="felhasználónév">
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <colgroup>
+                    <col id="colSpanData" span="6">
+                    <col id="colAction">
+                </colgroup>
+                <thead class="thead-clickable">
+                    <tr>
+                        <th><a href="#">Nev</a></th>
+                        <th><a href="#">Kezdes</a></th>
+                        <th><a href="#">Kindulasi Cim</a></th>
+                        <th><a href="#">Veg</a></th>
+                        <th><a href="#">Erkezesi Cim</a></th>
+                        <th><a href="#">Tavolsag</a></th>
+                        <th><a href="#">Idotartam</a></th>
+                        <th><a href="#">Legnagyobb Sebesseg</a></th>
+                        <th><a href="#">Kilometerszamlalo Kezdete</a></th>
+                        <th><a href="#">Motor Jarat</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="report in table.reports">
+                        <td>{{report.name}}</td>
+                        <td>{{report.start}}</td>
+                        <td>Kezd Cim</td>
+                        <td>{{report.end}}</td>
+                        <td>Veg Cim</td>
+                        <td>{{report.distance}}</td>
+                        <td>{{report.duration}}</td>
+                        <td>{{report.max_speed}}</td>
+                        <td>{{report.odometer_start}}</td>
+                        <td>Motor Jarat</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
